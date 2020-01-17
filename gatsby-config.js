@@ -25,8 +25,8 @@ module.exports = {
       options: {
         rule: {
           include: /images\/.*\.svg/,
-        }
-      }
+        },
+      },
     },
     {
       resolve: `gatsby-source-filesystem`,
@@ -43,8 +43,8 @@ module.exports = {
         name: `gatsby-starter-default`,
         short_name: `starter`,
         start_url: `/`,
-        background_color: `#663399`,
-        theme_color: `#663399`,
+        background_color: `#FB4485`,
+        theme_color: `#FB4485`,
         display: `minimal-ui`,
         icon: `src/images/shortcake.png`,
       },

@@ -38,7 +38,7 @@ const Header = ({ siteTitle }) => {
             borderRadius: "50%",
             borderColor: "transparent",
             borderWidth: "0.5rem",
-            width: "6rem",
+            minWidth: "6rem",
           }}
           fluid={avatar.file.childImageSharp.fluid}
           alt="Daniela's personal picture"
