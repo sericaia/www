@@ -1,6 +1,7 @@
 // kindly adapted from https://www.gatsbyjs.org/docs/mdx/programmatically-creating-pages/
 const path = require('path')
 const has = require('lodash/has')
+const get = require('lodash/get')
 
 const BLOG_FOLDER = '/content/blogposts/'
 
@@ -32,14 +33,31 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
   // get all blogposts and use specific layout and data (title, date)
   const result = await graphql(`
+    fragment meta on Mdx {
+      fields {
+        pathname
+      }
+      frontmatter {
+        title
+      }
+    }
     query {
-      allMdx(filter: { fields: { type: { eq: "blogpost" } } }) {
+      allMdx(
+        sort: { fields: frontmatter___date, order: ASC }
+        filter: { fields: { type: { eq: "blogpost" } } }
+      ) {
         edges {
           node {
             id
             fields {
               pathname
             }
+          }
+          next {
+            ...meta
+          }
+          previous {
+            ...meta
           }
         }
       }
@@ -52,12 +70,20 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
   const posts = result.data.allMdx.edges
 
-  posts.forEach(({ node }, index) => {
+  posts.forEach(({ node, next, previous }, index) => {
     createPage({
       path: node.fields.pathname,
       component: path.resolve(`./src/components/blogpost-layout.js`),
       context: {
         id: node.id,
+        previous: {
+          pathname: get(previous, 'fields.pathname'),
+          title: get(previous, 'frontmatter.title'),
+        },
+        next: {
+          pathname: get(next, 'fields.pathname'),
+          title: get(next, 'frontmatter.title'),
+        },
       },
     })
   })

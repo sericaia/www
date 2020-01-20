@@ -4,14 +4,25 @@
 // indexed, so it is located in /components
 
 import React from 'react'
-import { graphql } from 'gatsby'
+import { graphql, Link } from 'gatsby'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
-import Layout from '../components/layout'
-import SEO from '../components/seo'
+import Layout from './layout'
+import SEO from './seo'
+import ParentArticleLinks from './parent-articles-links'
 
-const BlogpostLayoutPage = ({ data: { mdx } }) => (
+const BlogpostLayoutPage = ({ data: { mdx }, pageContext }) => (
   <Layout>
     <SEO title={mdx.frontmatter.title} />
+    <Link
+      to={'/'}
+      style={{
+        color: '#3369E8',
+        marginBottom: '0.3rem',
+        fontWeight: 'bold',
+      }}
+    >
+      {'< Back to Home'}
+    </Link>
     <p
       style={{
         color: 'grey',
@@ -23,6 +34,11 @@ const BlogpostLayoutPage = ({ data: { mdx } }) => (
     </p>
     <h2>{mdx.frontmatter.title}</h2>
     <MDXRenderer>{mdx.body}</MDXRenderer>
+
+    <ParentArticleLinks
+      previous={pageContext.previous}
+      next={pageContext.next}
+    />
   </Layout>
 )
 
