@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link } from 'gatsby'
-import { format } from 'date-fns'
 
 const Articles = ({ articles }) => (
   <>
@@ -9,13 +8,12 @@ const Articles = ({ articles }) => (
     </h2>
     {articles.map(post => {
       return (
-        <div
-          key={post.id}
-          style={{
-            marginBottom: '1rem',
-          }}
-        >
-          <p>
+        <div key={post.id}>
+          <h3
+            style={{
+              marginBottom: '0.3rem',
+            }}
+          >
             <Link
               to={`/blogposts/${post.parent.name}`}
               style={{
@@ -27,14 +25,16 @@ const Articles = ({ articles }) => (
             >
               {post.frontmatter.title}
             </Link>
-          </p>
-          <p
+          </h3>
+          <h4
             style={{
               color: 'grey',
+              marginBottom: '0.3rem',
+              fontWeight: 400,
             }}
           >
-            {format(new Date(post.frontmatter.date), 'MMMM dd, yyyy')}
-          </p>
+            {post.frontmatter.date}
+          </h4>
           <p
             style={{
               fontSize: '0.9rem',

@@ -17,14 +17,17 @@ const IndexPage = ({ data }) => {
 
 export const pageQuery = graphql`
   query allPostsQuery {
-    posts: allMdx(sort: { fields: frontmatter___date, order: DESC }) {
+    posts: allMdx(
+      sort: { fields: frontmatter___date, order: DESC }
+      filter: { fileAbsolutePath: { regex: "/blogposts/" } }
+    ) {
       totalCount
       nodes {
         id
         excerpt
         frontmatter {
           title
-          date
+          date(formatString: "MMMM DD, YYYY")
         }
         parent {
           ... on File {

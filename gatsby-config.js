@@ -53,13 +53,23 @@ module.exports = {
       resolve: `gatsby-plugin-mdx`,
       options: {
         extensions: ['.md', '.mdx'],
+        gatsbyRemarkPlugins: [
+          {
+            resolve: `gatsby-remark-prismjs`,
+            options: {
+              showLineNumbers: true,
+            },
+          },
+        ],
+        plugins: [`gatsby-remark-prismjs`],
         defaultLayouts: {
-          blog: require.resolve('./src/components/layout.js'),
+          // posts: require.resolve("./src/components/posts-layout.js"),
+          default: require.resolve('./src/components/layout.js'),
         },
       },
     },
-    // this (optional) plugin enables Progressive Web App + Offline functionality
-    // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
   ],
+  // this (optional) plugin enables Progressive Web App + Offline functionality
+  // To learn more, visit: https://gatsby.dev/offline
+  // `gatsby-plugin-offline`,
 }
