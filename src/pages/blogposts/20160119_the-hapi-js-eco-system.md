@@ -1,6 +1,6 @@
 ---
-title: "The HAPI.js eco-system"
-date: "2016-11-19"
+title: 'The HAPI.js eco-system'
+date: '2016-11-19'
 ---
 
 #### Overview
@@ -20,51 +20,51 @@ It's also worried about having documentation and code generation in order to red
 In the following example we create a hapi.js server where the configuration is passed as an object on server creation.
 
 ```js
-var Hapi = require('hapi');
+var Hapi = require('hapi')
 
 var config = {
-  dbConnection: 'myDbConnection'
-};
+  dbConnection: 'myDbConnection',
+}
 
 var server = new Hapi.Server({
-  app: config
-});
+  app: config,
+})
 
-server.start();
+server.start()
 ```
-From now on, ```dbConnection``` is accessible on the server object using ```server.settings.app```. You can now use this database connection from inside your registered plugins.
 
+From now on, `dbConnection` is accessible on the server object using `server.settings.app`. You can now use this database connection from inside your registered plugins.
 
-The second one reminds that business logic should be isolated from HTTP requests, which is done through plugins. Plugins are an easy way to write reusable pieces of code. In this case we have a module that exports a plugin, which handles two routes to ```/api/website``` and ```/api/blog```:
+The second one reminds that business logic should be isolated from HTTP requests, which is done through plugins. Plugins are an easy way to write reusable pieces of code. In this case we have a module that exports a plugin, which handles two routes to `/api/website` and `/api/blog`:
 
 ```js
 // yldApi.js
-var register = function (plugin, options, next) {
+var register = function(plugin, options, next) {
   plugin.route({
     method: 'GET',
-    path:'/api/website',
-    handler: function (request, reply) {
-      reply('yld.io');
-    }
-  });
+    path: '/api/website',
+    handler: function(request, reply) {
+      reply('yld.io')
+    },
+  })
 
   plugin.route({
     method: 'GET',
-    path:'/api/blog',
-    handler: function (request, reply) {
-      reply('blog.yld.io');
-    }
-  });
+    path: '/api/blog',
+    handler: function(request, reply) {
+      reply('blog.yld.io')
+    },
+  })
 
-  next();
-};
-
-register.attributes = {
-  name : 'yldApi',
-  version : '1.0.0'
+  next()
 }
 
-module.exports = register;
+register.attributes = {
+  name: 'yldApi',
+  version: '1.0.0',
+}
+
+module.exports = register
 ```
 
 From now on we could use this plugin inside our server by registering it:
@@ -81,11 +81,11 @@ server.start();
 
 > The `server.register()` call accepts an array of plugins as the first argument. Here we can take the opportunity to also register other plugins we may need.
 
-
 #### Most commonly used plugins and modules
 
 ##### API Documentation
-[Lout](https://github.com/hapijs/lout) is a simple API documentation generator that helps to have an idea on how routes are structured. In order to use it you just need to register the plugin (as we have done in the previous example) and access to ```/docs``` through browser. If you're used to [swagger](http://swagger.io/), there is also an alternative unofficial plugin [hapi-swagger](https://github.com/glennjones/hapi-swagger) that you could use.
+
+[Lout](https://github.com/hapijs/lout) is a simple API documentation generator that helps to have an idea on how routes are structured. In order to use it you just need to register the plugin (as we have done in the previous example) and access to `/docs` through browser. If you're used to [swagger](http://swagger.io/), there is also an alternative unofficial plugin [hapi-swagger](https://github.com/glennjones/hapi-swagger) that you could use.
 
 ##### Authentication
 
@@ -95,6 +95,7 @@ If you just need a user-password authentication (we really doubt that), you just
 allows authentication through cookie session and the later grants 3rd party integration (Github, Google, Facebook, Twitter, and so on). There is also an [unofficial implementation](https://github.com/ryanfitz/hapi-auth-jwt) that uses JSON Web Tokens.
 
 ##### Validation
+
 [Joi](https://github.com/hapijs/joi) is a library that allows language and validation of an object schema description. For instance, we could have the following schema:
 
 ```js
@@ -116,25 +117,27 @@ Joi.validate(yld, companySchema, => (err, value) { });
 
 ```js
 plugin.route({
- method: 'GET',
- path:'/welcome/{name}',
- handler: function (request, reply) {
-  var welcomeMsg = 'Welcome to YLD! blog, ' + request.params.name + '!\n';
-  welcomeMsg += 'Are you ' + request.query.mood + '?';
+  method: 'GET',
+  path: '/welcome/{name}',
+  handler: function(request, reply) {
+    var welcomeMsg = 'Welcome to YLD! blog, ' + request.params.name + '!\n'
+    welcomeMsg += 'Are you ' + request.query.mood + '?'
 
-  reply(welcomeMsg);
- },
- config: {
-  validate: {
-   params: {
-    name: Joi.string().required()
-   },
-   query: {
-    mood: Joi.string().valid(['happy','sad']).default('happy')
-   }
-  }
- }
-});
+    reply(welcomeMsg)
+  },
+  config: {
+    validate: {
+      params: {
+        name: Joi.string().required(),
+      },
+      query: {
+        mood: Joi.string()
+          .valid(['happy', 'sad'])
+          .default('happy'),
+      },
+    },
+  },
+})
 ```
 
 Accessing `/welcome/daniela?mood=happy` will return an available URL and function handler will be called afterwards. However, if we're trying to access `/welcome/daniela?mood=` it will throw an Error saying that "['mood' is not allowed to be empty]". If you don't specify a 'mood', no error is thrown and the default value is used.
@@ -146,51 +149,48 @@ There are two modules related to errors: Boom and Poop. [Boom](https://github.co
 A simple use case is user-password validation. In the example below, we have an imaginary function `validate` and, if user has an incorrect password, permissions should not be granted and an unauthorized error must be handled.
 
 ```js
-var Boom = require('Boom');
+var Boom = require('Boom')
 
 var validateUser = function(userId, password, callback) {
-
   validate(userId, password, function(err, user) {
-    if(err) {
-      return callback(Boom.unauthorized('invalid password'));
+    if (err) {
+      return callback(Boom.unauthorized('invalid password'))
     }
     // do something
-  });
+  })
 }
 ```
 
 On the other hand, [Poop](https://github.com/hapijs/poop) is used when you want to handle uncaught exceptions.
 
-
 ##### Tests
+
 [Lab](https://github.com/hapijs/) is a test utility that was created as an alternative to the [mocha](http://mochajs.org/) test framework. A simple test with Lab could have the following syntax:
 
 ```js
-var Code = require('code');
-var Lab = require('lab');
-var lab = exports.lab = Lab.script();
-var contact = require('../../src/contact');
+var Code = require('code')
+var Lab = require('lab')
+var lab = (exports.lab = Lab.script())
+var contact = require('../../src/contact')
 
 lab.experiment('Contact Utils', () => {
-
-  lab.before((done) => {
+  lab.before(done => {
     // perform async stuff
-    done();
-  });
+    done()
+  })
 
-  lab.beforeEach((done) => {
-    done();
-  });
+  lab.beforeEach(done => {
+    done()
+  })
 
-  lab.test('add new contact', (done) => {
-
+  lab.test('add new contact', done => {
     contact.addContact({ id: 'contact1' }, (err, contact) => {
-      Code.expect(err).to.be.null();
-      Code.expect(contact.contact1.id).to.equal('contact1');
-      done();
-    });
-  });
-});
+      Code.expect(err).to.be.null()
+      Code.expect(contact.contact1.id).to.equal('contact1')
+      done()
+    })
+  })
+})
 ```
 
 An experiment is a describe equivalent used to group tests. In this case we have only one test, that tests the "addContact()" function. We used [Code](https://github.com/hapijs/code) assertion library to expect some outputs of the desired behaviour. Please note that Lab has `before, after, beforeEach and afterEach` auxiliary functions: the first two are used for asynchronous operations, whereas the last ones occur before or after each test done inside the experiment. `done()` must be called after a test is completed, otherwise it will not be considered.
@@ -198,48 +198,46 @@ Despite the fact you're using hapi.js or not, Lab could be an option to test you
 
 [`server.inject()`](http://hapijs.com/api#serverinjectoptions-callback) is helpful to perform integration tests because it gives a way to use the server object directly instead of using HTTP to test a specific route. This is a simpler and faster approach to simulate a HTTP request.
 
-
 ##### WebSockets
 
 One of the most recent hapi.js plugins is [Nes](https://github.com/hapijs/nes), which is an WebSockets adapter implementation. We just need to register Nes, as we have done before with other plugins and then, one main advantage is that server and WebSocket routes could be shared:
 
 ```js
- // registered route to '/helloworld' with an id 'hello'
- server.route({
-   method: 'GET',
-   path: '/helloworld',
-   config: {
-     id: 'hello',
-     handler: function(request, reply) {
-       return reply('Hello, YLD followers!');
-     }
-   }
- });
+// registered route to '/helloworld' with an id 'hello'
+server.route({
+  method: 'GET',
+  path: '/helloworld',
+  config: {
+    id: 'hello',
+    handler: function(request, reply) {
+      return reply('Hello, YLD followers!')
+    },
+  },
+})
 ```
 
 Our client implementation could call the route `/helloworld` using
 
 ```js
-var Nes = require('nes');
-var nesClient = new Nes.Client('ws://localhost:3000');
+var Nes = require('nes')
+var nesClient = new Nes.Client('ws://localhost:3000')
 
 nesClient.connect(function(err) {
-   nesClient.request('hello', function (err, payload) {
-     // do something with payload
-   });
- });
+  nesClient.request('hello', function(err, payload) {
+    // do something with payload
+  })
+})
 ```
 
 Doing the request by ID (`hello`) or requesting `/helloworld` has the same output.
 
 > Note: Take a look at a [Simple chat example using Nes](https://github.com/sericaia/nes-chat).
 
-
 #### Request Lifecycle
 
 [Request lifecycle](http://hapijs.com/api#request-lifecycle) is what differentiate hapi.js framework from the others. Its main goal is to have a highly defined process where the request object can be changed. The request object is created for each incoming request and is slightly different from the HTTP server original request option, because it has access to request information, domain, headers, method, params, payload, plugins and so on. Request lifecycle is useful to understand what’s going on and what is the order of some actions in the server: we may need request lifecycle to implement authentication or validation, or just to encrypt some data.
 
-> Note: The original request object is still accessible through ```request.raw.req```, but it's not recommended to use it.
+> Note: The original request object is still accessible through `request.raw.req`, but it's not recommended to use it.
 
 The request lifecycle has some steps called **extension points** where we could intercept our request and adapt it accordingly.
 We can modify each extension point using [`server.ext(extension_point_event, method, [options])`](http://hapijs.com/api#serverextevents).
@@ -264,9 +262,10 @@ We've taken a quick look at hapi.js framework and eco-system. Hapi encorages two
 This last fact enables projects to use existing plugins for different types of functions like authentication, error handling, logging, monitoring and others, while also allowing a teams to develop their own. hapi.js exposes the request lifecycle so that plugins can be developed independently of each other. This way, developers in a project can coordinate work more effectively, thus enabling faster development cycles and more maintainable code.
 
 #### Other useful resources
-* [makemehapi nodeschool.io Tutorial](https://github.com/hapijs/makemehapi)
-* [hapi.js Tutorials](http://hapijs.com/tutorials)
-* [hapi.js Style guide](http://hapijs.com/styleguide)
-* [hapi.js mentors program](http://hapijs.com/help)
 
-*Originally published at [blog.yld.io](https://blog.yld.io/) on January 19, 2016 by Daniela Matos de Carvalho (@sericaia on Twitter/Github)*
+- [makemehapi nodeschool.io Tutorial](https://github.com/hapijs/makemehapi)
+- [hapi.js Tutorials](http://hapijs.com/tutorials)
+- [hapi.js Style guide](http://hapijs.com/styleguide)
+- [hapi.js mentors program](http://hapijs.com/help)
+
+_Originally published at [blog.yld.io](https://blog.yld.io/) on January 19, 2016 by Daniela Matos de Carvalho (@sericaia on Twitter/Github)_

@@ -5,10 +5,10 @@ module.exports = {
     author: `@sericaia`,
     siteUrl: `https://www.sericaia.me`,
     links: {
-      email: "danielabmcarvalho@gmail.com",
-      github: "https://github.com/sericaia",
-      linkedin: "https://www.linkedin.com/in/danielabmcarvalho",
-      twitter: "https://twitter.com/sericaia",
+      email: 'danielabmcarvalho@gmail.com',
+      github: 'https://github.com/sericaia',
+      linkedin: 'https://www.linkedin.com/in/danielabmcarvalho',
+      twitter: 'https://twitter.com/sericaia',
     },
   },
   plugins: [
@@ -21,7 +21,7 @@ module.exports = {
       },
     },
     {
-      resolve: "gatsby-plugin-react-svg",
+      resolve: 'gatsby-plugin-react-svg',
       options: {
         rule: {
           include: /images\/.*\.svg/,
@@ -52,9 +52,9 @@ module.exports = {
     {
       resolve: `gatsby-plugin-mdx`,
       options: {
-        extensions: [".md", ".mdx"],
+        extensions: ['.md', '.mdx'],
         defaultLayouts: {
-          blog: require.resolve("./src/components/layout.js"),
+          blog: require.resolve('./src/components/layout.js'),
         },
       },
     },

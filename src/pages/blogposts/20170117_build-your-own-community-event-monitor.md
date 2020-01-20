@@ -1,6 +1,6 @@
 ---
-title: "Build your own community event monitor"
-date: "2017-01-17"
+title: 'Build your own community event monitor'
+date: '2017-01-17'
 ---
 
 ### Events, events... and more events!
@@ -16,7 +16,6 @@ Regarding require-lx, we have a few different sources of information:
 2. Meetup, that has the events' calendar as well as information about who is interested in attending and the sponsors;
 3. Twitter, which is used to spread news, share talks' information or pictures about the event;
 4. Gitter, that provides a chat tool where the community can talk and share ideas as well as relevant projects or events.
-
 
 ### How to keep up to date?
 
@@ -35,14 +34,13 @@ We decided to use [request](https://www.npmjs.com/package/request) to do the HTT
 `Request` is callback-based and really easy to work with:
 
 ```javascript
-request(url, function (err, response, body) {
+request(url, function(err, response, body) {
   if (err || response.statusCode !== 200) {
     // handle error
-  }
-  else {
+  } else {
     // do something with body content
   }
-});
+})
 ```
 
 The first argument is the url (or an object if you want to send more information such as method, payload or headers) and the second is the callback function. We're going to use it to request information from Github, Meetup and Twitter APIs.
@@ -51,43 +49,42 @@ Let's start creating a Hapi server that will pick `port` and `host` from environ
 
 ```javascript
 // index.js
-const server = require('./server');
+const server = require('./server')
 server.start(function() {
-  console.log('Server running at:', server.info.uri);
-});
+  console.log('Server running at:', server.info.uri)
+})
 ```
 
 ```javascript
 // server/index.js
-const Hapi = require('hapi');
-const config = require('../config');
-const server = module.exports = new Hapi.Server();
-const routes = require('../routes');
+const Hapi = require('hapi')
+const config = require('../config')
+const server = (module.exports = new Hapi.Server())
+const routes = require('../routes')
 
 server.connection({
   port: process.env.PORT || config.server.connection.port,
-  host: process.env.HOST || config.server.connection.host
-});
+  host: process.env.HOST || config.server.connection.host,
+})
 
-server.route(routes);
+server.route(routes)
 ```
 
 In the following example we used `server.route` to add our routes from another file. We will need at least three routes (one for each provider), that will call the correspondent handler function. For example:
 
 ```javascript
-const AggregatorHandler = require('../handlers/aggregator');
+const AggregatorHandler = require('../handlers/aggregator')
 
 const readGithub = {
   method: 'GET',
   path: '/github',
-  handler: AggregatorHandler.readGithubDetails
+  handler: AggregatorHandler.readGithubDetails,
 }
 
 // ...
 
-module.exports = [readGithub, readMeetup, readTwitter];
+module.exports = [readGithub, readMeetup, readTwitter]
 ```
-
 
 #### Providers!
 
@@ -98,7 +95,6 @@ module.exports = [readGithub, readMeetup, readTwitter];
 Taking a look at what information the APIs provide helped to understand what kind of data we may need for our application. For instance, `https://api.github.com/repos/require-lx/community/issues?per_page=5` query gives a lot of information, but we probably just need to render information about the issue "title" and direct link to it ("url"), and maybe also who was the user that created it ("user"). Regarding Meetup, we can take a look at the next 5 events scheduled (`https://api.meetup.com/2/events?group_urlname=require-lx&page=5`) and bring information about the event "name", the direct link to it ("event_url") and how many people already RSVP ("yes_rsvp_count").
 
 We decided to create the code generically as we could, and add a configuration file that handles all these differences:
-
 
 ```javascript
 // assets/apiData.json
@@ -129,23 +125,25 @@ Configuration helped these handlers to share almost the same code:
 
 ```javascript
 exports.readGithubDetails = function(req, reply) {
-  const url = createUrl(apiData.github);
+  const url = createUrl(apiData.github)
 
-  request({
-    url,
-    json: true,
-    headers: {
-      'User-Agent': apiData.github.roomId
+  request(
+    {
+      url,
+      json: true,
+      headers: {
+        'User-Agent': apiData.github.roomId,
+      },
+    },
+    function(err, response, body) {
+      if (err || response.statusCode !== 200) {
+        return reply(Boom.wrap(err, response.statusCode))
+      } else {
+        return reply(filterData(body, apiData.github.fields))
+      }
     }
-  }, function (err, response, body) {
-    if (err || response.statusCode !== 200) {
-      return reply(Boom.wrap(err, response.statusCode));
-    }
-    else {
-      return reply(filterData(body, apiData.github.fields));
-    }
-  });
-};
+  )
+}
 ```
 
 Although [Github requires 'User-Agent' header](https://developer.github.com/v3/#user-agent-required), everything else is pretty similar between the two APIs. `createUrl` and `filterData` functions are auxiliary functions. The former will generate the url that is going to be requested based on `apiUrl`, `contentUrl` and parameters defined in the configuration file. The latter is used to filter output data according to the fields defined in configuration.
@@ -158,7 +156,7 @@ The following image explains what we need to do next: (1) get the bearer token a
 
 ![image](https://g.twimg.com/dev/documentation/image/appauth_0.png)
 
-*(image source: [Twitter application-only authentication documentation](https://dev.twitter.com/oauth/application-only) )*
+_(image source: [Twitter application-only authentication documentation](https://dev.twitter.com/oauth/application-only) )_
 
 After having your application, you need to get your consumer key and secret and create a Base64 encoded bearer token (replace it with `YOUR_APP_ENCODED_BEARER_TOKEN`). You can test it using cURL:
 
@@ -205,4 +203,4 @@ This article gives a quick introduction to events that YLD team members are invo
 
 See you in the next meetup!
 
-*Originally published at [blog.yld.io](https://blog.yld.io/) on January 17, 2017 by Daniela Matos de Carvalho (@sericaia on Twitter/Github)*
+_Originally published at [blog.yld.io](https://blog.yld.io/) on January 17, 2017 by Daniela Matos de Carvalho (@sericaia on Twitter/Github)_

@@ -1,6 +1,6 @@
 ---
-title: "React Crash Course Announcement"
-date: "2017-02-21"
+title: 'React Crash Course Announcement'
+date: '2017-02-21'
 ---
 
 React is regarded as the premier way to build large, fast Web apps with JavaScript. We're excited to announce that we're going to have another [React](https://facebook.github.io/react/) Crash Course in London! YLD already hosted three free events in Lisbon and this will be the second one in London.
@@ -33,4 +33,4 @@ Requirements
 - bring your laptop with [Node.js](https://nodejs.org/) installed
 - be motivated to learn and ask questions!
 
-*Originally published at [blog.yld.io](https://blog.yld.io/) on February 21, 2017 by Daniela Matos de Carvalho (@sericaia on Twitter/Github)*
+_Originally published at [blog.yld.io](https://blog.yld.io/) on February 21, 2017 by Daniela Matos de Carvalho (@sericaia on Twitter/Github)_

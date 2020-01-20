@@ -1,6 +1,6 @@
 ---
-title: "Webinar Recap: step into the world of microservices with Node.js"
-date: "2017-04-26"
+title: 'Webinar Recap: step into the world of microservices with Node.js'
+date: '2017-04-26'
 ---
 
 You've decided to embark on the journey to microservices. Cloud 66 and YLD teamed up to create a webinar about how to create microservices with Node.js and develop, test and deploy them.
@@ -40,4 +40,4 @@ https://github.com/hapijs/code
 RabbitMQ tutorials to get started. With lots of examples using different programming languages.
 https://www.rabbitmq.com/getstarted.html
 
-*Originally published at [blog.yld.io](https://blog.yld.io/) on April 26, 2017 by Daniela Matos de Carvalho (@sericaia on Twitter/Github)*
+_Originally published at [blog.yld.io](https://blog.yld.io/) on April 26, 2017 by Daniela Matos de Carvalho (@sericaia on Twitter/Github)_

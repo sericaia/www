@@ -1,6 +1,6 @@
 ---
-title: "Demystifying the GraphQL dataloader utility: there is no magic!"
-date: "2019-06-05"
+title: 'Demystifying the GraphQL dataloader utility: there is no magic!'
+date: '2019-06-05'
 ---
 
 > "DataLoader is a generic **utility** to be used as part of your application's **data fetching** layer to provide a consistent API over various backends and reduce requests to those backends via **batching** and **caching**." ([source](https://github.com/facebook/dataloader))
@@ -13,14 +13,14 @@ date: "2019-06-05"
 Whaaat? how?
 
 ```js
-const DataLoader = require('dataloader');
+const DataLoader = require('dataloader')
 
 const myLoader = new DataLoader(
   keys =>
     new Promise((resolve, reject) => {
       // ...
     })
-);
+)
 ```
 
 There are a few options you can add to the dataloader, [check them in the docs](https://github.com/facebook/dataloader#new-dataloaderbatchloadfn--options).
@@ -110,7 +110,7 @@ Let's say for the purpose of our example that the team has a main Coach, but eac
         "id": "41",
         "name": "Goalkeepers assistant Coach"
       }
-    },
+    }
     // ...
   ]
 }
@@ -119,10 +119,10 @@ Let's say for the purpose of our example that the team has a main Coach, but eac
 What a team we have! As you can see the coach might get duplicated, and this is a reason to use DataLoader and avoid doing duplicate requests. If our DataLoader keys are the `id`s, the coach requests would be the following:
 
 ```js
-coachLoader.load(40);
-coachLoader.load(40); // will load from cache, no request is made
-coachLoader.load(41);
-coachLoader.load(41); // will load from cache, no request is made
+coachLoader.load(40)
+coachLoader.load(40) // will load from cache, no request is made
+coachLoader.load(41)
+coachLoader.load(41) // will load from cache, no request is made
 ```
 
 DataLoader's batch function could also be invoked if we're querying all `players` because we are (probably) requesting them from the same database table. Let's use SQL as an example:
@@ -140,9 +140,9 @@ const server = new ApolloServer({
   typeDefs,
   resolvers,
   context: () => ({
-    coachLoader:  coachLoader() // adds the loader!
-  })
-});
+    coachLoader: coachLoader(), // adds the loader!
+  }),
+})
 ```
 
 It can now be used in the resolvers:
@@ -157,30 +157,30 @@ const resolvers = {
 And the `coachLoader.js` implementation:
 
 ```js
-const DataLoader = require('dataloader');
-const db = require('./db'); // some db, could be using a ORM such as sequelize
+const DataLoader = require('dataloader')
+const db = require('./db') // some db, could be using a ORM such as sequelize
 
 // aux function that will format the result to be ordered by the given ids,
 // otherwise dataloader throws an error
 const formatResult = (coaches, ids) => {
-  const coachMap = {};
+  const coachMap = {}
   coaches.forEach(coach => {
-    coachMap[coach.id] = coach;
-  });
+    coachMap[coach.id] = coach
+  })
 
-  return ids.map(id => coachMap[id]);
-};
+  return ids.map(id => coachMap[id])
+}
 
 const batchCoaches = async ids => {
   try {
-    const coaches = await db.findCoachesByIds(ids);
-    return formatResult(coaches, ids);
+    const coaches = await db.findCoachesByIds(ids)
+    return formatResult(coaches, ids)
   } catch (err) {
-    throw new Error('There was an error getting the coaches.');
+    throw new Error('There was an error getting the coaches.')
   }
-};
+}
 
-module.exports = () => new DataLoader(batchCoaches);
+module.exports = () => new DataLoader(batchCoaches)
 ```
 
 `batchCoaches` is the function passed to the dataloader that receives and array of keys (ids) and returns an array of values. `db.findCoachesByIds` is the function that demystifies most of the magic: it only calls the database batch query. If we are using [Sequelize ORM](http://docs.sequelizejs.com) it should be the following:
@@ -208,9 +208,8 @@ That's all! There's really no magic! Node.js's `process.nextTick` and a database
 - [DataLoader and caching in Apollo](https://www.apollographql.com/docs/graphql-tools/connectors.html#dataloader)
 - [Using DataLoader in a RESTDataSource in Apollo](https://www.apollographql.com/docs/apollo-server/features/data-sources.html#What-about-DataLoader)
 
-
 ### Want to know more?
 
 YLD provides training tailored to your needs. It could be React.js, Node.js, DevOps and more. Check out the [YLD training page](https://www.yld.io/training/) and [get in touch](https://www.yld.io/contact/) to learn more.
 
-*Originally published at [blog.yld.io](https://blog.yld.io/) on June 5, 2019 by Daniela Matos de Carvalho (@sericaia on Twitter/Github)*
+_Originally published at [blog.yld.io](https://blog.yld.io/) on June 5, 2019 by Daniela Matos de Carvalho (@sericaia on Twitter/Github)_

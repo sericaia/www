@@ -1,6 +1,6 @@
 ---
-title: "Are you concerned about Accessibility? How to educate developers on creating accessible websites."
-date: "2017-08-01"
+title: 'Are you concerned about Accessibility? How to educate developers on creating accessible websites.'
+date: '2017-08-01'
 ---
 
 First the participants propose discussion topics and then, after voting, group discussions are created about the most popular selections: one of those was accessibility! There are also passion talks, which are 5- to 10-minute talks about something you want to share (which could be technical or non-technical). (I recommend taking a look at Jesse Beach's “What is Accessibility?” passion talk if you haven't seen one.) The registrations for Offline Camp are limited to about 30 participants, which helps everyone get to know each other and keeps discussions productive.
@@ -13,6 +13,7 @@ I decided to attend the “A11Y” discussion because I barely knew anything abo
 The session started with us talking about how can we relate accessibility to Offline First and how it can change people's lives. We identified different types of disability such as cognitive, vision, motor, an so on. The discussion was mainly around our concerns regarding web (the majority of the people in the room were web developers) and what we do when creating Single Page Applications (SPA).
 
 We shared some examples and common problems, namely:
+
 - Routing
 - [Semantic web](http://webaim.org/techniques/semanticstructure/) (e.g. the [in]correct usage of hierarchical headings)
 - Using a select box (versus an input with ARIA attributes)
@@ -53,23 +54,23 @@ We have all these tools available right now, but the real tests are with real us
 
 #### Some other useful links
 
-* Cool list of [ARIA examples](http://www.oaa-accessibility.org/example/39/)
+- Cool list of [ARIA examples](http://www.oaa-accessibility.org/example/39/)
 
-* [Specs from W3C for ARIA](https://github.com/w3c/aria). I found the [issues](https://github.com/w3c/aria/issues/) quite interesting
+- [Specs from W3C for ARIA](https://github.com/w3c/aria). I found the [issues](https://github.com/w3c/aria/issues/) quite interesting
 
-* [How The Guardian is educating developers about Accessibility](https://www.theguardian.com/info/developer-blog/2017/jun/26/championing-accessibility-at-the-guardian)
+- [How The Guardian is educating developers about Accessibility](https://www.theguardian.com/info/developer-blog/2017/jun/26/championing-accessibility-at-the-guardian)
 
-* UK Government [Dos and don'ts on designing for accessibility](https://accessibility.blog.gov.uk/2016/09/02/dos-and-donts-on-designing-for-accessibility/), which summarizes their findings, was one of my favourite articles
+- UK Government [Dos and don'ts on designing for accessibility](https://accessibility.blog.gov.uk/2016/09/02/dos-and-donts-on-designing-for-accessibility/), which summarizes their findings, was one of my favourite articles
 
-* Check out [accessibility dev tools by Google](https://chrome.google.com/webstore/detail/accessibility-developer-t/fpkknkljclfencbdbgkenhalefipecmb)
+- Check out [accessibility dev tools by Google](https://chrome.google.com/webstore/detail/accessibility-developer-t/fpkknkljclfencbdbgkenhalefipecmb)
 
-* [Awesome-A11Y](https://github.com/brunopulis/awesome-a11y) has a list of resources to learn about A11Y
+- [Awesome-A11Y](https://github.com/brunopulis/awesome-a11y) has a list of resources to learn about A11Y
 
-* [Pa11y](http://pa11y.org/) has a set of tools for designers and developers to make the web more accessible
+- [Pa11y](http://pa11y.org/) has a set of tools for designers and developers to make the web more accessible
 
-* [AxE](https://www.deque.com/products/axe/) quite awesome set of tools (chrome extension + various flavours of CLI and integrations)
+- [AxE](https://www.deque.com/products/axe/) quite awesome set of tools (chrome extension + various flavours of CLI and integrations)
 
-* Do you use React.js? Me too! Few days ago some people from the community published a [list of standards and guidelines](https://facebook.github.io/react/docs/accessibility.html) about accessibility.
+- Do you use React.js? Me too! Few days ago some people from the community published a [list of standards and guidelines](https://facebook.github.io/react/docs/accessibility.html) about accessibility.
 
 ### To infinity and beyond
 
@@ -85,4 +86,4 @@ Recently a friend provoked me by sharing a tweet about Progressive Web Apps (PWA
 
 I really don't think it's true, and our group session is consistent with that opinion. We can create truly accessible PWAs if we educate our developers. We know that the challenge is ambitious and augmented by different disabilities, but we are thinking about the future and how can we help and make changes in order to create a better web.
 
-*Originally published at [OfflineCamp medium](https://medium.com/offline-camp/are-you-concerned-about-accessibility-1312cdf843b5) on August 1, 2017 by Daniela Matos de Carvalho (@sericaia on Twitter/Github)*
+_Originally published at [OfflineCamp medium](https://medium.com/offline-camp/are-you-concerned-about-accessibility-1312cdf843b5) on August 1, 2017 by Daniela Matos de Carvalho (@sericaia on Twitter/Github)_

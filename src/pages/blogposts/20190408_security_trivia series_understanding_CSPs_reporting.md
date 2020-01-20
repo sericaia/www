@@ -1,6 +1,6 @@
 ---
 title: "Security Trivia Series: Understanding CSP's Reporting"
-date: "2019-04-08"
+date: '2019-04-08'
 ---
 
 In our [previous blogpost about Content Security Policy (CSP)](https://medium.com/yld-engineering-blog/security-trivia-series-hints-on-default-src-csp-directive-7044c65db951) we promised to have another one about reporting and mentioned `report-uri`. Turns out that `report-uri` was deprecated in [Content Security Policy Level 3](https://www.w3.org/TR/CSP3/#changes-from-level-2):
@@ -35,33 +35,36 @@ However, if some errors arise we might want to report them properly so we can ac
 
 This should create an error. Let's learn how to report it!
 
-### BEFORE: Using report-uri (*DEPRECATED!*)
+### BEFORE: Using report-uri (_DEPRECATED!_)
 
-`report-uri` receives a endpoint, e.g 
+`report-uri` receives a endpoint, e.g
 
 `Content-Security-Policy: ... ; report-uri <report-endpoint>`
 
 Let's use a Node [express.js](https://expressjs.com/) server to test this. If we set the CSP header from the use case (where we expect to have an error) and use it on the `/content` route:
 
 ```js
-const express = require("express");
-const app = express();
+const express = require('express')
+const app = express()
 
-app.get("/content", (req,res) => {
-  res.setHeader("Content-Security-Policy", "default-src 'self'; frame-src https://*.mozilla.org; report-uri /report");
-  res.render("index");
-});
+app.get('/content', (req, res) => {
+  res.setHeader(
+    'Content-Security-Policy',
+    "default-src 'self'; frame-src https://*.mozilla.org; report-uri /report"
+  )
+  res.render('index')
+})
 
-app.listen(3000, () => console.log(`Example app listening on port ${port}!`));
+app.listen(3000, () => console.log(`Example app listening on port ${port}!`))
 ```
 
 Notice that we are telling the browser to send all report errors to `/report` route using `report-uri`. Let's add a `/report` route to check those errors:
 
 ```js
-app.post("/report", (req,res) => {
+app.post('/report', (req, res) => {
   console.log(req.body)
-  return res.send('CSP fail: Report received');
-});
+  return res.send('CSP fail: Report received')
+})
 ```
 
 This will fail for the last iframe (https://mozilla.org) as expected and we will get a `POST` on `/report` route with the following details:
@@ -93,11 +96,13 @@ There is plenty of information here to be processed and used to help to solve br
 Some browsers request the `Content-Type` as `application/csp-report`, others as `application/json` so in order to use it we have to setup some configurations on our express server:
 
 ```js
-const bodyParser = require('body-parser');
+const bodyParser = require('body-parser')
 
-app.use(bodyParser.json({
-  type: ['application/json', 'application/csp-report']
-}));
+app.use(
+  bodyParser.json({
+    type: ['application/json', 'application/csp-report'],
+  })
+)
 
 //...
 ```
@@ -113,28 +118,29 @@ Instead of a URI, it receives a `groupname`:
 and it needs an additional header to be set, `Report-to`:
 
 ```js
-app.get("/content-report-to", (req, res) => {
-
+app.get('/content-report-to', (req, res) => {
   const reportTo = [
     {
-      "endpoints": [
+      endpoints: [
         {
-          "url": "https://localhost:3000/report" // or your report url
-        }
+          url: 'https://localhost:3000/report', // or your report url
+        },
       ],
-      "include_subdomains":true,
-      "group": "csp-endpoint",
-      "max_age": 31536000 // one year
+      include_subdomains: true,
+      group: 'csp-endpoint',
+      max_age: 31536000, // one year
     },
     // ...
-  ];
-  
-  res.setHeader("Content-Security-Policy", 
-    "default-src 'self'; frame-src https://*.mozilla.org; report-to csp-endpoint;");
-  res.setHeader("Report-to", reportTo.map(JSON.stringify).join(', '));
+  ]
 
-  res.render("index");
-});
+  res.setHeader(
+    'Content-Security-Policy',
+    "default-src 'self'; frame-src https://*.mozilla.org; report-to csp-endpoint;"
+  )
+  res.setHeader('Report-to', reportTo.map(JSON.stringify).join(', '))
+
+  res.render('index')
+})
 ```
 
 We can set multiple groups with multiple endpoints, which is useful because we can have the CSP group that will report CSP errors, the network group to report network errors, and so on.
@@ -144,24 +150,26 @@ Endpoints can have priorities (for failover) and weights (to distribute load) an
 The body received from `report-to` is also different from what we got with `report-uri`, but it tells essentially the same story:
 
 ```json
-[{
-	"age": 16796,
-	"body": {
-		"blocked-uri": "https://mozilla.org",
-		"disposition": "enforce",
-		"document-uri": "https://localhost:3000/content-report-to",
-		"effective-directive": "frame-src",
-		"line-number": 1,
-		"original-policy": "default-src 'self'; frame-src https://*.mozilla.org; report-to csp-endpoint;",
-		"referrer": "",
-		"script-sample": "",
-		"sourceFile": "https://localhost:3000/content-report-to",
-		"violated-directive": "frame-src"
-	},
-	"type": "csp",
-	"url": "https://localhost:3000/content-report-to",
-	"user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36"
-}]
+[
+  {
+    "age": 16796,
+    "body": {
+      "blocked-uri": "https://mozilla.org",
+      "disposition": "enforce",
+      "document-uri": "https://localhost:3000/content-report-to",
+      "effective-directive": "frame-src",
+      "line-number": 1,
+      "original-policy": "default-src 'self'; frame-src https://*.mozilla.org; report-to csp-endpoint;",
+      "referrer": "",
+      "script-sample": "",
+      "sourceFile": "https://localhost:3000/content-report-to",
+      "violated-directive": "frame-src"
+    },
+    "type": "csp",
+    "url": "https://localhost:3000/content-report-to",
+    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36"
+  }
+]
 ```
 
 Note: In this case `type` is `csp` but if we had a network error it would be `nel` and for a certificate error it would be `hpkp`. Check some examples in the [sample reports from the Reporting API](https://w3c.github.io/reporting/#sample-reports).
@@ -170,20 +178,20 @@ Note: In this case `type` is `csp` but if we had a network error it would be `ne
 
 In order to use `report-to` the `Content-Type` has to be `application/reports+json`. We also need to setup our express server to serve HTTPS with a valid certificate, otherwise you can't test/use it.
 
-
 ### The New Reporting API
 
 The [working draft](https://w3c.github.io/reporting/) explains it better than me but let's sum up some key points about the Reporting API:
-* It catches CSP errors, network errors or browser crashes (not only CSP errors!);
-* You can specify the endpoints that are going to receive the report, but it is done in a different way to what we are doing with `report-uri`;
-* Multiple endpoints can be specified but only one gets the data.
-* Priorities can be set per endpoint. If the one with higher priority fails it tries the next one (failover is supported);
-* The browser sends the report when there is nothing with higher priority to be done, so the report information might only be sent when the browser is idle.
+
+- It catches CSP errors, network errors or browser crashes (not only CSP errors!);
+- You can specify the endpoints that are going to receive the report, but it is done in a different way to what we are doing with `report-uri`;
+- Multiple endpoints can be specified but only one gets the data.
+- Priorities can be set per endpoint. If the one with higher priority fails it tries the next one (failover is supported);
+- The browser sends the report when there is nothing with higher priority to be done, so the report information might only be sent when the browser is idle.
+
 ---
 
 There are some differences between `report-uri` and `report-to`, mainly related to how to specify it and the extra `Report-to` header but in the end the data received is similar. However, the Reporting API opens a new world of possibilities to grab all kinds of errors in the browser.
 
 Want to know more? We will cover CSP's unsafe dynamic and nonce in another blogpost, follow us and stay tuned!
 
-
-*Originally published at [blog.yld.io](https://blog.yld.io/) on April 8, 2019 by Daniela Matos de Carvalho (@sericaia on Twitter/Github)*
+_Originally published at [blog.yld.io](https://blog.yld.io/) on April 8, 2019 by Daniela Matos de Carvalho (@sericaia on Twitter/Github)_

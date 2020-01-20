@@ -1,6 +1,6 @@
 ---
-title: "Dot.js in Paris"
-date: "2017-12-06"
+title: 'Dot.js in Paris'
+date: '2017-12-06'
 ---
 
 <a data-flickr-embed="true"  href="https://www.flickr.com/photos/97226415@N08/25001894608/in/album-72157689274484261/" title="dotJS 2017"><img src="https://farm5.staticflickr.com/4580/25001894608_36443a8f21_z.jpg" width="640" height="428" alt="dotJS 2017" /></a>
@@ -23,13 +23,13 @@ One of the talks that is worth to checking out is the one from [Sean Larkin](htt
 
 One of the last talks was given by [Tom Dale](https://twitter.com/tomdale), creator of Ember.js. The engaging thing about Tom's talk was the performance considerations mentioned: how to get instant templates, optimised updates and guarantee 60 frames per second. He explained how he translated his considerations into [Glimmer.js](https://glimmerjs.com/). Although I'm not a Ember.js fan, I think the talk is worth seeing to understand the solutions proposed from a performance side of things:
 
-* compile templates into bytecode to achieve smaller file sizes;
-* take advantage of [ArrayBuffer](https://mdn.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer) to reduce time spent by the browser doing parsing operations;
-* create chuncks of work instead of having it synchronous using [requestIdleCallback](https://developer.mozilla.org/en-US/docs/Web/API/Window/requestIdleCallback), which allows smooth incremental rendering.
-* etc.
+- compile templates into bytecode to achieve smaller file sizes;
+- take advantage of [ArrayBuffer](https://mdn.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer) to reduce time spent by the browser doing parsing operations;
+- create chuncks of work instead of having it synchronous using [requestIdleCallback](https://developer.mozilla.org/en-US/docs/Web/API/Window/requestIdleCallback), which allows smooth incremental rendering.
+- etc.
 
 The conference ended with a talk from [Brendan Eich](https://twitter.com/BrendanEich) about JS and ECMA history and some notes about the new shiny things the language is going to have.
 
 In the end it was a nice conference with a nice venue in a awesome city. I couldn't leave without eating some macarons and crepes!
 
-*Originally published at [blog.yld.io](https://blog.yld.io/) on December 6, 2017 by Daniela Matos de Carvalho (@sericaia on Twitter/Github)*
+_Originally published at [blog.yld.io](https://blog.yld.io/) on December 6, 2017 by Daniela Matos de Carvalho (@sericaia on Twitter/Github)_

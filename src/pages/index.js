@@ -1,8 +1,8 @@
-import React from "react"
-import SEO from "../components/seo"
-import Layout from "../components/layout"
-import Articles from "../components/articles"
-import Navigation from "../components/navigation"
+import React from 'react'
+import SEO from '../components/seo'
+import Layout from '../components/layout'
+import Articles from '../components/articles'
+import Navigation from '../components/navigation'
 
 const IndexPage = ({ data }) => {
   const { posts } = data

@@ -1,11 +1,11 @@
 ---
-title: "HTTP/2: a look into the future of the web"
-date: "2017-01-10"
+title: 'HTTP/2: a look into the future of the web'
+date: '2017-01-10'
 ---
 
 This article aims to be theoretical and practical, not only giving an overview about the HTTP/2 protocol, but also giving and explaining how to dig in with some tools.
 
-HTTP/2 is the next version of the HTTP protocol and aims to be more performant in comparison with the HTTP/1.x versions. It was published in 2015 and is based on [SPDY](https://developers.google.com/speed/spdy/), that was created by Google in 2012,  which main goal was to reduce latency between client and server communications.
+HTTP/2 is the next version of the HTTP protocol and aims to be more performant in comparison with the HTTP/1.x versions. It was published in 2015 and is based on [SPDY](https://developers.google.com/speed/spdy/), that was created by Google in 2012, which main goal was to reduce latency between client and server communications.
 
 ### 1. Main differences and features
 
@@ -49,7 +49,7 @@ There are some small differences in the HTTP responses. In the following image y
 You can immediately notice that this is a HTTP/2 website if you look at the status code field. In HTTP/1.x it has both the code and the message (200 OK), whereas in HTTP/2 it only has the code (200). This may be an API breaking change for some frameworks we are used to work with. For example, the following line to send custom error messages in [Express](http://expressjs.com/) will no longer work.
 
 ```javascript
-res.status(500).send('My awesome internal server error'); // this may be considered an anti-pattern
+res.status(500).send('My awesome internal server error') // this may be considered an anti-pattern
 ```
 
 Although the HTTP/2 working group desperately needs community input on real world application cases, [there aren't many website supporting the protocol yet](https://w3techs.com/technologies/details/ce-http2/all/all). However, is expected that this number grows this year due to browser and server implementations of the HTTP/2 specification. A solution to support this change may be to have applications using both protocol versions, that will allow to migrate incrementally to HTTP/2. We personally think that HTTP/1.x will stay alive for some years because we are going to have some users using older browser versions and websites without maintenance that do not support the new protocol.
@@ -65,7 +65,6 @@ In this example we are going to use [https://http2.golang.org/](https://http2.go
 We tried to `curl` golang's website, but the response indicates that the server only supports access over TLS. Taking this into account, we decided to find another alternative and use the browser to test this. Please follow this [tutorial](https://jimshaver.net/2015/02/11/decrypting-tls-browser-traffic-with-wireshark-the-easy-way/) to log a session key and use the created key in Wireshark SSL preferences. After finishing the tutorial you should be able to see the decrypted SSL data with the handshakes, acknowledgements, and HTTP/2 specific frames (headers, data, and so on):
 
 ![image](https://cloud.githubusercontent.com/assets/1150553/21653548/9205d57e-d2a9-11e6-8476-4f1e99560535.png)
-
 
 #### 4.2 Inspect
 
@@ -86,7 +85,7 @@ Using [HTTP/2 Wireshark Filters](https://www.wireshark.org/docs/dfref/h/http2.ht
 The above example clearly shows that:
 
 - This is a client initiated stream, because 15 is an odd number and in HTTP/2 odd numbers mean client initiated streams whereas a even stream ID means server initiated.
-- [*No. 207*] A client initiated request (`source = 192.168.2.18`) with HEADERS and WINDOW\_UPDATE frames. HEADERS has information about the flags, request (method, path, etc) and other important headers such as what is expected to be received (in our example, an `image/png`). The WINDOW\_UPDATE frame sends information about the window size increment permitted, which means that the server can't send a response with length that exceeds this value.
+- [*No. 207*] A client initiated request (`source = 192.168.2.18`) with HEADERS and WINDOW_UPDATE frames. HEADERS has information about the flags, request (method, path, etc) and other important headers such as what is expected to be received (in our example, an `image/png`). The WINDOW_UPDATE frame sends information about the window size increment permitted, which means that the server can't send a response with length that exceeds this value.
 - [*No. 403*] The first frame (HEADERS) given by the server for this particular stream ID. In HTTP/2, every message starts with one HEADERS or PUSH_STREAM (when we're doing server push) stream. Please figure out that you can see the decompressed header in the following Wireshark capture image, which clearly shows relevant information about the image we're requesting (e.g Content-Type, Content-length, etc).
 - [*No. 405*] The DATA frame with the contents. In our example, the image itself.
 - In the server HEADERS (No. 403 in the image) you can observe the flags and see that `End stream` is set to `false`, because there's still information (frames) to be sent. If you look at the DATA (No. 405) you will sign that `End stream` is `true` and this stream is finished. However, we can have multiple DATA frames being sent from the server according to the window size set, and this frame would not be the last one in that case.
@@ -99,4 +98,4 @@ This article started discussing about the HTTP/2 protocol, which is an extension
 
 To sum up, HTTP/2 is getting more and more attraction recently, so it is expected to have it in place in a larger number of websites we visit every day. From a developer perspective our applications will need review and adaptation because some tricks we're used to do will no longer be performant as we expect.
 
-*Originally published at [blog.yld.io](https://blog.yld.io/) on January 10, 2017 by Daniela Matos de Carvalho (@sericaia on Twitter/Github)*
+_Originally published at [blog.yld.io](https://blog.yld.io/) on January 10, 2017 by Daniela Matos de Carvalho (@sericaia on Twitter/Github)_

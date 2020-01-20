@@ -1,6 +1,6 @@
 ---
-title: "Getting started with React and Node.js"
-date: "2015-06-10"
+title: 'Getting started with React and Node.js'
+date: '2015-06-10'
 ---
 
 While building client-side apps, a team at Facebook reached a conclusion that a lot of web-developers had already noticed: the DOM is slow. They did, however, tackle this problem in an interesting way.
@@ -22,11 +22,11 @@ To get our feet wet, let's just have React render "Hello World".
 ```js
 var Hello = React.createClass({
   render: function() {
-    return <div>Hello {this.props.name}</div>;
-  }
-});
+    return <div>Hello {this.props.name}</div>
+  },
+})
 
-React.render(<Hello name='World' />, document.getElementById('container'));
+React.render(<Hello name="World" />, document.getElementById('container'))
 ```
 
 Apart from the weird part of mixing HTML with JavaScript, this code is pretty self-explanatory. Notice though how `Hello` is instantiated in the HTML just like the new [Custom Elements](http://www.html5rocks.com/en/tutorials/webcomponents/customelements/) standard and `name` is an attribute that is being used in the React Component as `this.props.name`.
@@ -37,18 +37,22 @@ There is one strange part though: the way we are inlining HTML in JavaScript. Wh
 
 JSX is a JavaScript syntax extension with the ability to inline HTML. That's basically it. It's not required to use React, but it is recommended because it is "a concise and familiar syntax for defining tree structures with attributes" and "helps make large trees easier to read than function calls or object literals".
 
-It was conceived to be used with transpilers and not as an independent language.  Our **Hello World** example is transpiled into:
+It was conceived to be used with transpilers and not as an independent language. Our **Hello World** example is transpiled into:
 
 > [preview on JSFiddle](https://jsfiddle.net/sergioramos/r3xjhee0/)
 
 ```js
-var Hello = React.createClass({displayName: "Hello",
+var Hello = React.createClass({
+  displayName: 'Hello',
   render: function() {
-    return React.createElement("div", null, "Hello ", this.props.name);
-  }
-});
+    return React.createElement('div', null, 'Hello ', this.props.name)
+  },
+})
 
-React.render(React.createElement(Hello, {name: "World"}), document.getElementById('container'));
+React.render(
+  React.createElement(Hello, { name: 'World' }),
+  document.getElementById('container')
+)
 ```
 
 You can learn more about JSX by following the [official guide](https://facebook.github.io/react/docs/jsx-in-depth.html) and by trying out the [live transpiler](https://facebook.github.io/react/jsx-compiler.html). Also, it's [supported by Babel](https://babeljs.io/docs/usage/jsx/).
@@ -70,13 +74,13 @@ var Books = React.createClass({
           </tr>
         </thead>
         <tbody>
-          <Book title='Professional Node.js'></Book>
-          <Book title='Node.js Patterns'></Book>
+          <Book title="Professional Node.js"></Book>
+          <Book title="Node.js Patterns"></Book>
         </tbody>
       </table>
-    );
-  }
-});
+    )
+  },
+})
 
 var Book = React.createClass({
   render: function() {
@@ -84,11 +88,11 @@ var Book = React.createClass({
       <tr>
         <td>{this.props.title}</td>
       </tr>
-    );
-  }
-});
+    )
+  },
+})
 
-React.render(<Books />, document.getElementById('container'));
+React.render(<Books />, document.getElementById('container'))
 ```
 
 Here we follow the exact same logic as we did in our **Hello World** example, but this time we composed an element of another element. We even passed a property from the parent element to the child element.
@@ -104,8 +108,8 @@ Everything in `this.props` is passed down to you from the parent. That includes 
 ```js
 var data = {
   title: 'Professional Node.js',
-  author: 'Pedro Teixeira'
-};
+  author: 'Pedro Teixeira',
+}
 
 var Book = React.createClass({
   render: function() {
@@ -114,16 +118,16 @@ var Book = React.createClass({
         <td>{this.props.data.title}</td>
         <td>{this.props.data.author}</td>
       </tr>
-    );
-  }
-});
+    )
+  },
+})
 
-React.render(<Book data={data}/>, document.getElementById('container'));
+React.render(<Book data={data} />, document.getElementById('container'))
 ```
 
 ## Events
 
-Now we need to add a *read* checkbox to each book that mutates its state. For that, we need to register a listener for the `checked` event:
+Now we need to add a _read_ checkbox to each book that mutates its state. For that, we need to register a listener for the `checked` event:
 
 > [preview on JSFiddle](https://jsfiddle.net/sergioramos/a2puufar/2/)
 
@@ -132,32 +136,38 @@ var Books = React.createClass({
   render: function() {
     return (
       // ...
-          <tr>
-            <th>Title</th>
-            <th>Read</th>
-          </tr>
+      <tr>
+        <th>Title</th>
+        <th>Read</th>
+      </tr>
       // ...
-    );
-  }
-});
+    )
+  },
+})
 
 var state = {
-  read: false
-};
+  read: false,
+}
 
 var Book = React.createClass({
   handleChange: function(ev) {
-    console.log('onChange: ', ev);  
+    console.log('onChange: ', ev)
   },
   render: function() {
     return (
       <tr>
         <td>{this.props.title}</td>
-        <td><input type='checkbox' checked={state.read} onChange={this.handleChange} /></td>
+        <td>
+          <input
+            type="checkbox"
+            checked={state.read}
+            onChange={this.handleChange}
+          />
+        </td>
       </tr>
-    );
-  }
-});
+    )
+  },
+})
 
 // ...
 ```
@@ -174,21 +184,27 @@ In order for each `Book` to have a state that we can mutate and see the change r
 var Book = React.createClass({
   getInitialState: function() {
     return {
-      read: false
-    };
+      read: false,
+    }
   },
   handleChange: function(ev) {
-    console.log('onChange: ', ev);  
+    console.log('onChange: ', ev)
   },
   render: function() {
     return (
       <tr>
         <td>{this.props.title}</td>
-        <td><input type='checkbox' checked={this.state.read} onChange={this.handleChange} /></td>
+        <td>
+          <input
+            type="checkbox"
+            checked={this.state.read}
+            onChange={this.handleChange}
+          />
+        </td>
       </tr>
-    );
-  }
-});
+    )
+  },
+})
 ```
 
 Now we need to update `handleChange` to mutate the state every time the checkbox changes:
@@ -216,9 +232,10 @@ handleChange: function(ev) {
 }
 ```
 
-And *voilà*! Now we are properly mutating the state and seeing the change reflected in our UI.
+And _voilà_! Now we are properly mutating the state and seeing the change reflected in our UI.
 
 ## Property Validation
+
 Properties that are passed in the element attributes can take multiple forms. React provides a way to validate the property types that are passed to the components by declaring them in `propTypes`.
 
 In our example, we could validate the book title:
@@ -226,16 +243,15 @@ In our example, we could validate the book title:
 ```js
 var Book = React.createClass({
   propTypes: {
-    title: React.PropTypes.string.isRequired
-  }
+    title: React.PropTypes.string.isRequired,
+  },
   // ...
-});
+})
 ```
 
 Now if we don't pass a `title` attribute to the `Book` Component, we will see a warning in the logs:
 
 > Warning: Failed propType: Required prop `title` was not specified in `Book`. Check the render method of `Books`.
-
 
 You can review more types and validations in the [official documentation](https://facebook.github.io/react/docs/reusable-components.html#prop-validation).
 
@@ -250,55 +266,70 @@ To write the form, we can do it in a new Component:
 ```js
 var BookForm = React.createClass({
   propTypes: {
-    onBook: React.PropTypes.func.isRequired
+    onBook: React.PropTypes.func.isRequired,
   },
   getInitialState: function() {
     return {
       title: '',
-      read: false
-    };
+      read: false,
+    }
   },
   changeTitle: function(ev) {
     this.setState({
-      title: ev.target.value
-    });
+      title: ev.target.value,
+    })
   },
   changeRead: function() {
     this.setState({
-      read: !this.state.read
-    });
+      read: !this.state.read,
+    })
   },
   addBook: function(ev) {
-    ev.preventDefault();
+    ev.preventDefault()
 
     this.props.onBook({
       title: this.state.title,
-      read: this.state.read
-    });
+      read: this.state.read,
+    })
 
     this.setState({
       title: '',
-      read: false
-    });
+      read: false,
+    })
   },
   render: function() {
     return (
       <form onSubmit={this.addBook}>
         <div>
-          <label htmlFor='title'>Title</label>
-          <div><input type='text' id='title' value={this.state.title} onChange={this.changeTitle} placeholder='Title' /></div>
+          <label htmlFor="title">Title</label>
+          <div>
+            <input
+              type="text"
+              id="title"
+              value={this.state.title}
+              onChange={this.changeTitle}
+              placeholder="Title"
+            />
+          </div>
         </div>
         <div>
-          <label htmlFor='title'>Read</label>
-          <div><input type='checkbox' id='read' checked={this.state.read} onChange={this.changeRead} /></div>
+          <label htmlFor="title">Read</label>
+          <div>
+            <input
+              type="checkbox"
+              id="read"
+              checked={this.state.read}
+              onChange={this.changeRead}
+            />
+          </div>
         </div>
         <div>
-          <button type='submit'>Add Book</button>
+          <button type="submit">Add Book</button>
         </div>
       </form>
-    );
-  }
-});
+    )
+  },
+})
 ```
 
 In the `BookForm` component we are changing its internal `title` and `read` values once they're changed in the view. Then, when the form is submitted, we pass its values to the `onBook` function that it received. After that we reset its state so that it can get new books.
@@ -310,24 +341,24 @@ Now, let's implement our `Books` component based on what we had before:
 ```js
 var Books = React.createClass({
   propTypes: {
-    books: React.PropTypes.array
+    books: React.PropTypes.array,
   },
   getInitialState: function() {
     return {
-      books: (this.props.books || [])
-    };
+      books: this.props.books || [],
+    }
   },
   onBook: function(book) {
-    this.state.books.push(book);
+    this.state.books.push(book)
 
     this.setState({
-      books: this.state.books
-    });
+      books: this.state.books,
+    })
   },
   render: function() {
     var books = this.state.books.map(function(book) {
-      return <Book title={book.title} read={book.read}></Book>;
-    });
+      return <Book title={book.title} read={book.read}></Book>
+    })
 
     return (
       <div>
@@ -342,9 +373,9 @@ var Books = React.createClass({
           <tbody>{books}</tbody>
         </table>
       </div>
-    );
-  }
-});
+    )
+  },
+})
 ```
 
 Here we instantiate `BookForm` and pass `onBook` to it so that it can get new books once they're submitted. Once a book is received on `onBook`, we add it to the component state and propagate the book list.
@@ -359,28 +390,34 @@ Now, let's take a look at our `Book` component:
 var Book = React.createClass({
   propTypes: {
     title: React.PropTypes.string.isRequired,
-    read: React.PropTypes.bool.isRequired
+    read: React.PropTypes.bool.isRequired,
   },
   getInitialState: function() {
     return {
       title: this.props.title,
-      read: this.props.read
-    };
+      read: this.props.read,
+    }
   },
   handleChange: function(ev) {
     this.setState({
-      read: !this.state.read
-    });
+      read: !this.state.read,
+    })
   },
   render: function() {
     return (
       <tr>
         <td>{this.props.title}</td>
-        <td><input type='checkbox' checked={this.state.read} onChange={this.handleChange} /></td>
+        <td>
+          <input
+            type="checkbox"
+            checked={this.state.read}
+            onChange={this.handleChange}
+          />
+        </td>
       </tr>
-    );
-  }
-});
+    )
+  },
+})
 ```
 
 The `Book` componet stayed almost unchanged: it gets the `title` and `read` from the parent component and renders a `<tr>` with that data. Once `onChange` is triggered, it mutates the state and triggers a UI update.
@@ -406,19 +443,19 @@ First, we need to require our dependencies:
 > section of [./index.js](https://github.com/yldio/react-example/blob/master/express/index.js#L1-L5)
 
 ```js
-var express = require('express');
-var browserify = require('browserify');
-var React = require('react');
-var jsx = require('node-jsx');
-var app = express();
+var express = require('express')
+var browserify = require('browserify')
+var React = require('react')
+var jsx = require('node-jsx')
+var app = express()
 ```
 
-Then we need to make `jsx` files *requirable*:
+Then we need to make `jsx` files _requirable_:
 
 > section of [./index.js](https://github.com/yldio/react-example/blob/master/express/index.js#L7)
 
 ```js
-jsx.install();
+jsx.install()
 ```
 
 Now we just need to serve our routes. But first, we should require our view:
@@ -426,44 +463,51 @@ Now we just need to serve our routes. But first, we should require our view:
 > section of [./index.js](https://github.com/yldio/react-example/blob/master/express/index.js#L10)
 
 ```js
-var Books = require('./views/index.jsx');
+var Books = require('./views/index.jsx')
 ```
 
 > section of [./index.js](https://github.com/yldio/react-example/blob/master/express/index.js#L22-L53)
 
 ```js
 app.use('/', function(req, res) {
-  var books = [{
-    title: 'Professional Node.js',
-    read: false
-  }, {
-    title: 'Node.js Patterns',
-    read: false
-  }];
+  var books = [
+    {
+      title: 'Professional Node.js',
+      read: false,
+    },
+    {
+      title: 'Node.js Patterns',
+      read: false,
+    },
+  ]
 
-  res.setHeader('Content-Type', 'text/html');
-  res.end(React.renderToStaticMarkup(
-    React.DOM.body(
-      null,
-      React.DOM.div({
-        id: 'app',
-        dangerouslySetInnerHTML: {
-          __html: React.renderToString(React.createElement(TodoBox, {
-            data: data
-          }))
-        }
-      }),
-      React.DOM.script({
-        'id': 'initial-data',
-        'type': 'text/plain',
-        'data-json': JSON.stringify(data)
-      }),
-      React.DOM.script({
-        src: '/bundle.js'
-      })
+  res.setHeader('Content-Type', 'text/html')
+  res.end(
+    React.renderToStaticMarkup(
+      React.DOM.body(
+        null,
+        React.DOM.div({
+          id: 'app',
+          dangerouslySetInnerHTML: {
+            __html: React.renderToString(
+              React.createElement(TodoBox, {
+                data: data,
+              })
+            ),
+          },
+        }),
+        React.DOM.script({
+          id: 'initial-data',
+          type: 'text/plain',
+          'data-json': JSON.stringify(data),
+        }),
+        React.DOM.script({
+          src: '/bundle.js',
+        })
+      )
     )
-  ));
-});
+  )
+})
 ```
 
 What this is doing is rendering our Books AND a script with our initial data AND a script with our browserify bundle. This way the first load has a fully rendered static view and the user doesn't have to wait for the client to render it.
@@ -473,9 +517,13 @@ What this is doing is rendering our Books AND a script with our initial data AND
 ```html
 <body>
   <div id="container">
-  <!-- ... -->
+    <!-- ... -->
   </div>
-  <script id="initial-data" type="text/plain" data-json="[{&quot;title&quot;:&quot;Professional Node.js&quot;,&quot;read&quot;:false},{&quot;title&quot;:&quot;Node.js Patterns&quot;,&quot;read&quot;:false}]"></script>
+  <script
+    id="initial-data"
+    type="text/plain"
+    data-json='[{"title":"Professional Node.js","read":false},{"title":"Node.js Patterns","read":false}]'
+  ></script>
   <script src="/bundle.js"></script>
 </body>
 ```
@@ -486,14 +534,14 @@ We also need to listen for the `/bundle.js` request:
 
 ```js
 app.use('/bundle.js', function(req, res) {
-  res.setHeader('content-type', 'application/javascript');
+  res.setHeader('content-type', 'application/javascript')
   browserify('./app.js', {
-    debug: true
+    debug: true,
   })
-  .transform('reactify')
-  .bundle()
-  .pipe(res);
-});
+    .transform('reactify')
+    .bundle()
+    .pipe(res)
+})
 ```
 
 You might be asking: what does `app.js` have? Basically it's just a jsx script that requires our view and attaches it to the `container` so that it becomes dynamic in the client.
@@ -501,11 +549,13 @@ You might be asking: what does `app.js` have? Basically it's just a jsx script t
 > [./app.js](https://github.com/yldio/react-example/blob/master/express/app.js)
 
 ```js
-var React = require('react');
-var Books = require('./views/index.jsx');
+var React = require('react')
+var Books = require('./views/index.jsx')
 
-var books = JSON.parse(document.getElementById('initial-data').getAttribute('data-json'));
-React.render(<Books books={books} />, document.getElementById('container'));
+var books = JSON.parse(
+  document.getElementById('initial-data').getAttribute('data-json')
+)
+React.render(<Books books={books} />, document.getElementById('container'))
 ```
 
 To finish, we just need to listen for incoming connections:
@@ -514,9 +564,9 @@ To finish, we just need to listen for incoming connections:
 
 ```js
 var server = app.listen(3333, function() {
-  var addr = server.address();
-  console.log('Listening @ http://%s:%d', addr.address, addr.port);
-});
+  var addr = server.address()
+  console.log('Listening @ http://%s:%d', addr.address, addr.port)
+})
 ```
 
 Most of this is a very standard Express app, but you shouldn't be doing this in production. You should use a proper view engine (like [express-react-views](https://github.com/reactjs/express-react-views)) and you shouldn't bundle your static assets on every request. This is just a proof of concept.
@@ -534,20 +584,20 @@ First we need to require our dependencies:
 > section of [./index.js](https://github.com/yldio/react-example/blob/master/hapi/index.js#L1-L6)
 
 ```js
-var Hapi = require('hapi');
-var browserify = require('browserify');
-var map = require('through2-map');
-var fs = require('fs');
-var React = require('react');
-var jsx = require('node-jsx');
+var Hapi = require('hapi')
+var browserify = require('browserify')
+var map = require('through2-map')
+var fs = require('fs')
+var React = require('react')
+var jsx = require('node-jsx')
 ```
 
-Then we need to make `jsx` files *requirable*:
+Then we need to make `jsx` files _requirable_:
 
 > section of [./index.js](https://github.com/yldio/react-example/blob/master/hapi/index.js#L8)
 
 ```js
-jsx.install();
+jsx.install()
 ```
 
 And create our Hapi server:
@@ -555,7 +605,7 @@ And create our Hapi server:
 > section of [./index.js](https://github.com/yldio/react-example/blob/master/hapi/index.js#L12)
 
 ```js
-var server = new Hapi.Server();
+var server = new Hapi.Server()
 ```
 
 Now we just need to serve our routes. But first, we should require our view:
@@ -563,7 +613,7 @@ Now we just need to serve our routes. But first, we should require our view:
 > section of [./index.js](https://github.com/yldio/react-example/blob/master/hapi/index.js#L10)
 
 ```js
-var Books = require('./views/index.jsx');
+var Books = require('./views/index.jsx')
 ```
 
 > section of [./index.js](https://github.com/yldio/react-example/blob/master/hapi/index.js#L33-L67)
@@ -571,39 +621,46 @@ var Books = require('./views/index.jsx');
 ```js
 server.route({
   method: 'GET',
-  path:'/',
-  handler: function (request, reply) {
-    var books = [{
-      title: 'Professional Node.js',
-      read: false
-    }, {
-      title: 'Node.js Patterns',
-      read: false
-    }];
+  path: '/',
+  handler: function(request, reply) {
+    var books = [
+      {
+        title: 'Professional Node.js',
+        read: false,
+      },
+      {
+        title: 'Node.js Patterns',
+        read: false,
+      },
+    ]
 
-    reply(React.renderToStaticMarkup(
-      React.DOM.body(
-        null,
-        React.DOM.div({
-          id: 'app',
-          dangerouslySetInnerHTML: {
-            __html: React.renderToString(React.createElement(TodoBox, {
-              data: data
-            }))
-          }
-        }),
-        React.DOM.script({
-          'id': 'initial-data',
-          'type': 'text/plain',
-          'data-json': JSON.stringify(data)
-        }),
-        React.DOM.script({
-          src: '/bundle.js'
-        })
+    reply(
+      React.renderToStaticMarkup(
+        React.DOM.body(
+          null,
+          React.DOM.div({
+            id: 'app',
+            dangerouslySetInnerHTML: {
+              __html: React.renderToString(
+                React.createElement(TodoBox, {
+                  data: data,
+                })
+              ),
+            },
+          }),
+          React.DOM.script({
+            id: 'initial-data',
+            type: 'text/plain',
+            'data-json': JSON.stringify(data),
+          }),
+          React.DOM.script({
+            src: '/bundle.js',
+          })
+        )
       )
-    )).header('Content-Type', 'text/html');
-  }
-});
+    ).header('Content-Type', 'text/html')
+  },
+})
 ```
 
 Almost the same logic as our Express example. Rendering a static view of our view and sending the initial data with a bundled script to make the site dynamic after being loaded in the client.
@@ -615,17 +672,26 @@ We also need to listen for the `/bundle.js` request:
 ```js
 server.route({
   method: 'GET',
-  path:'/bundle.js',
-  handler: function (request, reply) {
-    reply(null, browserify('./app.js')
-    .transform('reactify')
-    .bundle().pipe(map({
-      objectMode: false
-    }, function(chunk) {
-      return chunk;
-    })));
-  }
-});
+  path: '/bundle.js',
+  handler: function(request, reply) {
+    reply(
+      null,
+      browserify('./app.js')
+        .transform('reactify')
+        .bundle()
+        .pipe(
+          map(
+            {
+              objectMode: false,
+            },
+            function(chunk) {
+              return chunk
+            }
+          )
+        )
+    )
+  },
+})
 ```
 
 We will be using the same [`./app.js`](https://github.com/yldio/react-example/blob/master/hapi/app.js) as in the Express example.
@@ -637,8 +703,8 @@ To finish, we just need to set the connection:
 ```js
 server.connection({
   host: 'localhost',
-  port: (process.argv[2] || 3333)
-});
+  port: process.argv[2] || 3333,
+})
 ```
 
 And start the server:
@@ -646,9 +712,9 @@ And start the server:
 > section of [./index.js](https://github.com/yldio/react-example/blob/master/hapi/index.js#L69-L71)
 
 ```js
-server.start(function () {
-  console.info("Listening @", server.info.uri);
-});
+server.start(function() {
+  console.info('Listening @', server.info.uri)
+})
 ```
 
 Just as I said about our Express app: don't use this in production. You should use a proper view engine (like [hapijs-react-views](https://www.npmjs.com/package/hapijs-react-views)) and you shouldn't bundle your static assets on every request. This is just a proof of concept.
@@ -663,4 +729,4 @@ Then try to build your own proof-of-concepts with different constraints and feat
 
 If you have questions/suggestions, you can reach out to [@ramitos](https://twitter.com/ramitos) and [@sericaia](https://twitter.com/sericaia) and we'll do our best to help!
 
-*Originally published at [blog.yld.io](https://blog.yld.io/) on June 10, 2015 by Sérgio Ramos (@ramitos on Twitter/Github) and Daniela Matos de Carvalho (@sericaia on Twitter/Github)*
+_Originally published at [blog.yld.io](https://blog.yld.io/) on June 10, 2015 by Sérgio Ramos (@ramitos on Twitter/Github) and Daniela Matos de Carvalho (@sericaia on Twitter/Github)_

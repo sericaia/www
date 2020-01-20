@@ -1,6 +1,6 @@
 ---
-title: "Query by 2 or more fields on GraphQL"
-date: "2019-01-18"
+title: 'Query by 2 or more fields on GraphQL'
+date: '2019-01-18'
 ---
 
 # Query by 2 or more fields on GraphQL
@@ -46,9 +46,8 @@ type Query {
 
 Unfortunately this is not possible in GraphQL! What exactly do we want?
 
-* query by employee email or slackId
-* email or slackId are required
-
+- query by employee email or slackId
+- email or slackId are required
 
 ### 1st Solution
 
@@ -70,7 +69,7 @@ Another solution we can think of is having both fields for the same resolver as 
 
 ```
 type Query {
-  employee(email: String, slackId: String): Employee  
+  employee(email: String, slackId: String): Employee
   employees(filter: String): [Employee]
 }
 ```
@@ -139,4 +138,4 @@ We ended up using input types and making our schema clean and mean. In order to 
 
 Enjoy input types!
 
-*Originally published at [blog.yld.io](https://blog.yld.io/) on January 18, 2019 by Daniela Matos de Carvalho (@sericaia on Twitter/Github)*
+_Originally published at [blog.yld.io](https://blog.yld.io/) on January 18, 2019 by Daniela Matos de Carvalho (@sericaia on Twitter/Github)_

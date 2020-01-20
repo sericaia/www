@@ -1,8 +1,8 @@
-import { Link, useStaticQuery, graphql } from "gatsby"
-import PropTypes from "prop-types"
-import React from "react"
-import Media from "./media"
-import Img from "gatsby-image"
+import { Link, useStaticQuery, graphql } from 'gatsby'
+import PropTypes from 'prop-types'
+import React from 'react'
+import Media from './media'
+import Img from 'gatsby-image'
 
 const Header = ({ siteTitle }) => {
   const avatar = useStaticQuery(graphql`
@@ -28,25 +28,25 @@ const Header = ({ siteTitle }) => {
           margin: `0 auto`,
           maxWidth: 960,
           padding: `1.45rem 1.0875rem`,
-          display: "flex",
-          justifyContent: "flex-start",
+          display: 'flex',
+          justifyContent: 'flex-start',
         }}
       >
         <Img
           style={{
-            border: "solid",
-            borderRadius: "50%",
-            borderColor: "transparent",
-            borderWidth: "0.5rem",
-            height: "6rem",
-            minWidth: "6rem"
+            border: 'solid',
+            borderRadius: '50%',
+            borderColor: 'transparent',
+            borderWidth: '0.5rem',
+            height: '6rem',
+            minWidth: '6rem',
           }}
           fluid={avatar.file.childImageSharp.fluid}
           alt="Daniela's personal picture"
         />
         <div
           style={{
-            alignSelf: "center",
+            alignSelf: 'center',
           }}
         >
           <h1 style={{ margin: 0 }}>
@@ -62,7 +62,7 @@ const Header = ({ siteTitle }) => {
           </h1>
           <div
             style={{
-              alignSelf: "flex-end",
+              alignSelf: 'flex-end',
             }}
           >
             <Media />
