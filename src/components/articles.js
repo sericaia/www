@@ -1,11 +1,10 @@
 import React from 'react'
 import ArticleSummary from './article-summary'
+import FancyTitle from './fancy-title'
 
 const Articles = ({ articles }) => (
   <>
-    <h2>
-      <span style={{ color: '#3369E8' }}>art</span>icles
-    </h2>
+    <FancyTitle title="articles" color="blue" lettersNumber={3} />
     {articles.map(post => (
       <ArticleSummary
         key={post.id}
