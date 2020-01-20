@@ -32,18 +32,26 @@ const Header = ({ siteTitle }) => {
           justifyContent: 'flex-start',
         }}
       >
-        <Img
+        <Link
+          to="/"
           style={{
-            border: 'solid',
-            borderRadius: '50%',
-            borderColor: 'transparent',
-            borderWidth: '0.5rem',
-            height: '6rem',
-            minWidth: '6rem',
+            color: `#FB4485`,
+            textDecoration: `none`,
           }}
-          fluid={avatar.file.childImageSharp.fluid}
-          alt="Daniela's personal picture"
-        />
+        >
+          <Img
+            style={{
+              border: 'solid',
+              borderRadius: '50%',
+              borderColor: 'transparent',
+              borderWidth: '0.5rem',
+              height: '6rem',
+              minWidth: '6rem',
+            }}
+            fluid={avatar.file.childImageSharp.fluid}
+            alt="Daniela's personal picture"
+          />
+        </Link>
         <div
           style={{
             alignSelf: 'center',
