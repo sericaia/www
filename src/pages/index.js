@@ -19,12 +19,15 @@ export const pageQuery = graphql`
   query allPostsQuery {
     posts: allMdx(
       sort: { fields: frontmatter___date, order: DESC }
-      filter: { fileAbsolutePath: { regex: "/blogposts/" } }
+      filter: { fields: { type: { eq: "blogpost" } } }
     ) {
       totalCount
       nodes {
         id
         excerpt
+        fields {
+          pathname
+        }
         frontmatter {
           title
           date(formatString: "MMMM DD, YYYY")

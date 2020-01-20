@@ -21,18 +21,25 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `pages`,
+        path: `${__dirname}/src/pages/`,
+      },
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'posts',
+        path: `${__dirname}/content/blogposts/`,
+      },
+    },
+    {
       resolve: 'gatsby-plugin-react-svg',
       options: {
         rule: {
           include: /images\/.*\.svg/,
         },
-      },
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `pages`,
-        path: `${__dirname}/src/pages/`,
       },
     },
     `gatsby-transformer-sharp`,
@@ -63,7 +70,6 @@ module.exports = {
         ],
         plugins: [`gatsby-remark-prismjs`],
         defaultLayouts: {
-          // posts: require.resolve("./src/components/posts-layout.js"),
           default: require.resolve('./src/components/layout.js'),
         },
       },

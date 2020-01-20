@@ -1,15 +1,16 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { Link } from 'gatsby'
 
-const ArticleSummary = ({ id, link, title, date, excerpt }) => (
-  <div key={id}>
+const ArticleSummary = ({ link, title, date, excerpt }) => (
+  <div>
     <h3
       style={{
         marginBottom: '0.3rem',
       }}
     >
       <Link
-        to={`/blogposts/${link}`}
+        to={link}
         style={{
           textDecoration: 'none',
           color: '#333',
@@ -39,5 +40,12 @@ const ArticleSummary = ({ id, link, title, date, excerpt }) => (
     </p>
   </div>
 )
+
+ArticleSummary.propTypes = {
+  link: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  date: PropTypes.string.isRequired,
+  excerpt: PropTypes.string.isRequired,
+}
 
 export default ArticleSummary

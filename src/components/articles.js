@@ -6,15 +6,15 @@ const Articles = ({ articles }) => (
     <h2>
       <span style={{ color: '#3369E8' }}>art</span>icles
     </h2>
-    {articles.map(post =>
+    {articles.map(post => (
       <ArticleSummary
-        id={post.id}
-        link={post.parent.name}
+        key={post.id}
+        link={post.fields.pathname}
         title={post.frontmatter.title}
         date={post.frontmatter.date}
         excerpt={post.excerpt}
-      />)
-    }    
+      />
+    ))}
   </>
 )
 
