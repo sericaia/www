@@ -1,0 +1,7 @@
+/* align all images to center */
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  min-width: 50%;
+}

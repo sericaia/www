@@ -17,7 +17,7 @@ The main difference is the **new Binary Framing Layer**, where exchanges between
 
 ![Connection Streams](https://hpbn.co/assets/diagrams/8e6931bb40fc26c511ad15645e7b6113.svg)
 
-*(image source: https://hpbn.co/http2/ book)*
+_(image source: https://hpbn.co/http2/ book)_
 
 There are some other features that HTTP/2 gives, such as: (1) **Stream Prioritization**, which allows client (browsers) to prioritize what is more important to be received first (e.g client receiving JavaScript and CSS files is more important than receiving images); (2) **Server Push**, that gives permission to the server to send content (frames) to the client without having a request, if it obeys to the same origin; and (3) **Header Compression** with [HPACK - RFC 7541](https://tools.ietf.org/html/rfc7541), which uses Huffman to create smaller headers and requires server and client to store a list with that information.
 

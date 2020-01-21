@@ -9,6 +9,7 @@ import { MDXRenderer } from 'gatsby-plugin-mdx'
 import Layout from './layout'
 import SEO from './seo'
 import ParentArticleLinks from './parent-articles-links'
+import './blogpost-layout.css'
 
 const BlogpostLayoutPage = ({ data: { mdx }, pageContext }) => (
   <Layout>

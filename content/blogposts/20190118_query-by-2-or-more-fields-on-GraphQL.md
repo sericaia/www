@@ -93,7 +93,7 @@ We created a new `input` type:
 
 ```graphql
 input EmployeeSearch {
-  email: String,
+  email: String
   slackId: String
 }
 ```
@@ -102,9 +102,7 @@ We use `EmployeeSearch` in our query referring it as a required field (!). This 
 
 ```graphql
 type Query {
-  employee(
-    where: EmployeeSearch!
-  ): Employee
+  employee(where: EmployeeSearch!): Employee
   employees(filter: String): [Employee]
 }
 ```

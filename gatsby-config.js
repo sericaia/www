@@ -42,8 +42,8 @@ module.exports = {
         },
       },
     },
-    `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
+    `gatsby-transformer-sharp`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -67,8 +67,25 @@ module.exports = {
               showLineNumbers: true,
             },
           },
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 1200,
+              withWebp: true,
+            },
+          },
+          {
+            resolve: `gatsby-remark-copy-linked-files`,
+            options: {
+              destinationDir: `assets`,
+            },
+          },
         ],
-        plugins: [`gatsby-remark-prismjs`],
+        plugins: [
+          `gatsby-remark-prismjs`,
+          `gatsby-remark-images`,
+          `gatsby-remark-copy-linked-files`,
+        ],
         defaultLayouts: {
           default: require.resolve('./src/components/layout.js'),
         },

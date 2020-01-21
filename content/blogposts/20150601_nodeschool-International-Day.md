@@ -15,7 +15,7 @@ We planned a whole day with this in mind; we started to pick some interested uni
 
 Also, we had some great news to share with the Lisbon Node community: we finally got a logo for NodeSchool Lisbon, thanks to [Ruben Canhoto](http://rubencanhoto.com/) ([@rubencanhoto](https://twitter.com/rubencanhoto)) who came up with the amazing concept and design. The feedback from everyone was amazing and we finally got a logo that is both recognizable and beautiful.
 
-<img src="/nodeschool.svg" width="250" height="250" alt="Nodeschool.io logo"/>
+<img src="./assets/20150601_nodeschool-International-Day/1.svg" width="250" height="250" alt="Nodeschool.io logo"/>
 
 Obviously, sponsors were needed in order to avoid costs and provide the best experience we could. [YLD!](http://yld.io) provided an awesome venue, with capacity for 35 people near the center of the city. [BOLD international](http://www.boldint.com) and [Landing.jobs](https://www.landing.jobs/) gave us lunch and some snacks. Additionally, we had cool swag sponsored by YLD! and Landing.jobs.
 
