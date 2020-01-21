@@ -14,7 +14,7 @@ const ParentArticleLinks = ({ previous, next }) => (
   <div
     style={{
       display: 'flex',
-      justifyContent: 'space-between',
+      justifyContent: !previous.title && next.title ?  'flex-end' : 'space-between'
     }}
   >
     {previous.title && (
