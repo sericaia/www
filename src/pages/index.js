@@ -1,7 +1,7 @@
 import React from 'react'
-import SEO from '../components/seo'
-import Layout from '../components/layout'
-import Articles from '../components/articles'
+import SEO from '../components/SEO'
+import Layout from '../components/Layout'
+import Articles from '../components/ArticleList'
 // import Navigation from '../components/navigation'
 
 const IndexPage = ({ data }) => {

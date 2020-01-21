@@ -6,9 +6,9 @@
 import React from 'react'
 import { graphql, Link } from 'gatsby'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
-import Layout from './layout'
-import SEO from './seo'
-import ParentArticleLinks from './parent-articles-links'
+import Layout from '../Layout'
+import SEO from '../SEO'
+import ParentArticleLinks from '../ParentArticleLinks'
 import './blogpost-layout.css'
 
 const BlogpostLayoutPage = ({ data: { mdx }, pageContext }) => (

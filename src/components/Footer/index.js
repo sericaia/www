@@ -1,5 +1,5 @@
 import React from 'react'
-import Media from './media'
+import Media from '../Media'
 
 const Footer = () => {
   return (

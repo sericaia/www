@@ -87,7 +87,7 @@ module.exports = {
           `gatsby-remark-copy-linked-files`,
         ],
         defaultLayouts: {
-          default: require.resolve('./src/components/layout.js'),
+          default: require.resolve('./src/components/Layout/index.js'),
         },
       },
     },

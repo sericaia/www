@@ -1,8 +1,8 @@
 import { Link, useStaticQuery, graphql } from 'gatsby'
+import Img from 'gatsby-image'
 import PropTypes from 'prop-types'
 import React from 'react'
-import Media from './media'
-import Img from 'gatsby-image'
+import Media from '../Media'
 
 const Header = ({ siteTitle }) => {
   const avatar = useStaticQuery(graphql`

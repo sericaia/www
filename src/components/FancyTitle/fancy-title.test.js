@@ -1,6 +1,6 @@
 import React from 'react'
 import { render } from '@testing-library/react'
-import FancyTitle from './fancy-title'
+import FancyTitle from '.'
 
 describe('FancyTitle', () => {
   it('renders correctly', () => {

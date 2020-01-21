@@ -72,7 +72,7 @@ const createBlogposts = async (graphql, createPage, reporter) => {
   posts.forEach(({ node, next, previous }, index) => {
     createPage({
       path: node.fields.pathname,
-      component: path.resolve(`./src/components/blogpost-layout.js`),
+      component: path.resolve(`./src/components/BlogpostLayout/index.js`),
       context: {
         id: node.id,
         previous: {

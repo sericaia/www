@@ -1,10 +1,10 @@
 import React from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
 
-import EmailIcon from '../images/svgs/email.svg'
-import GithubIcon from '../images/svgs/github.svg'
-import LinkedinIcon from '../images/svgs/linkedin.svg'
-import TwitterIcon from '../images/svgs/twitter.svg'
+import EmailIcon from '../../images/svgs/email.svg'
+import GithubIcon from '../../images/svgs/github.svg'
+import LinkedinIcon from '../../images/svgs/linkedin.svg'
+import TwitterIcon from '../../images/svgs/twitter.svg'
 
 const Media = () => {
   const data = useStaticQuery(graphql`

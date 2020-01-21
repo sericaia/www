@@ -1,6 +1,6 @@
 import React from 'react'
-import ArticleSummary from './article-summary'
-import FancyTitle from './fancy-title'
+import ArticleSummary from '../ArticleSummary'
+import FancyTitle from '../FancyTitle'
 
 const Articles = ({ articles }) => (
   <>

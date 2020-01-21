@@ -1,6 +1,6 @@
 import React from 'react'
 import { render } from '@testing-library/react'
-import ArticleSummary from './article-summary'
+import ArticleSummary from '.'
 
 describe('ArticleSummary', () => {
   it('renders correctly', () => {
