@@ -1,9 +1,9 @@
 {
-  "name": "gatsby-starter-default",
+  "name": "www",
   "private": true,
-  "description": "A simple starter to get up and developing quickly with Gatsby",
+  "description": "Daniela Matos de Carvalho personal website",
   "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "author": "Daniela Matos de Carvalho <alunassertiva@gmail.com>",
   "dependencies": {
     "@mdx-js/mdx": "^1.5.4",
     "@mdx-js/react": "^1.5.4",
@@ -28,12 +28,25 @@
     "react-helmet": "^5.2.1"
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^5.0.0",
+    "@testing-library/react": "^9.4.0",
+    "babel-jest": "^24.9.0",
+    "babel-preset-gatsby": "^0.2.27",
     "husky": "^4.0.10",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^24.9.0",
     "lint-staged": "^10.0.1",
     "prettier": "^1.19.1"
   },
   "keywords": [
-    "gatsby"
+    "daniela",
+    "daniela matos de carvalho",
+    "personal",
+    "website",
+    "engineer",
+    "writer",
+    "speaker",
+    "photographer"
   ],
   "license": "MIT",
   "scripts": {
@@ -43,14 +56,15 @@
     "start": "npm run develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
+    "test": "jest",
+    "test:watch": "jest --watch"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-default"
+    "url": "https://github.com/sericaia/www"
   },
   "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
+    "url": "https://github.com/sericaia/www/issues"
   },
   "husky": {
     "hooks": {

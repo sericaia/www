@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ArticleSummary renders correctly 1`] = `
+<div>
+  <div>
+    <h3
+      style="margin-bottom: 0.3rem;"
+    >
+      <a
+        href="/summary"
+        style="text-decoration: none; color: rgb(51, 51, 51); font-weight: bold; font-size: 1.2rem;"
+      >
+        Fake article
+      </a>
+    </h3>
+    <h4
+      style="color: grey; margin-bottom: 0.3rem; font-weight: 400;"
+    >
+      January 21, 2020
+    </h4>
+    <p
+      style="font-size: 0.9rem; font-style: italic;"
+    >
+      lorem ipsum
+    </p>
+  </div>
+</div>
+`;
