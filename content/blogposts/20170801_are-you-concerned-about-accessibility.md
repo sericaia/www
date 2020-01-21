@@ -6,9 +6,9 @@ date: '2017-08-01'
 First the participants propose discussion topics and then, after voting, group discussions are created about the most popular selections: one of those was accessibility! There are also passion talks, which are 5- to 10-minute talks about something you want to share (which could be technical or non-technical). (I recommend taking a look at Jesse Beach's “What is Accessibility?” passion talk if you haven't seen one.) The registrations for Offline Camp are limited to about 30 participants, which helps everyone get to know each other and keeps discussions productive.
 I decided to attend the “A11Y” discussion because I barely knew anything about accessibility. Usually we don't think as much about A11Y as we should.
 
-![a11y_accessibility_1](https://user-images.githubusercontent.com/1150553/28500089-d11abf50-6fba-11e7-9869-fe35915109eb.JPG)
+![Written brainstorming notes from the session: Page 1 - A11y, service workers, routing, trade-offs, aria, selects, removing barriers, HTML and CSS, etc.](https://user-images.githubusercontent.com/1150553/28500089-d11abf50-6fba-11e7-9869-fe35915109eb.JPG)
 
-![a11y_accessibility_2](https://user-images.githubusercontent.com/1150553/28500091-d307a788-6fba-11e7-8dae-327bf56cd761.JPG)
+![Written brainstorming notes from the session: Page 2 - Different types of accessibility, education, etc.](https://user-images.githubusercontent.com/1150553/28500091-d307a788-6fba-11e7-8dae-327bf56cd761.JPG)
 
 The session started with us talking about how can we relate accessibility to Offline First and how it can change people's lives. We identified different types of disability such as cognitive, vision, motor, an so on. The discussion was mainly around our concerns regarding web (the majority of the people in the room were web developers) and what we do when creating Single Page Applications (SPA).
 
@@ -32,7 +32,7 @@ However, it's really difficult to have a website that is fully accessible becaus
 
 It's quite common for me now to go to a new website and press tab key to see if they have the "Skip Navigation" link (which defaults to `display: none` if tab is not pressed):
 
-![image](https://user-images.githubusercontent.com/1150553/28500117-4ce42400-6fbb-11e7-9f0e-88d32979c7e6.png)
+![Skip to main content button shows up when tab is pressed](https://user-images.githubusercontent.com/1150553/28500117-4ce42400-6fbb-11e7-9f0e-88d32979c7e6.png)
 
 This is really useful for someone who just wants to find the content, allowing them to go directly to it by ignoring the headers and other fancy stuff that we have around our websites. This is progressive enhancement at its best! If you didn't know about that, please learn more about the [Skip Navigation trick](http://webaim.org/techniques/skipnav/). I learned a lot during and after this session. Always be curious!
 
@@ -44,7 +44,7 @@ Our conclusion from the session was that accessibility is not specifically an Of
 
 Install an extension. Start using tab and shift + tab to navigate the web. You will find it more difficult than expected if you've never tried it. I recommend trying the [NoCoffee](https://chrome.google.com/webstore/detail/nocoffee/jjeeggmbnhckmgdhmgdckeigabjfbddl?hl=en-US) extension for Chrome, which simulates sight issues such as blur or cloudiness:
 
-<img width="1276" alt="nocoffe simulator" src="https://user-images.githubusercontent.com/1150553/28500102-f2b27c0c-6fba-11e7-8f58-35fa6155828b.png" />
+<img width="1276" alt="NoCoffe vision simulator" src="https://user-images.githubusercontent.com/1150553/28500102-f2b27c0c-6fba-11e7-8f58-35fa6155828b.png" />
 
 You can also try out VoiceOver on MacOS, JAWS on Windows, or another screen reader (you may even have issues if the settings are for a particular language and the website is not defining any!). The list of problems that may arise is incredible.
 

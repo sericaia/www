@@ -5,7 +5,7 @@ const get = require('lodash/get')
 
 const BLOG_FOLDER = '/content/blogposts/'
 
-exports.onCreateNode = ({ node, actions, getNode }) => {
+exports.onCreateNode = ({ node, actions }) => {
   const { createNodeField } = actions
 
   // only for mdx files, which are blogposts in the BLOG_FOLDER and have a date
@@ -28,11 +28,10 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
   }
 }
 
-exports.createPages = async ({ graphql, actions, reporter }) => {
-  const { createPage } = actions
-
+const createBlogposts = async (graphql, createPage, reporter) => {
   // get all blogposts and use specific layout and data (title, date)
-  const result = await graphql(`
+
+  const allBlogposts = await graphql(`
     fragment meta on Mdx {
       fields {
         pathname
@@ -64,11 +63,11 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     }
   `)
 
-  if (result.errors) {
+  if (allBlogposts.errors) {
     reporter.panicOnBuild('🚨  ERROR: Loading "createPages" query')
   }
 
-  const posts = result.data.allMdx.edges
+  const posts = allBlogposts.data.allMdx.edges
 
   posts.forEach(({ node, next, previous }, index) => {
     createPage({
@@ -87,4 +86,10 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       },
     })
   })
+}
+
+exports.createPages = async ({ graphql, actions, reporter }) => {
+  const { createPage } = actions
+
+  await createBlogposts(graphql, createPage, reporter)
 }

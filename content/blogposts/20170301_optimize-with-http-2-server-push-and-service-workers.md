@@ -60,7 +60,7 @@ server.listen(3000, () => {
 })
 ```
 
-![image](https://cloud.githubusercontent.com/assets/1150553/23161534/7aa54d94-f822-11e6-9c70-b1302e75b701.png)
+![Initial requests received in Chrome Dev tools Network tab](https://cloud.githubusercontent.com/assets/1150553/23161534/7aa54d94-f822-11e6-9c70-b1302e75b701.png)
 
 _(Image: Initial load - take a look into the Initiator column where you can find the pushed resources. Because `style.css` was pushed, 'Hello, World!' message has a aquamarine background.)_
 
@@ -79,7 +79,7 @@ let urls = ['/', 'app.js', 'favicon.ico', 'picture.png', 'style.css']
 You can add every URL you want to that list, but you have to be careful, because the more URLs you have, the higher the probability that one of them may fail. In the case of one failing request, the cache will not store anything.
 Having more than one cache may help to diminish this issue and it may also be the desired behaviour because, for example, you may want to separate images cache from other URL cache. Moreover, as a developer you should also be aware of user storage limits and limited mobile data plans (and do not cache everything!).
 
-![image](https://cloud.githubusercontent.com/assets/1150553/23161145/d66e981c-f820-11e6-9782-78cc3e6ca96e.png)
+![Cache storage shows resources being cached with service worker](https://cloud.githubusercontent.com/assets/1150553/23161145/d66e981c-f820-11e6-9782-78cc3e6ca96e.png)
 
 _(Image: Cached resources - taking a look into Developer tools > Application > Cache Storage allows to understand what was stored in the cache and how many caches we have.)_
 
@@ -112,11 +112,11 @@ When the client tries to fetch a resource, the Service Worker will try to see if
 
 You can test this behaviour turning off WIFI or setting offline mode in developer tools (Open developer tools > Application > Service Workers > Toggle Offline mode). `old-picture.png` is not being added to Service Worker cache and when we try to request the page again without connection to the internet, `picture.png` is retrieved instead:
 
-![image](https://cloud.githubusercontent.com/assets/1150553/23161166/ea8c6266-f820-11e6-8713-be5f37e0423e.png)
+![Service workers loaded in page](https://cloud.githubusercontent.com/assets/1150553/23161166/ea8c6266-f820-11e6-8713-be5f37e0423e.png)
 
 _(Image: Offline load - `picture.png` is used as a fallback to `old-picture.png`, which was not stored in the cache.)_
 
-![image](https://cloud.githubusercontent.com/assets/1150553/23256228/88b8e37e-f9b6-11e6-8e41-04fbb87cd350.png)
+![Developer Tools shows resources loaded from service worker](https://cloud.githubusercontent.com/assets/1150553/23256228/88b8e37e-f9b6-11e6-8e41-04fbb87cd350.png)
 
 _(Image: Offline load - All files were retrieved from the Service Worker.)_
 
@@ -126,7 +126,7 @@ _(Image: Offline load - All files were retrieved from the Service Worker.)_
 
 If you're receiving the following message, it means that you don't have a valid certificate.
 
-![image](https://cloud.githubusercontent.com/assets/1150553/23176752/5bc870c4-f85c-11e6-8f49-0dd8a0292106.png)
+![Failed to register the service worker: An SSL certificate error occurred when fetching the script](https://cloud.githubusercontent.com/assets/1150553/23176752/5bc870c4-f85c-11e6-8f49-0dd8a0292106.png)
 
 _(Image: Invalid certificate error.)_
 
@@ -152,7 +152,7 @@ There was also something else making our implementation retrieving the resources
 
 The problem was that index was requested by window (first request), and `style.css` was pushed into HTTP/2 cache. So far so good!... but `style.css` is included in the index file and when it is going to be requested (by window) it should use the HTTP/2 cache. It didn't happen because the certificate was not legitimate. When `style.css` is fetched by the Service Worker, the file is no longer in the HTTP/2 cache nor HTTP cache. That's why it resulted in a new fetch. With a valid certificate, `{ insecure: true }` removed from Service Worker registration, `{ credentials: 'include' }` in the Service Worker install hook and [caching headers to correspondent resources](https://github.com/yldio/serverpush-serviceworkers-example/blob/master/index.js#L27), everything works fine.
 
-![image](https://cloud.githubusercontent.com/assets/1150553/23367424/1742049c-fd02-11e6-92ce-df17814bdca5.png)
+![Pushed resources in Network tab](https://cloud.githubusercontent.com/assets/1150553/23367424/1742049c-fd02-11e6-92ce-df17814bdca5.png)
 
 _(Image: Working example with a valid certificate and cached resources - The two pushed resources are cached and later retrieved from disk cache, when Service Worker tries to request them.)_
 

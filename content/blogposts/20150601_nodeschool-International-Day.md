@@ -5,7 +5,7 @@ date: '2015-06-01'
 
 [Node International Day](http://nodeschool.io/international-day/) was a global event, aimed at providing educational web events around the globe. The main goal is to learn Node.js and have fun with it. That’s why I started to look at the event and, quickly, more people got involved.
 
-**Organizing**
+## Organizing
 
 Fábio was excited to join the team and we were ready to go. We started by answering the question "What do we like to see in a node event like this?", and by defining the target audience: "Should we focus on beginners, intermediate or advanced Node.js users?"
 
@@ -15,11 +15,11 @@ We planned a whole day with this in mind; we started to pick some interested uni
 
 Also, we had some great news to share with the Lisbon Node community: we finally got a logo for NodeSchool Lisbon, thanks to [Ruben Canhoto](http://rubencanhoto.com/) ([@rubencanhoto](https://twitter.com/rubencanhoto)) who came up with the amazing concept and design. The feedback from everyone was amazing and we finally got a logo that is both recognizable and beautiful.
 
-<img src="https://cdn.rawgit.com/nodeschool/lisbon/master/logos/NodeSchool-LX.png" width="250" height="250" />
+<img src="/nodeschool.svg" width="250" height="250" alt="Nodeschool.io logo"/>
 
 Obviously, sponsors were needed in order to avoid costs and provide the best experience we could. [YLD!](http://yld.io) provided an awesome venue, with capacity for 35 people near the center of the city. [BOLD international](http://www.boldint.com) and [Landing.jobs](https://www.landing.jobs/) gave us lunch and some snacks. Additionally, we had cool swag sponsored by YLD! and Landing.jobs.
 
-**The Day**
+## The Day
 
 Participants arrived at 9:20 am and the event began at 9:45 am. We were surprised by the quantity of people that showed up before the scheduled time and the amount of people that wanted to start learning Node.js! In fact, more then 60% of the attendees had never used Node.js before. Also worth mentioning is the fact that we had people from all around Portugal, not only from the Lisbon area.
 

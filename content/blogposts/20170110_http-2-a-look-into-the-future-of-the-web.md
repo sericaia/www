@@ -15,7 +15,8 @@ However, there are some important differences in this protocol and some of the a
 
 The main difference is the **new Binary Framing Layer**, where exchanges between client and server are performed using a binary format. Messages, which are composed by several frames, are transfered using streams. Streams grant request and response multiplexing because they allow splitting an HTTP message into different frames. Finally, frames are joint taking into account the stream IDs and messages can be processed by the client or the server, depending on who sent the message. As a consequence, HTTP/2 allows more efficient use of TCP connections (only one connection per origin is required) in comparison with HTTP/1.x, where a maximum of 6 connections could be used.
 
-<img src="https://hpbn.co/assets/diagrams/8e6931bb40fc26c511ad15645e7b6113.svg" />
+![Connection Streams](https://hpbn.co/assets/diagrams/8e6931bb40fc26c511ad15645e7b6113.svg)
+
 *(image source: https://hpbn.co/http2/ book)*
 
 There are some other features that HTTP/2 gives, such as: (1) **Stream Prioritization**, which allows client (browsers) to prioritize what is more important to be received first (e.g client receiving JavaScript and CSS files is more important than receiving images); (2) **Server Push**, that gives permission to the server to send content (frames) to the client without having a request, if it obeys to the same origin; and (3) **Header Compression** with [HPACK - RFC 7541](https://tools.ietf.org/html/rfc7541), which uses Huffman to create smaller headers and requires server and client to store a list with that information.
@@ -44,7 +45,7 @@ HTTP/2 has its own flow control and prioritization and this also introduces some
 
 There are some small differences in the HTTP responses. In the following image you can see two websites, [https://github.com/](https://github.com/) and [https://http2.golang.org/](https://http2.golang.org/), the first is served using HTTP/1.x and the second using HTTP/2. The IP address and the port (443) unveil a TLS connection.
 
-![image](https://cloud.githubusercontent.com/assets/1150553/21646955/4cbca880-d290-11e6-8d4e-13d9a5bc8519.png)
+![Request to github.com on the left and request to golang.org (using HTTP/2) on the right](https://cloud.githubusercontent.com/assets/1150553/21646955/4cbca880-d290-11e6-8d4e-13d9a5bc8519.png)
 
 You can immediately notice that this is a HTTP/2 website if you look at the status code field. In HTTP/1.x it has both the code and the message (200 OK), whereas in HTTP/2 it only has the code (200). This may be an API breaking change for some frameworks we are used to work with. For example, the following line to send custom error messages in [Express](http://expressjs.com/) will no longer work.
 
@@ -64,7 +65,7 @@ In this example we are going to use [https://http2.golang.org/](https://http2.go
 
 We tried to `curl` golang's website, but the response indicates that the server only supports access over TLS. Taking this into account, we decided to find another alternative and use the browser to test this. Please follow this [tutorial](https://jimshaver.net/2015/02/11/decrypting-tls-browser-traffic-with-wireshark-the-easy-way/) to log a session key and use the created key in Wireshark SSL preferences. After finishing the tutorial you should be able to see the decrypted SSL data with the handshakes, acknowledgements, and HTTP/2 specific frames (headers, data, and so on):
 
-![image](https://cloud.githubusercontent.com/assets/1150553/21653548/9205d57e-d2a9-11e6-8476-4f1e99560535.png)
+![Wireshark inspection that shows with protocol is being used in client-server communications and which packets are sent in each stream](https://cloud.githubusercontent.com/assets/1150553/21653548/9205d57e-d2a9-11e6-8476-4f1e99560535.png)
 
 #### 4.2 Inspect
 
@@ -72,7 +73,7 @@ In the first exchanged messages from the last image, you will be able to see the
 
 In the following image you can see information about Application-Layer Protocol Negotiation (ALPN) used in HTTP/2: first, it's going to try to communicate using H2 (abbv. for HTTP/2), but if it is not possible it will fallback to SPDY/3.1 or HTTP/1.1.
 
-![image](https://cloud.githubusercontent.com/assets/1150553/21677216/15d9f48e-d331-11e6-82e5-c9a4658d92a1.png)
+![Detail on Client Hello message and which protocols can be used and in which order (h2, spdy, http/1.1)](https://cloud.githubusercontent.com/assets/1150553/21677216/15d9f48e-d331-11e6-82e5-c9a4658d92a1.png)
 
 After receiving "Client Hello" message, the server will answer with a "Server Hello" message that has the information about cipher and protocol selected to exchange further messages. Taking into account that golang's website server supports HTTP/2, it was the protocol selected as you may expect from the previous images. Please note that the major key point in using ALPN protocol is that it improves latency, removing one TLS handshake. It's out of the scope of this blogpost to explain in detail how ALPN works, but you can find [more information about ALPN here](https://tools.ietf.org/html/rfc7301).
 
@@ -80,7 +81,7 @@ The first HTTP/2 frames exchanged between client and server were agreements to d
 
 Using [HTTP/2 Wireshark Filters](https://www.wireshark.org/docs/dfref/h/http2.html), we can easily observe particular frames. For the purpose of having an interesting example, we tested [https://http2.golang.org/gophertiles?latency=200](https://http2.golang.org/gophertiles?latency=200) which downloads some images using HTTP/2 and 200ms of latency. In the following image the reader can see that we have done a filter by stream id (`http2.streamid == 15`):
 
-![image](https://cloud.githubusercontent.com/assets/1150553/21689106/37e34e32-d367-11e6-812e-9e71fb7af617.png)
+![Detail on stream 15: example of header message](https://cloud.githubusercontent.com/assets/1150553/21689106/37e34e32-d367-11e6-812e-9e71fb7af617.png)
 
 The above example clearly shows that:
 

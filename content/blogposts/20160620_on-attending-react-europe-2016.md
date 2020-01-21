@@ -15,7 +15,7 @@ Dan also showed and explained a simple example with a basic redux core implement
 
 **Krzysztof Magiera** spoke about animations in React and explained which threads are actually doing work at some point. He explained that layout animations only work for layout properties, and that [animated.js library](https://github.com/animatedjs/interactive-docs) could be a solution for many other cases. He also mentioned that offloading animations, that send a JS graph to the UI native thread with the animation, are already in place for Android using the flag `useNativeDriver`.
 
-![image](https://cloud.githubusercontent.com/assets/1150553/16098280/2507cf6c-334a-11e6-95ca-c37c7b6cb394.png)
+![layout animations](https://cloud.githubusercontent.com/assets/1150553/16098280/2507cf6c-334a-11e6-95ca-c37c7b6cb394.png)
 
 **Christopher Chedeau** gave some tips about how to have success at Open Source. For example, how can we educate our users to use production and development environments (e.g turn different warnings on in different contexts) and how important demos are in Facebook meeting notes.
 
@@ -33,11 +33,11 @@ To finish the first day, we had some interesting lightning talks such as "Going 
 
 The second conference day started with **Jonas Gebhardt** challenging everyone to think about different programming environments and how can we visualise, understand and manipulate data. Because every community is really focused on their own frameworks and libraries, Jonas asked everyone to figure out how to integrate different codebases and programming languages so that we can learn together to solve real world problems.
 
-![image](https://cloud.githubusercontent.com/assets/1150553/16098545/8116f7be-334b-11e6-9ec2-aebae0bcf4af.png)
+![applications are composed by components and layouts](https://cloud.githubusercontent.com/assets/1150553/16098545/8116f7be-334b-11e6-9ec2-aebae0bcf4af.png)
 
 **Bonnie Eisenman** is the author of one of the most popular [React Native books](http://shop.oreilly.com/product/0636920041511.do) and explained the React evolution over the last few years, specifically after Facebook published it. She started quoting that in 2014 was a big shift because time that people spent on mobile got larger than time spent on browser. React Native appeared to make real difference for companies that have at least three versions (Android, iOS, Windows) and code was duplicated and not reused, teams have different priorities and deadlines.
 
-![image](https://cloud.githubusercontent.com/assets/1150553/16098460/ff691d50-334a-11e6-9a42-5437fb04534a.png)
+![application architectures on top of each OS](https://cloud.githubusercontent.com/assets/1150553/16098460/ff691d50-334a-11e6-9a42-5437fb04534a.png)
 
 "Learn once, write everywhere" with native performance and code reuse was the promise provided by Facebook in React Conference 2015 (January). In March 2015, React Native had the public release and, despite the fact that not everything was perfect (and isn't yet), people believe in this approach and started using it. The most relevant shift mentioned by Bonnie was that native mobile developers also started to move into React Native — conquering these developers is really important for the future of React.
 
@@ -49,17 +49,17 @@ After some lightning talks **Andrew Clark** talked about how High Order Componen
 
 **Jafar Husain**, who works at Netflix, presented an interesting [comparison between GraphQL and Falcor](https://www.youtube.com/watch?v=nxQweyTUj5s). Both approaches are similar but we need to pick the appropriate for the job we want to do. He argued that [Falcor](http://netflix.github.io/falcor/) has fewer concepts, it's smaller and less prescriptive, and GraphQL introduces a query syntax whereas Falcor is JSON all the way. Moreover, he explained that Facebook has ~3k entities and Netflix with Falcor has around 20 entities and our challenge must be to identify which one is the best choice.
 
-![image](https://cloud.githubusercontent.com/assets/1150553/16098797/c1d521e4-334c-11e6-9581-65fe43388aa8.png)
+![GraphQL versus Falcor](https://cloud.githubusercontent.com/assets/1150553/16098797/c1d521e4-334c-11e6-9581-65fe43388aa8.png)
 
 As expected, **Tadeu Zagallo** did a talk about performance. He talked about the work he is doing right now and the challenges we have now with hybrid apps. He stated two main performance goals: reduce memory and reduce startup initialisation time. One of the best solutions proposed to reduce this last one was to load modules on demand.
 
-![image](https://cloud.githubusercontent.com/assets/1150553/16098847/055be8c6-334d-11e6-8625-b0d37f3b1892.png)
+![From JavaScript load to user interaction](https://cloud.githubusercontent.com/assets/1150553/16098847/055be8c6-334d-11e6-8625-b0d37f3b1892.png)
 
 He also mentioned that batching is getting better and right now they are using multiple cores to do processing in parallel. Inline dependences, dead code elimination (using `__DEV__` or target platform specific needs), and creation of random access bundles to diminish JS bundle size are some of the things his team have done so far.
 
 **Brent Vatne** gave tips on how can we efficiently build incremental lists with lazy loading by rendering small chunks. The most practical advice given was to have a render-ahead distance.
 
-![image](https://cloud.githubusercontent.com/assets/1150553/16099022/f8698938-334d-11e6-918b-2f89cf093a1e.png)
+![build incremental lists with render ahead](https://cloud.githubusercontent.com/assets/1150553/16099022/f8698938-334d-11e6-918b-2f89cf093a1e.png)
 
 When user scrolls down in a page, we continue to render-ahead. As a consequence, when the viewport is moved down, data is already there. Despite that approach has some tradeoffs with space, there are already some solutions to minimise it such as having a pool on what is being displayed or offload animations. Brent also mentioned some issues in Android such as navigation ([see exponentjs solution](https://github.com/exponentjs/ex-navigator)), user input, and touch and gestures.
 

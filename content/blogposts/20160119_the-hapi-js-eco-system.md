@@ -3,7 +3,7 @@ title: 'The HAPI.js eco-system'
 date: '2016-11-19'
 ---
 
-#### Overview
+## Overview
 
 The [hapi.js](hapijs.com) (**H**TTP **API**) framework provides a RESTful API that is a perfect match for projects with large teams working on different parts of the application.
 
@@ -81,20 +81,20 @@ server.start();
 
 > The `server.register()` call accepts an array of plugins as the first argument. Here we can take the opportunity to also register other plugins we may need.
 
-#### Most commonly used plugins and modules
+## Most commonly used plugins and modules
 
-##### API Documentation
+### API Documentation
 
 [Lout](https://github.com/hapijs/lout) is a simple API documentation generator that helps to have an idea on how routes are structured. In order to use it you just need to register the plugin (as we have done in the previous example) and access to `/docs` through browser. If you're used to [swagger](http://swagger.io/), there is also an alternative unofficial plugin [hapi-swagger](https://github.com/glennjones/hapi-swagger) that you could use.
 
-##### Authentication
+### Authentication
 
 Authentication allows route permissions verification and payload authentication. There are several plugins that implement authentication strategies in hapi.js, depending on the authentication mechanism you want.
 
 If you just need a user-password authentication (we really doubt that), you just need [hapi-auth-basic](https://github.com/hapijs/hapi-auth-basic). The most used ones are [hapi-auth-cookie](https://github.com/hapijs/hapi-auth-cookie) and [Bell](https://github.com/hapijs/bell). The former
 allows authentication through cookie session and the later grants 3rd party integration (Github, Google, Facebook, Twitter, and so on). There is also an [unofficial implementation](https://github.com/ryanfitz/hapi-auth-jwt) that uses JSON Web Tokens.
 
-##### Validation
+### Validation
 
 [Joi](https://github.com/hapijs/joi) is a library that allows language and validation of an object schema description. For instance, we could have the following schema:
 
@@ -142,7 +142,7 @@ plugin.route({
 
 Accessing `/welcome/daniela?mood=happy` will return an available URL and function handler will be called afterwards. However, if we're trying to access `/welcome/daniela?mood=` it will throw an Error saying that "['mood' is not allowed to be empty]". If you don't specify a 'mood', no error is thrown and the default value is used.
 
-##### Error Handling
+### Error Handling
 
 There are two modules related to errors: Boom and Poop. [Boom](https://github.com/hapijs/boom) is used for error handling for well-known HTTP errors. For example, 500 - Internal Server Error. [See error codes here](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html).
 
@@ -163,7 +163,7 @@ var validateUser = function(userId, password, callback) {
 
 On the other hand, [Poop](https://github.com/hapijs/poop) is used when you want to handle uncaught exceptions.
 
-##### Tests
+### Tests
 
 [Lab](https://github.com/hapijs/) is a test utility that was created as an alternative to the [mocha](http://mochajs.org/) test framework. A simple test with Lab could have the following syntax:
 
@@ -198,7 +198,7 @@ Despite the fact you're using hapi.js or not, Lab could be an option to test you
 
 [`server.inject()`](http://hapijs.com/api#serverinjectoptions-callback) is helpful to perform integration tests because it gives a way to use the server object directly instead of using HTTP to test a specific route. This is a simpler and faster approach to simulate a HTTP request.
 
-##### WebSockets
+### WebSockets
 
 One of the most recent hapi.js plugins is [Nes](https://github.com/hapijs/nes), which is an WebSockets adapter implementation. We just need to register Nes, as we have done before with other plugins and then, one main advantage is that server and WebSocket routes could be shared:
 
@@ -233,7 +233,7 @@ Doing the request by ID (`hello`) or requesting `/helloworld` has the same outpu
 
 > Note: Take a look at a [Simple chat example using Nes](https://github.com/sericaia/nes-chat).
 
-#### Request Lifecycle
+## Request Lifecycle
 
 [Request lifecycle](http://hapijs.com/api#request-lifecycle) is what differentiate hapi.js framework from the others. Its main goal is to have a highly defined process where the request object can be changed. The request object is created for each incoming request and is slightly different from the HTTP server original request option, because it has access to request information, domain, headers, method, params, payload, plugins and so on. Request lifecycle is useful to understand what’s going on and what is the order of some actions in the server: we may need request lifecycle to implement authentication or validation, or just to encrypt some data.
 
@@ -255,13 +255,13 @@ After `onPostHandler` we could also validate response payload and modify the `re
 
 After all these steps, hapi.js has request tails that have the opposite analogy of pre-requisites. Tails are actions that can be completed after the response has been sent. An use case could be saving an error log (if any). Note that this action is completely independent from the response that was already given to user, but it could be dependent from this particular request (e.g a tail could append to a log file the cookies or headers used in the request).
 
-#### Summary
+## Summary
 
 We've taken a quick look at hapi.js framework and eco-system. Hapi encorages two main principles: the use of configuration over code and creating reusable transport-independent logic. It also encorages the use of plugins as a way of creating reusable modules and packages that you can configure according to your app needs.
 
 This last fact enables projects to use existing plugins for different types of functions like authentication, error handling, logging, monitoring and others, while also allowing a teams to develop their own. hapi.js exposes the request lifecycle so that plugins can be developed independently of each other. This way, developers in a project can coordinate work more effectively, thus enabling faster development cycles and more maintainable code.
 
-#### Other useful resources
+## Other useful resources
 
 - [makemehapi nodeschool.io Tutorial](https://github.com/hapijs/makemehapi)
 - [hapi.js Tutorials](http://hapijs.com/tutorials)

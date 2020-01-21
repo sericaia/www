@@ -22,7 +22,7 @@ The course will cover the following topics:
 The session meant to be really hands on and the course has a platform of exercices to get you started with React.
 We strongly believe that learning by doing is the best way to learn, so examples and hints are given for each exercise (in a similar way to the [nodeschool.io](https://nodeschool.io/) workshops). We also recommend pairing with someone near you and ask for help when you're struggling with something.
 
-![image](https://cloud.githubusercontent.com/assets/1150553/22429438/8378d4e4-e702-11e6-89a2-ec409c0a8624.png)
+![Example of a course exercise](https://cloud.githubusercontent.com/assets/1150553/22429438/8378d4e4-e702-11e6-89a2-ec409c0a8624.png)
 
 The course is going to be held at the **Trainline HQ** and will start at **6pm**. We will be there untill 9pm playing around with React, eating pizzas and drinking beer. Everyone is invited, please don't miss your spot and be sure to bring your own laptop!
 
