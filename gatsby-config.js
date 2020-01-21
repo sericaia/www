@@ -10,6 +10,28 @@ module.exports = {
       linkedin: 'https://www.linkedin.com/in/danielabmcarvalho',
       twitter: 'https://twitter.com/sericaia',
     },
+    routing: [
+      {
+        label: 'engineer',
+        href: '/about',
+      },
+      {
+        label: 'speaker',
+        href: '/talks',
+      },
+      {
+        label: 'writer',
+        href: '/articles',
+      },
+      {
+        label: 'photographer',
+        href: '/photography',
+      },
+      {
+        label: 'mentor',
+        href: '/training',
+      },
+    ],
   },
   plugins: [
     `gatsby-plugin-react-helmet`,

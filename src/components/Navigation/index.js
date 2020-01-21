@@ -1,37 +1,35 @@
-import { Link } from 'gatsby'
 import React from 'react'
+import { useStaticQuery, graphql, Link } from 'gatsby'
 
-const pages = [
-  {
-    label: 'engineer',
-    href: '/about',
-  },
-  {
-    label: 'speaker',
-    href: '/talks',
-  },
-  {
-    label: 'writer',
-    href: '/articles',
-  },
-  {
-    label: 'photographer',
-    href: '/photography',
-  },
-  {
-    label: 'mentor',
-    href: '/training',
-  },
-]
+import FancyTitle from '../FancyTitle'
 
-const Navigation = () => (
-  <div>
-    {pages.map(page => (
-      <p key={page.label}>
-        <Link to={`/${page.href}`}>{page.label}</Link>
-      </p>
-    ))}
-  </div>
-)
+const Navigation = () => {
+  const data = useStaticQuery(graphql`
+    query NavigationQuery {
+      site {
+        siteMetadata {
+          routing {
+            label
+            href
+          }
+        }
+      }
+    }
+  `)
+
+  const pages = data.site.siteMetadata.routing
+  console.log(pages)
+  return (
+    <div>
+      {pages.map(page => (
+        <p key={page.label}>
+          <Link to={`/${page.href}`}>
+            <FancyTitle title={page.label} />
+          </Link>
+        </p>
+      ))}
+    </div>
+  )
+}
 
 export default Navigation
