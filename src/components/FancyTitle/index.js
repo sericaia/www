@@ -7,6 +7,7 @@ const colors = {
   grey: '#666666',
   yellow: '#EEB211',
   red: '#D50F25',
+  pink: '#FB4485',
 }
 
 const FancyTitle = ({ title, color = 'blue', lettersNumber = 3 }) => {

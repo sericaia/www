@@ -32,14 +32,14 @@ const ParentArticleLinks = ({ previous, next }) => (
 )
 
 ParentArticleLinks.propTypes = {
-  previous: {
+  previous: PropTypes.shape({
     title: PropTypes.string,
     pathname: PropTypes.string,
-  },
-  next: {
+  }),
+  next: PropTypes.shape({
     title: PropTypes.string,
     pathname: PropTypes.string,
-  },
+  }),
 }
 
 export default ParentArticleLinks

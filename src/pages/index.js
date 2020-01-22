@@ -1,16 +1,12 @@
 import React from 'react'
-import SEO from '../components/SEO'
 import Layout from '../components/Layout'
-import Articles from '../components/ArticleList'
-// import Navigation from '../components/navigation'
+import ArticleList from '../components/ArticleList'
 
 const IndexPage = ({ data }) => {
   const { posts } = data
   return (
     <Layout>
-      <SEO title="Home" />
-      {/* <Navigation /> */}
-      <Articles articles={posts.nodes} />
+      <ArticleList articles={posts.nodes} />
     </Layout>
   )
 }

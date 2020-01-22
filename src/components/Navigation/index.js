@@ -1,33 +1,31 @@
-import React from 'react'
-import { useStaticQuery, graphql, Link } from 'gatsby'
+import React, { Fragment } from 'react'
+import { Link } from 'gatsby'
 
-import FancyTitle from '../FancyTitle'
-
-const Navigation = () => {
-  const data = useStaticQuery(graphql`
-    query NavigationQuery {
-      site {
-        siteMetadata {
-          routing {
-            label
-            href
-          }
-        }
-      }
-    }
-  `)
-
-  const pages = data.site.siteMetadata.routing
-  console.log(pages)
+const Navigation = ({ routing: pages }) => {
   return (
     <div>
-      {pages.map(page => (
-        <p key={page.label}>
-          <Link to={`/${page.href}`}>
-            <FancyTitle title={page.label} />
-          </Link>
-        </p>
+      {'['}
+      {pages.map((page, idx) => (
+        <Fragment key={page.label}>
+          <span
+            style={{
+              fontWeight: 500,
+              fontStyle: 'italic',
+              margin: '0.2rem',
+            }}
+          >
+            <Link
+              to={page.href}
+              style={{ color: '#333333' }}
+              activeStyle={{ textDecoration: 'none' }}
+            >
+              {page.label}
+            </Link>
+            {idx !== pages.length - 1 ? ', ' : null}
+          </span>
+        </Fragment>
       ))}
+      {']'}
     </div>
   )
 }

@@ -3,8 +3,9 @@ import Img from 'gatsby-image'
 import PropTypes from 'prop-types'
 import React from 'react'
 import Media from '../Media'
+import Navigation from '../Navigation'
 
-const Header = ({ siteTitle }) => {
+const Header = ({ siteTitle, routing }) => {
   const avatar = useStaticQuery(graphql`
     query imageQuery {
       file(relativePath: { eq: "daniela.png" }) {
@@ -74,6 +75,7 @@ const Header = ({ siteTitle }) => {
             }}
           >
             <Media />
+            <Navigation routing={routing} />
           </div>
         </div>
       </div>
@@ -83,6 +85,17 @@ const Header = ({ siteTitle }) => {
 
 Header.propTypes = {
   siteTitle: PropTypes.string,
+  routing: PropTypes.arrayOf(
+    PropTypes.shape({
+      label: PropTypes.string.isRequired,
+      section: PropTypes.shape({
+        title: PropTypes.string.isRequired,
+        color: PropTypes.string,
+        lettersNumber: PropTypes.number,
+      }),
+      href: PropTypes.string.isRequired,
+    })
+  ),
 }
 
 Header.defaultProps = {

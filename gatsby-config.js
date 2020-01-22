@@ -13,24 +13,49 @@ module.exports = {
     routing: [
       {
         label: 'engineer',
+        section: {
+          title: 'about me',
+          color: 'pink',
+          lettersNumber: 5,
+        },
         href: '/about',
       },
       {
-        label: 'speaker',
-        href: '/talks',
-      },
-      {
         label: 'writer',
-        href: '/articles',
+        section: {
+          title: 'articles',
+          color: 'blue',
+          lettersNumber: 3,
+        },
+        href: '/',
       },
+      // {
+      //   label: 'speaker',
+      //   section: {
+      //     title: 'talks',
+      //     color: 'blue',
+      //     lettersNumber: 3,
+      //   },
+      //   href: '/talks',
+      // },
       {
         label: 'photographer',
+        section: {
+          title: 'photography',
+          color: 'green',
+          lettersNumber: 5,
+        },
         href: '/photography',
       },
-      {
-        label: 'mentor',
-        href: '/training',
-      },
+      // {
+      //   label: 'mentor',
+      //   section: {
+      //     title: 'training',
+      //     color: 'blue',
+      //     lettersNumber: 3,
+      //   },
+      //   href: '/training',
+      // },
     ],
   },
   plugins: [

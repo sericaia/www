@@ -2,24 +2,48 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { useStaticQuery, graphql } from 'gatsby'
 
+import SEO from '../SEO'
 import Header from '../Header'
 import Footer from '../Footer'
+import FancyTitle from '../FancyTitle'
 import './layout.css'
 
-const Layout = ({ children }) => {
+// Note: accessing window.location here since it is
+// not injected in props for functional components
+// https://github.com/gatsbyjs/gatsby/issues/1875
+const getCurrentPathname = () => window.location.pathname
+
+const Layout = ({ setSEO = true, children }) => {
   const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
+    query SiteMetadataQuery {
       site {
         siteMetadata {
           title
+          routing {
+            label
+            section {
+              title
+              color
+              lettersNumber
+            }
+            href
+          }
         }
       }
     }
   `)
 
+  const currentPage = data.site.siteMetadata.routing.find(
+    page => page.href === getCurrentPathname()
+  )
+
   return (
     <>
-      <Header siteTitle={data.site.siteMetadata.title} />
+      {setSEO && currentPage && <SEO title={currentPage.section.title} />}
+      <Header
+        siteTitle={data.site.siteMetadata.title}
+        routing={data.site.siteMetadata.routing}
+      />
       <div
         style={{
           margin: `0 auto`,
@@ -28,6 +52,7 @@ const Layout = ({ children }) => {
           paddingTop: 0,
         }}
       >
+        {currentPage && <FancyTitle {...currentPage.section} />}
         <main>{children}</main>
       </div>
       <Footer />
@@ -36,6 +61,7 @@ const Layout = ({ children }) => {
 }
 
 Layout.propTypes = {
+  setSEO: PropTypes.bool,
   children: PropTypes.node.isRequired,
 }
 

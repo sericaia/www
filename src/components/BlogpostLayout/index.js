@@ -12,18 +12,8 @@ import ParentArticleLinks from '../ParentArticleLinks'
 import './blogpost-layout.css'
 
 const BlogpostLayoutPage = ({ data: { mdx }, pageContext }) => (
-  <Layout>
+  <Layout setSEO={false}>
     <SEO title={mdx.frontmatter.title} />
-    <Link
-      to={'/'}
-      style={{
-        color: '#3369E8',
-        marginBottom: '0.3rem',
-        fontWeight: 'bold',
-      }}
-    >
-      {'< Back to Home'}
-    </Link>
     <p
       style={{
         color: 'grey',
