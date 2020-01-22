@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import get from 'lodash/get'
 import { useStaticQuery, graphql } from 'gatsby'
@@ -12,10 +12,12 @@ import './layout.css'
 // Note: accessing window.location here since it is
 // not injected in props for functional components
 // https://github.com/gatsbyjs/gatsby/issues/1875
-const getCurrentPathname = () =>
-  window ? get(window, 'location.pathname') : null
+// runs in browser only
+const getCurrentPathname = () => get(window, 'location.pathname')
 
 const Layout = ({ setSEO = true, children }) => {
+  let [currentPage, setCurrentPage] = useState()
+
   const data = useStaticQuery(graphql`
     query SiteMetadataQuery {
       site {
@@ -35,9 +37,13 @@ const Layout = ({ setSEO = true, children }) => {
     }
   `)
 
-  const currentPage = data.site.siteMetadata.routing.find(
-    page => page.href === getCurrentPathname()
-  )
+  useEffect(() => {
+    // this effect will run only in the browser
+    const page = data.site.siteMetadata.routing.find(
+      page => page.href === getCurrentPathname()
+    )
+    setCurrentPage(page)
+  }, [data])
 
   return (
     <>

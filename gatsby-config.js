@@ -29,15 +29,15 @@ module.exports = {
         },
         href: '/',
       },
-      // {
-      //   label: 'speaker',
-      //   section: {
-      //     title: 'talks',
-      //     color: 'blue',
-      //     lettersNumber: 3,
-      //   },
-      //   href: '/talks',
-      // },
+      {
+        label: 'speaker',
+        section: {
+          title: 'talks',
+          color: 'blue',
+          lettersNumber: 3,
+        },
+        href: '/talks',
+      },
       {
         label: 'photographer',
         section: {
