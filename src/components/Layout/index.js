@@ -12,7 +12,8 @@ import './layout.css'
 // Note: accessing window.location here since it is
 // not injected in props for functional components
 // https://github.com/gatsbyjs/gatsby/issues/1875
-const getCurrentPathname = () => get(window, 'location.pathname')
+const getCurrentPathname = () =>
+  window ? get(window, 'location.pathname') : null
 
 const Layout = ({ setSEO = true, children }) => {
   const data = useStaticQuery(graphql`
