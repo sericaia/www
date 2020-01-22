@@ -4,7 +4,7 @@
 // indexed, so it is located in /components
 
 import React from 'react'
-import { graphql, Link } from 'gatsby'
+import { graphql } from 'gatsby'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
 import Layout from '../Layout'
 import SEO from '../SEO'

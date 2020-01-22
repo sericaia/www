@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import get from 'lodash/get'
 import { useStaticQuery, graphql } from 'gatsby'
 
 import SEO from '../SEO'
@@ -11,7 +12,7 @@ import './layout.css'
 // Note: accessing window.location here since it is
 // not injected in props for functional components
 // https://github.com/gatsbyjs/gatsby/issues/1875
-const getCurrentPathname = () => window.location.pathname
+const getCurrentPathname = () => get(window, 'location.pathname')
 
 const Layout = ({ setSEO = true, children }) => {
   const data = useStaticQuery(graphql`

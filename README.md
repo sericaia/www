@@ -23,7 +23,7 @@ Uses [Gatsby](https://www.gatsbyjs.org/) with [React.js](http://reactjs.org/) an
 - [x] add /blogposts folder instead of /pages/blogposts ?
 - [x] /blog/{date}/{id}
 - [x] setup tests
-- [ ] navigation
+- [x] navigation
 - [ ] make all blogpost images not to be external
 - [ ] talks
 - [ ] rss
