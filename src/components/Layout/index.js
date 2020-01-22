@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
-import get from 'lodash/get'
 import { useStaticQuery, graphql } from 'gatsby'
 
 import SEO from '../SEO'
@@ -9,13 +8,7 @@ import Footer from '../Footer'
 import FancyTitle from '../FancyTitle'
 import './layout.css'
 
-// Note: accessing window.location here since it is
-// not injected in props for functional components
-// https://github.com/gatsbyjs/gatsby/issues/1875
-// runs in browser only
-const getCurrentPathname = () => get(window, 'location.pathname')
-
-const Layout = ({ setSEO = true, children }) => {
+const Layout = ({ pathname, setSEO = true, children }) => {
   let [currentPage, setCurrentPage] = useState()
 
   const data = useStaticQuery(graphql`
@@ -38,12 +31,15 @@ const Layout = ({ setSEO = true, children }) => {
   `)
 
   useEffect(() => {
+    if (!pathname) return
+
     // this effect will run only in the browser
     const page = data.site.siteMetadata.routing.find(
-      page => page.href === getCurrentPathname()
+      page => page.href === pathname
     )
+
     setCurrentPage(page)
-  }, [data])
+  }, [data, pathname])
 
   return (
     <>
@@ -69,6 +65,7 @@ const Layout = ({ setSEO = true, children }) => {
 }
 
 Layout.propTypes = {
+  pathname: PropTypes.string,
   setSEO: PropTypes.bool,
   children: PropTypes.node.isRequired,
 }

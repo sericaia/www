@@ -2,11 +2,11 @@ import React from 'react'
 import Img from 'gatsby-image'
 import Layout from '../components/Layout'
 
-const PhotographyPage = ({ data }) => {
+const PhotographyPage = ({ location, data }) => {
   const { pictures } = data
 
   return (
-    <Layout>
+    <Layout pathname={location.pathname}>
       <p>
         Taking pictures helps me to (1) better observe the world and (2) respect
         life.

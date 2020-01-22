@@ -2,10 +2,11 @@ import React from 'react'
 import Layout from '../components/Layout'
 import ArticleList from '../components/ArticleList'
 
-const IndexPage = ({ data }) => {
+const IndexPage = ({ location, data }) => {
   const { posts } = data
+
   return (
-    <Layout>
+    <Layout pathname={location.pathname}>
       <ArticleList articles={posts.nodes} />
     </Layout>
   )
