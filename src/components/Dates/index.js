@@ -1,14 +1,13 @@
 import React from 'react'
 import format from 'date-fns/format'
 import isArray from 'lodash/isArray'
-import isString from 'lodash/isString'
 
-const Dates = date => {
-  const isArrayDate = isArray(date)
+const Dates = ({ date }) => {
+  if (!isArray(date)) return null
 
-  if (isArrayDate && date.length === 2) {
-    const from = format(new Date(date[0]), 'mmmm dd, yyyy')
-    const to = format(new Date(date[1]), 'mmmm dd, yyyy')
+  if (date.length === 2) {
+    const from = format(new Date(date[0]), 'MMMM dd, yyyy')
+    const to = format(new Date(date[1]), 'MMMM dd, yyyy')
 
     return (
       <>
@@ -17,8 +16,8 @@ const Dates = date => {
     )
   }
 
-  if (isString(date) || (isArrayDate && date.length === 1)) {
-    const formattedDate = format(new Date(date), 'mmmm dd, yyyy')
+  if (date.length === 1) {
+    const formattedDate = format(new Date(date), 'MMMM dd, yyyy')
     return formattedDate
   }
 

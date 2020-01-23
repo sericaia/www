@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Dates renders correctly from and to dates 1`] = `
+<div>
+  October 12, 2017
+   to 
+  October 13, 2017
+</div>
+`;
+
+exports[`Dates renders correctly one date 1`] = `
+<div>
+  September 12, 2019
+</div>
+`;
