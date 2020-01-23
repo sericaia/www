@@ -4,7 +4,7 @@ date: '2017-02-08'
 icons: []
 ---
 
-In one of our latest posts we [introduced and debugged HTTP/2](/blog/2017-01-10/73fffd28-a2c2-5611-8b1a-cd385546eb2c/). However we'll be exploring some other alternatives to the HTTP protocol in this post. These alternative protocols are quite interesting when we start to investigate them, since it allows us to understand how the Internet is evolving; with this post we also expect to provide a good summary about these protocols along with relevant resources to explore it further.
+In one of our latest posts we [introduced and debugged HTTP/2](/blog/2017-01-10/http-2-a-look-into-the-future-of-the-web). However we'll be exploring some other alternatives to the HTTP protocol in this post. These alternative protocols are quite interesting when we start to investigate them, since it allows us to understand how the Internet is evolving; with this post we also expect to provide a good summary about these protocols along with relevant resources to explore it further.
 
 ### WebRTC
 

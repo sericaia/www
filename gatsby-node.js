@@ -2,6 +2,7 @@
 const path = require('path')
 const has = require('lodash/has')
 const get = require('lodash/get')
+const { paramCase } = require('param-case')
 
 const BLOG_FOLDER = '/content/blogposts/'
 
@@ -12,12 +13,15 @@ exports.onCreateNode = ({ node, actions }) => {
   if (
     node.internal.type === 'Mdx' &&
     node.fileAbsolutePath.includes(BLOG_FOLDER) &&
-    has(node, 'frontmatter.date')
+    has(node, 'frontmatter.date') &&
+    has(node, 'frontmatter.title')
   ) {
+    const title = paramCase(get(node, 'frontmatter.title', node.id))
+
     createNodeField({
       name: 'pathname',
       node,
-      value: `/blog/${node.frontmatter.date}/${node.id}`,
+      value: `/blog/${node.frontmatter.date}/${title}`,
     })
 
     createNodeField({
