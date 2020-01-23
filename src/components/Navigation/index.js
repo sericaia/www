@@ -9,15 +9,15 @@ const Navigation = ({ routing: pages }) => {
         <Fragment key={page.label}>
           <span
             style={{
-              fontWeight: 500,
-              fontStyle: 'italic',
+              fontSize: '1.2rem',
+              fontWeight: 550,
               margin: '0.2rem',
             }}
           >
             <Link
               to={page.href}
-              style={{ color: '#333333' }}
-              activeStyle={{ textDecoration: 'none' }}
+              style={{ color: '#3369E8' }}
+              activeStyle={{ textDecoration: 'none', color: '#333333' }}
             >
               {page.label}
             </Link>

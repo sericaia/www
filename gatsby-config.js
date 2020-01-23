@@ -33,7 +33,7 @@ module.exports = {
         label: 'speaker',
         section: {
           title: 'talks',
-          color: 'blue',
+          color: 'yellow',
           lettersNumber: 3,
         },
         href: '/talks/',
