@@ -18,7 +18,7 @@ module.exports = {
           color: 'pink',
           lettersNumber: 5,
         },
-        href: '/about',
+        href: '/about/',
       },
       {
         label: 'writer',
@@ -36,7 +36,7 @@ module.exports = {
           color: 'blue',
           lettersNumber: 3,
         },
-        href: '/talks',
+        href: '/talks/',
       },
       {
         label: 'photographer',
@@ -45,7 +45,7 @@ module.exports = {
           color: 'green',
           lettersNumber: 5,
         },
-        href: '/photography',
+        href: '/photography/',
       },
       // {
       //   label: 'mentor',
@@ -54,7 +54,7 @@ module.exports = {
       //     color: 'blue',
       //     lettersNumber: 3,
       //   },
-      //   href: '/training',
+      //   href: '/training/',
       // },
     ],
   },

@@ -25,7 +25,7 @@ Uses [Gatsby](https://www.gatsbyjs.org/) with [React.js](http://reactjs.org/) an
 - [x] setup tests
 - [x] navigation
 - [x] talks
+- [x] hashtags/keywords/icons
 - [ ] make all blogpost images not to be external
 - [ ] rss
-- [ ] hashtags/keywords
 - [ ] styled-components
