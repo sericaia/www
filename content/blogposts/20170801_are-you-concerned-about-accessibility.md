@@ -1,6 +1,7 @@
 ---
-title: 'Are you concerned about Accessibility? How to educate developers on creating accessible websites.'
+title: 'Are you concerned about Accessibility? How to educate developers on creating accessible websites'
 date: '2017-08-01'
+icons: []
 ---
 
 First the participants propose discussion topics and then, after voting, group discussions are created about the most popular selections: one of those was accessibility! There are also passion talks, which are 5- to 10-minute talks about something you want to share (which could be technical or non-technical). (I recommend taking a look at Jesse Beach's “What is Accessibility?” passion talk if you haven't seen one.) The registrations for Offline Camp are limited to about 30 participants, which helps everyone get to know each other and keeps discussions productive.

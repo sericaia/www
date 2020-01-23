@@ -1,6 +1,7 @@
 ---
 title: 'Demystifying the GraphQL dataloader utility: there is no magic!'
 date: '2019-06-05'
+icons: ['star']
 ---
 
 > "DataLoader is a generic **utility** to be used as part of your application's **data fetching** layer to provide a consistent API over various backends and reduce requests to those backends via **batching** and **caching**." ([source](https://github.com/facebook/dataloader))

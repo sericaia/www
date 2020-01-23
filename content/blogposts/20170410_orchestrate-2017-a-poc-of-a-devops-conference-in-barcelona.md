@@ -1,6 +1,7 @@
 ---
 title: 'Orchestrate 2017 - a PoC of a DevOps conference in Barcelona'
 date: '2017-04-10'
+icons: []
 ---
 
 I went to Barcelona for just the second time to attend to Orchestrate 2017 and speak at NodeConf Barcelona. It was really nice to be in such an amazing city again with all this mix of tech content, great environment, nice “tapas” food and beach nearby.

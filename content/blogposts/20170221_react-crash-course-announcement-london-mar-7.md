@@ -1,6 +1,7 @@
 ---
 title: 'React Crash Course Announcement'
 date: '2017-02-21'
+icons: []
 ---
 
 React is regarded as the premier way to build large, fast Web apps with JavaScript. We're excited to announce that we're going to have another [React](https://facebook.github.io/react/) Crash Course in London! YLD already hosted three free events in Lisbon and this will be the second one in London.

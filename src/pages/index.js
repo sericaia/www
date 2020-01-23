@@ -28,6 +28,7 @@ export const pageQuery = graphql`
         frontmatter {
           title
           date(formatString: "MMMM DD, YYYY")
+          icons
         }
         parent {
           ... on File {

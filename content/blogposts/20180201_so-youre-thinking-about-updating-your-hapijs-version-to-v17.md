@@ -1,6 +1,7 @@
 ---
 title: "So, you're thinking about updating your HAPI.js server to v17?"
 date: '2018-02-01'
+icons: []
 ---
 
 There are quite some changes with the [latest HAPI.js version](https://github.com/hapijs/hapi/issues/3658) that are worth taking a look at. At YLD we want to be as close as possible to the latest changes and this blogpost aims to unveil a bit of the new HAPI.js version. There's some breaking changes that were created mainly due to the adoption of `async/await`.

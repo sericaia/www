@@ -1,6 +1,7 @@
 ---
 title: 'Dot.js in Paris'
 date: '2017-12-06'
+icons: []
 ---
 
 <a data-flickr-embed="true"  href="https://www.flickr.com/photos/97226415@N08/25001894608/in/album-72157689274484261/" title="dotJS 2017"><img src="https://farm5.staticflickr.com/4580/25001894608_36443a8f21_z.jpg" width="640" height="428" alt="dotJS 2017" /></a>

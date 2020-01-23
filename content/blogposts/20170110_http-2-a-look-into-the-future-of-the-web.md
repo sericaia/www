@@ -1,6 +1,7 @@
 ---
 title: 'HTTP/2: a look into the future of the web'
 date: '2017-01-10'
+icons: []
 ---
 
 This article aims to be theoretical and practical, not only giving an overview about the HTTP/2 protocol, but also giving and explaining how to dig in with some tools.

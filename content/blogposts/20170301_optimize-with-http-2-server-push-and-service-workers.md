@@ -1,9 +1,10 @@
 ---
 title: 'Optimize with HTTP/2 Server Push and Service Workers!'
 date: '2017-03-01'
+icons: []
 ---
 
-HTTP/2 is being used in ~12% of the websites in the World Wide Web, but certainly the number is higher in the websites we visit the most. If you want to understand better how HTTP/2 works and how to debug it, take a look at our latest blogposts: [HTTP/2: a look into the future of the web](https://blog.yld.io/2017/01/10/http-2-a-look-into-the-future-of-the-web/) and [Alternatives do HTTP/2!](https://blog.yld.io/2017/02/08/alternatives-to-http/).
+HTTP/2 is being used in ~12% of the websites in the World Wide Web, but certainly the number is higher in the websites we visit the most. If you want to understand better how HTTP/2 works and how to debug it, take a look at our latest blogposts: [HTTP/2: a look into the future of the web](/blog/2017-01-10/73fffd28-a2c2-5611-8b1a-cd385546eb2c/) and [Alternatives do HTTP/2!](/blog/2017-02-08/c9c96e58-545f-5eb6-b6d1-04bd892bd236/).
 
 In this blogpost we are going to use one of the coolest features of HTTP/2: Server Push. In summary, server push allows the server to send data to the client right after the handshake, without the client requesting it (sending a PUSH_STREAM). The client still has the possibility to reject messages (sending a RST_STREAM) if it already has recent cached resources that can be used.
 
@@ -19,7 +20,7 @@ In the following examples we used the [node-spdy](https://github.com/spdy-http2/
 
 In our example two files will be pushed along with the HTML response, `style.css` and `app.js`, which will respectively [add styles](https://github.com/yldio/serverpush-serviceworkers-example/blob/master/assets/style.css) to the page and [register the service worker](https://github.com/yldio/serverpush-serviceworkers-example/blob/master/public/app.js).
 
-In the following example we added the index route and push `styles.css` to the response. We also added a validation to understand if we're using SPDY or not (basically it validates if we are using HTTP/2, see [our blogpost about it for details](https://blog.yld.io/2017/01/10/http-2-a-look-into-the-future-of-the-web/)). If we are not using HTTP/2, we can't use server push and have to find alternatives and a fallback to HTTP/1.x.
+In the following example we added the index route and push `styles.css` to the response. We also added a validation to understand if we're using SPDY or not (basically it validates if we are using HTTP/2, see [our blogpost about it for details](/blog/2017-01-10/73fffd28-a2c2-5611-8b1a-cd385546eb2c/)). If we are not using HTTP/2, we can't use server push and have to find alternatives and a fallback to HTTP/1.x.
 
 ```js
 const styles = fs.readFileSync('assets/style.css');

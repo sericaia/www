@@ -2,7 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'gatsby'
 
-const ArticleSummary = ({ link, title, date, excerpt }) => (
+import Icons from '../Icons'
+
+const ArticleSummary = ({ link, title, date, icons, excerpt }) => (
   <div>
     <h3
       style={{
@@ -18,6 +20,7 @@ const ArticleSummary = ({ link, title, date, excerpt }) => (
           fontSize: '1.2rem',
         }}
       >
+        <Icons icons={icons} />
         {title}
       </Link>
     </h3>
@@ -45,6 +48,7 @@ ArticleSummary.propTypes = {
   link: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   date: PropTypes.string.isRequired,
+  icons: PropTypes.arrayOf(PropTypes.string),
   excerpt: PropTypes.string.isRequired,
 }
 

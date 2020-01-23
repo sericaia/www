@@ -1,6 +1,7 @@
 ---
 title: 'Build your own community event monitor'
 date: '2017-01-17'
+icons: []
 ---
 
 ### Events, events... and more events!

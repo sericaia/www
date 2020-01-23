@@ -1,6 +1,7 @@
 ---
 title: 'Nodeschool International Day'
 date: '2015-06-01'
+icons: []
 ---
 
 [Node International Day](http://nodeschool.io/international-day/) was a global event, aimed at providing educational web events around the globe. The main goal is to learn Node.js and have fun with it. That’s why I started to look at the event and, quickly, more people got involved.

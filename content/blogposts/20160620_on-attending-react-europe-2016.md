@@ -1,6 +1,7 @@
 ---
 title: 'On attending React-Europe 2016'
 date: '2016-06-20'
+icons: []
 ---
 
 React-Europe was an amazing 2-day conference held in Paris on June, 2 and 3. On this second edition, there were a lot of talks about React, React Native, Redux, performance optimisations, and data fetching using GraphQL or Falcor.

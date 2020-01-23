@@ -1,6 +1,7 @@
 ---
 title: 'The HAPI.js eco-system'
 date: '2016-11-19'
+icons: []
 ---
 
 ## Overview

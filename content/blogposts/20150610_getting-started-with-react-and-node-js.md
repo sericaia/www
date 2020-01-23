@@ -1,6 +1,7 @@
 ---
 title: 'Getting started with React and Node.js'
 date: '2015-06-10'
+icons: []
 ---
 
 While building client-side apps, a team at Facebook reached a conclusion that a lot of web-developers had already noticed: the DOM is slow. They did, however, tackle this problem in an interesting way.

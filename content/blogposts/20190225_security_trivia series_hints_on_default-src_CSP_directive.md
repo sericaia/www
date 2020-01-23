@@ -1,6 +1,7 @@
 ---
 title: 'Security Trivia Series: Hints on default-src CSP directive'
 date: '2019-02-25'
+icons: []
 ---
 
 [Content-Security-Policy (CSP) header](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/) is well-known to help to guarantee security on your website by setting allowed trusted origins in a declarative way.

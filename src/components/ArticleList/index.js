@@ -9,6 +9,7 @@ const Articles = ({ articles }) => (
         link={post.fields.pathname}
         title={post.frontmatter.title}
         date={post.frontmatter.date}
+        icons={post.frontmatter.icons}
         excerpt={post.excerpt}
       />
     ))}

@@ -1,6 +1,7 @@
 ---
 title: 'Query by 2 or more fields on GraphQL'
 date: '2019-01-18'
+icons: []
 ---
 
 We at [YLD](https://www.yld.io/) are using Slack together with [missions.ai](https://missions.ai/), allowing our employees to get some relevant information about them or about other people in the company and removing TOIL so our operations staff have more time to do other things. It helps to answer questions such as "How much hardware budget do I still have?" or "Is the person X on holidays?", or simply to request business cards.

@@ -1,6 +1,7 @@
 ---
 title: 'Webinar Recap: step into the world of microservices with Node.js'
 date: '2017-04-26'
+icons: []
 ---
 
 You've decided to embark on the journey to microservices. Cloud 66 and YLD teamed up to create a webinar about how to create microservices with Node.js and develop, test and deploy them.

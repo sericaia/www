@@ -2,25 +2,10 @@ import React from 'react'
 
 import Layout from '../components/Layout'
 import Dates from '../components/Dates'
+import Icons from '../components/Icons'
 import talks from '../../content/talks'
 
-const iconToEmoji = {
-  star: '🌟',
-  student: '🤓',
-  podcast: '🎧',
-  webinar: '👩‍💻',
-}
-
 const TalksPage = ({ location }) => {
-  const renderIcons = icons => {
-    return icons.map(icon =>
-      iconToEmoji[icon] ? (
-        <span key={icon} style={{ marginRight: '0.3rem' }}>
-          {iconToEmoji[icon]}
-        </span>
-      ) : null
-    )
-  }
   const renderMediaSection = media => {
     const keys = Object.keys(media)
     return keys.map(key => {
@@ -41,7 +26,7 @@ const TalksPage = ({ location }) => {
         return (
           <div key={`${idx}${talk.title}`}>
             <h3 style={{ marginBottom: '0.3rem', fontSize: '1.2rem' }}>
-              {renderIcons(talk.icons)}
+              <Icons icons={talk.icons} />
               {talk.title}{' '}
               <span
                 style={{

@@ -1,9 +1,10 @@
 ---
 title: "Security Trivia Series: Understanding CSP's Reporting"
 date: '2019-04-08'
+icons: []
 ---
 
-In our [previous blogpost about Content Security Policy (CSP)](https://medium.com/yld-engineering-blog/security-trivia-series-hints-on-default-src-csp-directive-7044c65db951) we promised to have another one about reporting and mentioned `report-uri`. Turns out that `report-uri` was deprecated in [Content Security Policy Level 3](https://www.w3.org/TR/CSP3/#changes-from-level-2):
+In our [previous blogpost about Content Security Policy (CSP)](/blog/2019-02-25/9c1bbeef-557e-5c73-9fe6-fbd051631011) we promised to have another one about reporting and mentioned `report-uri`. Turns out that `report-uri` was deprecated in [Content Security Policy Level 3](https://www.w3.org/TR/CSP3/#changes-from-level-2):
 
 > The `report-uri` directive is deprecated in favor of the new `report-to` directive
 
@@ -25,7 +26,7 @@ html
 
 #### How can we implement a CSP that allow these iframes to be loaded?
 
-As we have seen [in the previous blogpost](https://medium.com/yld-engineering-blog/security-trivia-series-hints-on-default-src-csp-directive-7044c65db951) we need to set the following CSP header value:
+As we have seen [in the previous blogpost](/blog/2019-02-25/9c1bbeef-557e-5c73-9fe6-fbd051631011) we need to set the following CSP header value:
 
 `Content-Security-Policy: "default-src 'self'; frame-src https://mozilla.org https://*.mozilla.org;"`
 

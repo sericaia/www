@@ -1,6 +1,7 @@
 ---
 title: 'React Component Profiling'
 date: '2016-11-25'
+icons: []
 ---
 
 The React library is still evolving and Facebook's React team is working on a set of features to improve it, both internally (e.g the new reconciler algorithm) and to upgrade developer experience. In this quick blogpost we're going to take a look at a feature that was presented

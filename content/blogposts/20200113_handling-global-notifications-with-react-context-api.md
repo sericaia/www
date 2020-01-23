@@ -1,6 +1,7 @@
 ---
 title: "Handling global notifications with React's Context API"
 date: '2020-01-13'
+icons: ['star']
 ---
 
 In this article, we aim to present a use case on how to use [React Hooks](https://reactjs.org/docs/hooks-intro.html) and [Context API](https://reactjs.org/docs/context.html) in order to show notifications globally. The example presented here creates a way to show error messages (namely API error messages) reported by feature components (our pages) when a request is performed. The approach presented here was inspired by the [pattern extinction level event](https://ponyfoo.com/articles/discovering-patterns-with-react-hooks). In the end, we also explain how to easily test some of the components created. You can find the [full code examples described in this blogpost in this codesandbox](https://codesandbox.io/s/patient-sunset-w7l0l).
