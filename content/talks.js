@@ -66,7 +66,7 @@ export default [
       video: 'https://www.youtube.com/watch?v=yToHjxhCeYM',
     },
     description:
-      'Amazing 2-day conference in NYC, I manage to meet a lot of interesting people.',
+      'Amazing 2-day conference in NYC, I manage to meet a lot of interesting people. I manage to explain HTTP/2 using the metaphor of an orchestra.',
   },
 
   {
@@ -83,7 +83,7 @@ export default [
       video: null,
     },
     description:
-      'One of the most interesting talks I did. Unfortunately there is no recording from it.',
+      'One of the most interesting talks I did. Unfortunately there is no recording from it. It was about how JavaScript evolves with TC39, what are the organizations behind it and what proposals are being discussed.',
   },
 
   {
@@ -98,7 +98,7 @@ export default [
       links: null,
       video: null,
     },
-    description: 'React workshop at the conference',
+    description: 'React workshop at the conference.',
   },
 
   {
@@ -192,7 +192,7 @@ export default [
       video: 'https://vimeo.com/225585285',
     },
     description:
-      "Non technical talk about my personal coasters collection. I'm sorry but the video is is Portuguese.",
+      "Non technical talk about my personal coasters collection. I'm sorry but the video is in Portuguese.",
   },
 
   // 2016
@@ -227,7 +227,7 @@ export default [
       video: 'https://vimeo.com/171113913',
     },
     description:
-      "Quick talk about open-source benefits. I'm sorry but the video is is Portuguese.",
+      "Quick talk about open-source benefits. I'm sorry but the video is in Portuguese.",
   },
 
   // 2015
@@ -245,7 +245,8 @@ export default [
       video:
         'https://channel9.msdn.com/Events/DXPortugal/Microsoft-WebCamp-2015/FLSTCK04',
     },
-    description: 'This was a talk & workshop.',
+    description:
+      'This was a talk with some demos with an introduction to React.js.',
   },
 
   {
@@ -260,7 +261,8 @@ export default [
       links: 'https://github.com/sericaia/REACTivating-the-web',
       video: null,
     },
-    description: 'This was a talk & workshop.',
+    description:
+      'This was a talk & workshop. This was given with Sérgio Ramos (@ramitos on Twitter) and was also a test for us with some exercises for a proper/professional client training.',
   },
 
   {
@@ -290,7 +292,8 @@ export default [
       links: 'https://github.com/sericaia/mediterraneajs-2015',
       video: 'https://vimeo.com/148351640',
     },
-    description: '',
+    description:
+      'This talk was really cool to understand the request lifecycle in HAPI.js. First time in Barcelona, one of my favorite cities.',
   },
 
   {
@@ -306,7 +309,7 @@ export default [
       video: 'https://vimeo.com/130989956',
     },
     description:
-      "Quick talk about HAPI.js basics and relevant modules. I'm sorry but the video is is Portuguese.",
+      "Quick talk about HAPI.js basics and relevant modules. I'm sorry but the video is in Portuguese.",
   },
 
   {
@@ -357,6 +360,6 @@ export default [
       video: null,
     },
     description:
-      'I did a publication about my master theses and presented it in an international conference. This was my first talk ever.',
+      'I did a publication about my master thesis and presented it in an international conference. It was about creating a segmented reconstruction of 3D physical objects using a low-cost camera. This was my first talk ever.',
   },
 ]
