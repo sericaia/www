@@ -62,7 +62,7 @@ const TalksPage = ({ location }) => {
               <img
                 src={talk.media.picture}
                 alt={`Daniela at ${talk.event}`}
-                style={{ maxWidth: 512 }}
+                style={{ maxWidth: 512, width: '100%' }}
               />
             )}
           </div>
