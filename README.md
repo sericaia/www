@@ -26,6 +26,9 @@ Uses [Gatsby](https://www.gatsbyjs.org/) with [React.js](http://reactjs.org/) an
 - [x] navigation
 - [x] talks
 - [x] hashtags/keywords/icons
+- [ ] accessibility
+- [ ] CSP
+- [ ] make it offline
 - [ ] make all blogpost images not to be external
 - [ ] rss
 - [ ] styled-components
