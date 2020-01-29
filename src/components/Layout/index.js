@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import { useStaticQuery, graphql } from 'gatsby'
 
@@ -9,8 +9,6 @@ import FancyTitle from '../FancyTitle'
 import './layout.css'
 
 const Layout = ({ pathname, setSEO = true, children }) => {
-  let [currentPage, setCurrentPage] = useState()
-
   const data = useStaticQuery(graphql`
     query SiteMetadataQuery {
       site {
@@ -30,16 +28,9 @@ const Layout = ({ pathname, setSEO = true, children }) => {
     }
   `)
 
-  useEffect(() => {
-    if (!pathname) return
-
-    // this effect will run only in the browser
-    const page = data.site.siteMetadata.routing.find(
-      page => page.href === pathname
-    )
-
-    setCurrentPage(page)
-  }, [data, pathname])
+  const currentPage = data.site.siteMetadata.routing.find(
+    page => page.href === pathname
+  )
 
   return (
     <>
