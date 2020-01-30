@@ -42,10 +42,12 @@ const Header = ({ siteTitle, routing }) => {
         >
           <Img
             style={{
+              border: 'solid',
               borderRadius: '50%',
-              height: '5rem',
-              minWidth: '5rem',
-              margin: '0.5rem',
+              borderColor: 'transparent',
+              borderWidth: '0.5rem',
+              height: '6rem',
+              minWidth: '6rem',
             }}
             fluid={avatar.file.childImageSharp.fluid}
             alt="Daniela's personal picture"
