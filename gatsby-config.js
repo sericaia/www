@@ -94,8 +94,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
+        name: `sericaia-www-personal-page`,
+        short_name: `sericaia-www`,
         start_url: `/`,
         background_color: `#FB4485`,
         theme_color: `#FB4485`,
