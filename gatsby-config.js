@@ -100,7 +100,7 @@ module.exports = {
         background_color: `#FB4485`,
         theme_color: `#FB4485`,
         display: `minimal-ui`,
-        icon: `src/images/shortcake.png`,
+        icon: `src/images/sericaia.png`,
       },
     },
     {
