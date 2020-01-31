@@ -10,10 +10,23 @@ import './layout.css'
 
 const Layout = ({ pathname, setSEO = true, children }) => {
   const data = useStaticQuery(graphql`
-    query SiteMetadataQuery {
+    query SiteQuery {
+      avatar: file(relativePath: { eq: "daniela.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 256) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
       site {
         siteMetadata {
           title
+          links {
+            email
+            github
+            linkedin
+            twitter
+          }
           routing {
             label
             section {
@@ -38,6 +51,8 @@ const Layout = ({ pathname, setSEO = true, children }) => {
       <Header
         siteTitle={data.site.siteMetadata.title}
         routing={data.site.siteMetadata.routing}
+        avatar={data.avatar}
+        links={data.site.siteMetadata.links}
       />
       <div
         style={{
@@ -52,7 +67,7 @@ const Layout = ({ pathname, setSEO = true, children }) => {
         </h2>
         <main>{children}</main>
       </div>
-      <Footer />
+      <Footer links={data.site.siteMetadata.links} />
     </>
   )
 }

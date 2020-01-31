@@ -1,85 +1,62 @@
-import { Link, useStaticQuery, graphql } from 'gatsby'
-import Img from 'gatsby-image'
-import PropTypes from 'prop-types'
 import React from 'react'
+import PropTypes from 'prop-types'
+import { Link } from 'gatsby'
 import Media from '../Media'
+import Avatar from '../Avatar'
 import Navigation from '../Navigation'
 
-const Header = ({ siteTitle, routing }) => {
-  const avatar = useStaticQuery(graphql`
-    query imageQuery {
-      file(relativePath: { eq: "daniela.png" }) {
-        childImageSharp {
-          fluid(maxWidth: 256) {
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
-    }
-  `)
-
-  return (
-    <header
+const Header = ({ siteTitle, routing, avatar, links }) => (
+  <header
+    style={{
+      marginBottom: `1.45rem`,
+    }}
+  >
+    <div
       style={{
-        marginBottom: `1.45rem`,
+        margin: `0 auto`,
+        maxWidth: 960,
+        padding: `1.45rem 1.0875rem`,
+        display: 'flex',
+        justifyContent: 'flex-start',
       }}
     >
-      <div
+      <Link
+        to="/"
         style={{
-          margin: `0 auto`,
-          maxWidth: 960,
-          padding: `1.45rem 1.0875rem`,
-          display: 'flex',
-          justifyContent: 'flex-start',
+          color: `#FB4485`,
+          textDecoration: `none`,
         }}
       >
-        <Link
-          to="/"
-          style={{
-            color: `#FB4485`,
-            textDecoration: `none`,
-          }}
-        >
-          <Img
+        <Avatar src={avatar.childImageSharp.fluid} />
+      </Link>
+      <div
+        style={{
+          alignSelf: 'center',
+        }}
+      >
+        <h1 style={{ margin: 0 }}>
+          <Link
+            to="/"
             style={{
-              borderRadius: '50%',
-              height: '5rem',
-              minWidth: '5rem',
-              margin: '0.5rem',
-            }}
-            fluid={avatar.file.childImageSharp.fluid}
-            alt="Daniela's personal picture"
-          />
-        </Link>
-        <div
-          style={{
-            alignSelf: 'center',
-          }}
-        >
-          <h1 style={{ margin: 0 }}>
-            <Link
-              to="/"
-              style={{
-                color: `#FB4485`,
-                textDecoration: `none`,
-              }}
-            >
-              {siteTitle}
-            </Link>
-          </h1>
-          <div
-            style={{
-              alignSelf: 'flex-end',
+              color: `#FB4485`,
+              textDecoration: `none`,
             }}
           >
-            <Media />
-            <Navigation routing={routing} />
-          </div>
+            {siteTitle}
+          </Link>
+        </h1>
+        <div
+          style={{
+            alignSelf: 'flex-end',
+          }}
+        >
+          <Media {...links} />
+          <Navigation routing={routing} />
         </div>
       </div>
-    </header>
-  )
-}
+    </div>
+  </header>
+)
 
 Header.propTypes = {
   siteTitle: PropTypes.string,
@@ -94,6 +71,12 @@ Header.propTypes = {
       href: PropTypes.string.isRequired,
     })
   ),
+  links: PropTypes.shape({
+    email: PropTypes.string.isRequired,
+    github: PropTypes.string.isRequired,
+    linkedin: PropTypes.string.isRequired,
+    twitter: PropTypes.string.isRequired,
+  }),
 }
 
 Header.defaultProps = {
