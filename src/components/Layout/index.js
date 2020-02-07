@@ -62,9 +62,7 @@ const Layout = ({ pathname, setSEO = true, children }) => {
           paddingTop: 0,
         }}
       >
-        <h2 style={{ height: '1.75rem' }}>
-          {currentPage && <FancyTitle {...currentPage.section} />}
-        </h2>
+        {currentPage && <FancyTitle {...currentPage.section} />}
         <main>{children}</main>
       </div>
       <Footer links={data.site.siteMetadata.links} />

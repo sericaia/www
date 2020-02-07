@@ -15,10 +15,10 @@ const FancyTitle = ({ title, color = 'blue', lettersNumber = 3 }) => {
   const lastTextToken = title.substring(lettersNumber)
 
   return (
-    <>
+    <h2>
       <span style={{ color: colors[color] }}>{firstTextToken}</span>
       {lastTextToken}
-    </>
+    </h2>
   )
 }
 
