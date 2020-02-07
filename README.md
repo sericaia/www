@@ -27,8 +27,9 @@ Uses [Gatsby](https://www.gatsbyjs.org/) with [React.js](http://reactjs.org/) an
 - [x] talks
 - [x] hashtags/keywords/icons
 - [x] offline support
+- [x] RSS
+- [ ] move queries to a proper folder
 - [ ] accessibility
 - [ ] CSP
 - [ ] make all blogpost images not to be external
-- [ ] rss
 - [ ] styled-components
