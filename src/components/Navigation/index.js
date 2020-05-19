@@ -2,7 +2,7 @@ import React, { Fragment } from 'react'
 import { Link } from 'gatsby'
 
 const Navigation = ({ routing: pages }) => (
-  <div>
+  <nav>
     {'['}
     {pages.map((page, idx) => (
       <Fragment key={page.label}>
@@ -25,7 +25,7 @@ const Navigation = ({ routing: pages }) => (
       </Fragment>
     ))}
     {']'}
-  </div>
+  </nav>
 )
 
 export default Navigation

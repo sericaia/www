@@ -2,7 +2,9 @@
 
 exports[`FancyTitle renders correctly 1`] = `
 <div>
-  <h2>
+  <h2
+    aria-label="photography"
+  >
     <span
       style="color: rgb(51, 105, 232);"
     >

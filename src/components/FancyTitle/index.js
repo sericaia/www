@@ -5,9 +5,9 @@ const colors = {
   blue: '#3369E8',
   green: '#009925',
   grey: '#666666',
-  yellow: '#EEB211',
+  yellow: '#BD8D00',
   red: '#D50F25',
-  pink: '#FB4485',
+  pink: '#E70567',
 }
 
 const FancyTitle = ({ title, color = 'blue', lettersNumber = 3 }) => {
@@ -15,7 +15,7 @@ const FancyTitle = ({ title, color = 'blue', lettersNumber = 3 }) => {
   const lastTextToken = title.substring(lettersNumber)
 
   return (
-    <h2>
+    <h2 aria-label={`${firstTextToken}${lastTextToken}`}>
       <span style={{ color: colors[color] }}>{firstTextToken}</span>
       {lastTextToken}
     </h2>

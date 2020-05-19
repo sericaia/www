@@ -30,7 +30,7 @@ const TalksPage = ({ location }) => {
               {talk.title}{' '}
               <span
                 style={{
-                  color: 'grey',
+                  color: '#767676',
                   marginBottom: '0.3rem',
                   fontWeight: 400,
                   fontSize: '1rem',
@@ -40,15 +40,16 @@ const TalksPage = ({ location }) => {
                 @ {talk.event} ({talk.location})
               </span>
             </h3>
-            <h4
+            <p
               style={{
-                color: 'grey',
+                color: '#767676',
                 marginBottom: '0.3rem',
                 fontWeight: 400,
+                lineHeight: '1.1',
               }}
             >
               <Dates date={talk.date} />
-            </h4>
+            </p>
             {renderMediaSection(talk.media)}
             <p
               style={{

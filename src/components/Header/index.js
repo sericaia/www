@@ -20,13 +20,7 @@ const Header = ({ siteTitle, routing, avatar, links }) => (
         justifyContent: 'flex-start',
       }}
     >
-      <Link
-        to="/"
-        style={{
-          color: `#FB4485`,
-          textDecoration: `none`,
-        }}
-      >
+      <Link to="/" aria-label="Go to homepage">
         <Avatar src={avatar.childImageSharp.fluid} />
       </Link>
       <div
@@ -38,7 +32,7 @@ const Header = ({ siteTitle, routing, avatar, links }) => (
           <Link
             to="/"
             style={{
-              color: `#FB4485`,
+              color: `#E70567`,
               textDecoration: `none`,
             }}
           >

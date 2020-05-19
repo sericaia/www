@@ -28,8 +28,8 @@ Uses [Gatsby](https://www.gatsbyjs.org/) with [React.js](http://reactjs.org/) an
 - [x] hashtags/keywords/icons
 - [x] offline support
 - [x] RSS
+- [x] accessibility
 - [ ] move queries to a proper folder
-- [ ] accessibility
 - [ ] CSP
 - [ ] make all blogpost images not to be external
 - [ ] styled-components

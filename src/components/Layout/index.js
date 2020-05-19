@@ -54,7 +54,7 @@ const Layout = ({ pathname, setSEO = true, children }) => {
         avatar={data.avatar}
         links={data.site.siteMetadata.links}
       />
-      <div
+      <main
         style={{
           margin: `0 auto`,
           maxWidth: 960,
@@ -63,8 +63,8 @@ const Layout = ({ pathname, setSEO = true, children }) => {
         }}
       >
         {currentPage && <FancyTitle {...currentPage.section} />}
-        <main>{children}</main>
-      </div>
+        {children}
+      </main>
       <Footer links={data.site.siteMetadata.links} />
     </>
   )

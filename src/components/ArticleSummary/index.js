@@ -24,15 +24,16 @@ const ArticleSummary = ({ link, title, date, icons, excerpt }) => (
         {title}
       </Link>
     </h3>
-    <h4
+    <p
       style={{
-        color: 'grey',
+        color: '#767676',
         marginBottom: '0.3rem',
         fontWeight: 400,
+        lineHeight: '1.1',
       }}
     >
       {date}
-    </h4>
+    </p>
     <p
       style={{
         fontSize: '0.9rem',

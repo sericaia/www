@@ -16,7 +16,7 @@ const BlogpostLayoutPage = ({ data: { mdx }, pageContext }) => (
     <SEO title={mdx.frontmatter.title} />
     <p
       style={{
-        color: 'grey',
+        color: '#767676',
         marginBottom: '0.3rem',
         fontWeight: 400,
       }}

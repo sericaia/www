@@ -12,7 +12,7 @@ const Icons = ({ icons }) => {
 
   return icons.map(icon =>
     iconToEmoji[icon] ? (
-      <span key={icon} style={{ marginRight: '0.3rem' }}>
+      <span key={icon} style={{ marginRight: '0.3rem' }} aria-hidden="true">
         {iconToEmoji[icon]}
       </span>
     ) : null

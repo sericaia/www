@@ -13,11 +13,11 @@ exports[`ArticleSummary renders correctly 1`] = `
         Fake article
       </a>
     </h3>
-    <h4
-      style="color: grey; margin-bottom: 0.3rem; font-weight: 400;"
+    <p
+      style="color: rgb(118, 118, 118); margin-bottom: 0.3rem; font-weight: 400; line-height: 1.1;"
     >
       January 21, 2020
-    </h4>
+    </p>
     <p
       style="font-size: 0.9rem; font-style: italic;"
     >
