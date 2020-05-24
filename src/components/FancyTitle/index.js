@@ -15,7 +15,7 @@ const FancyTitle = ({ title, color = 'blue', lettersNumber = 3 }) => {
   const lastTextToken = title.substring(lettersNumber)
 
   return (
-    <h2 aria-label={`${firstTextToken}${lastTextToken}`}>
+    <h2 aria-label={title}>
       <span style={{ color: colors[color] }}>{firstTextToken}</span>
       {lastTextToken}
     </h2>
