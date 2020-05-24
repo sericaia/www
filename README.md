@@ -29,7 +29,7 @@ Uses [Gatsby](https://www.gatsbyjs.org/) with [React.js](http://reactjs.org/) an
 - [x] offline support
 - [x] RSS
 - [x] accessibility
+- [x] replace show images
 - [ ] move queries to a proper folder
 - [ ] CSP
-- [ ] make all blogpost images not to be external
 - [ ] styled-components

@@ -7,9 +7,9 @@ icons: []
 First the participants propose discussion topics and then, after voting, group discussions are created about the most popular selections: one of those was accessibility! There are also passion talks, which are 5- to 10-minute talks about something you want to share (which could be technical or non-technical). (I recommend taking a look at Jesse Beach's “What is Accessibility?” passion talk if you haven't seen one.) The registrations for Offline Camp are limited to about 30 participants, which helps everyone get to know each other and keeps discussions productive.
 I decided to attend the “A11Y” discussion because I barely knew anything about accessibility. Usually we don't think as much about A11Y as we should.
 
-![Written brainstorming notes from the session: Page 1 - A11y, service workers, routing, trade-offs, aria, selects, removing barriers, HTML and CSS, etc.](https://user-images.githubusercontent.com/1150553/28500089-d11abf50-6fba-11e7-9869-fe35915109eb.JPG)
+![Written brainstorming notes from the session: Page 1 - A11y, service workers, routing, trade-offs, aria, selects, removing barriers, HTML and CSS, etc.](./assets/20170801_are-you-concerned-about-accessibility/1.png)
 
-![Written brainstorming notes from the session: Page 2 - Different types of accessibility, education, etc.](https://user-images.githubusercontent.com/1150553/28500091-d307a788-6fba-11e7-8dae-327bf56cd761.JPG)
+![Written brainstorming notes from the session: Page 2 - Different types of accessibility, education, etc.](./assets/20170801_are-you-concerned-about-accessibility/2.png)
 
 The session started with us talking about how can we relate accessibility to Offline First and how it can change people's lives. We identified different types of disability such as cognitive, vision, motor, an so on. The discussion was mainly around our concerns regarding web (the majority of the people in the room were web developers) and what we do when creating Single Page Applications (SPA).
 
