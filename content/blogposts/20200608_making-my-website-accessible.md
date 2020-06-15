@@ -4,8 +4,6 @@ date: '2020-06-08'
 icons: []
 ---
 
-### Context
-
 Accessibility is not an easy topic to talk about and most companies just start to think about it once they reach a large amount of users. Why? If most issues can be solved by adding extra HTML attributes, there's no reason not to educate teams not to start doing it.
 
 When we start digging into accessibility it's important to reiterate that we're not only talking about people that are blind, but also people that are visually impaired (e.g. low vision or color blind), or even with motor/cognitive disabilities, etc. Regarding sight and namely visually impairment:
