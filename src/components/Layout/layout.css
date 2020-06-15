@@ -644,3 +644,20 @@ pre tt:after {
   padding-left: 2.8em;
   overflow: initial;
 }
+
+/*
+ Custom
+*/
+
+blockquote {
+  display: flex;
+}
+
+blockquote:before {
+  content: "''";
+  color: rgb(134, 124, 124);
+  font-size: 60px;
+  margin: 0px;
+  font-family: sans-serif;
+  padding: 5px;
+}
