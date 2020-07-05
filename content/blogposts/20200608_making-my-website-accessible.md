@@ -198,14 +198,6 @@ Even though Tota11y extension has a preview of what a screen reader would read a
 
 Ok, it is clear now why it was not working since the role attribute was missing on the previous snippet.
 
-<!-- #### Blog post images
-
-Markdown Images are links
-
-`![image alt description](./assets/image.png)`
-
-> TODO: not fixed yet -->
-
 #### Landmarks
 
 Landmarks are extremely important to help with navigation through a screen reader (or even with keyboard navigation). These days screen readers allow users to search under links, under landmarks, etc to help them navigate more efficiently.

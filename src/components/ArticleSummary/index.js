@@ -5,35 +5,37 @@ import { Link } from 'gatsby'
 import Icons from '../Icons'
 
 const ArticleSummary = ({ link, title, date, icons, excerpt }) => (
-  <div>
-    <h3
-      style={{
-        marginBottom: '0.3rem',
-      }}
-    >
-      <Link
-        to={link}
+  <article>
+    <header>
+      <h3
         style={{
-          textDecoration: 'none',
-          color: '#333',
-          fontWeight: 'bold',
-          fontSize: '1.2rem',
+          marginBottom: '0.3rem',
         }}
       >
-        <Icons icons={icons} />
-        {title}
-      </Link>
-    </h3>
-    <p
-      style={{
-        color: '#767676',
-        marginBottom: '0.3rem',
-        fontWeight: 400,
-        lineHeight: '1.1',
-      }}
-    >
-      {date}
-    </p>
+        <Link
+          to={link}
+          style={{
+            textDecoration: 'none',
+            color: '#333',
+            fontWeight: 'bold',
+            fontSize: '1.2rem',
+          }}
+        >
+          <Icons icons={icons} />
+          {title}
+        </Link>
+      </h3>
+      <p
+        style={{
+          color: '#767676',
+          marginBottom: '0.3rem',
+          fontWeight: 400,
+          lineHeight: '1.1',
+        }}
+      >
+        {date}
+      </p>
+    </header>
     <p
       style={{
         fontSize: '0.9rem',
@@ -42,7 +44,7 @@ const ArticleSummary = ({ link, title, date, icons, excerpt }) => (
     >
       {excerpt}
     </p>
-  </div>
+  </article>
 )
 
 ArticleSummary.propTypes = {

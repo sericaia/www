@@ -14,22 +14,27 @@ import './blogpost-layout.css'
 const BlogpostLayoutPage = ({ data: { mdx }, pageContext }) => (
   <Layout setSEO={false}>
     <SEO title={mdx.frontmatter.title} />
-    <p
-      style={{
-        color: '#767676',
-        marginBottom: '0.3rem',
-        fontWeight: 400,
-      }}
-    >
-      {mdx.frontmatter.date}
-    </p>
-    <h2>{mdx.frontmatter.title}</h2>
-    <MDXRenderer>{mdx.body}</MDXRenderer>
-
-    <ParentArticleLinks
-      previous={pageContext.previous}
-      next={pageContext.next}
-    />
+    <article>
+      <header>
+        <p
+          style={{
+            color: '#767676',
+            marginBottom: '0.3rem',
+            fontWeight: 400,
+          }}
+        >
+          {mdx.frontmatter.date}
+        </p>
+        <h2>{mdx.frontmatter.title}</h2>
+      </header>
+      <MDXRenderer>{mdx.body}</MDXRenderer>
+      <footer>
+        <ParentArticleLinks
+          previous={pageContext.previous}
+          next={pageContext.next}
+        />
+      </footer>
+    </article>
   </Layout>
 )
 

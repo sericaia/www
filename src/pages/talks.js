@@ -24,32 +24,34 @@ const TalksPage = ({ location }) => {
       <p>I've spoke to crowds but meetups are the ones I'm more afraid of.</p>
       {talks.map((talk, idx) => {
         return (
-          <div key={`${idx}${talk.title}`}>
-            <h3 style={{ marginBottom: '0.3rem', fontSize: '1.2rem' }}>
-              <Icons icons={talk.icons} />
-              {talk.title}{' '}
-              <span
+          <article key={`${idx}${talk.title}`}>
+            <header>
+              <h3 style={{ marginBottom: '0.3rem', fontSize: '1.2rem' }}>
+                <Icons icons={talk.icons} />
+                {talk.title}{' '}
+                <span
+                  style={{
+                    color: '#767676',
+                    marginBottom: '0.3rem',
+                    fontWeight: 400,
+                    fontSize: '1rem',
+                    fontStyle: 'italic',
+                  }}
+                >
+                  @ {talk.event} ({talk.location})
+                </span>
+              </h3>
+              <p
                 style={{
                   color: '#767676',
                   marginBottom: '0.3rem',
                   fontWeight: 400,
-                  fontSize: '1rem',
-                  fontStyle: 'italic',
+                  lineHeight: '1.1',
                 }}
               >
-                @ {talk.event} ({talk.location})
-              </span>
-            </h3>
-            <p
-              style={{
-                color: '#767676',
-                marginBottom: '0.3rem',
-                fontWeight: 400,
-                lineHeight: '1.1',
-              }}
-            >
-              <Dates date={talk.date} />
-            </p>
+                <Dates date={talk.date} />
+              </p>
+            </header>
             {renderMediaSection(talk.media)}
             <p
               style={{
@@ -66,7 +68,7 @@ const TalksPage = ({ location }) => {
                 style={{ maxWidth: 512, width: '100%' }}
               />
             )}
-          </div>
+          </article>
         )
       })}
     </Layout>
