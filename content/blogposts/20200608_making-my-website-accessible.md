@@ -241,7 +241,7 @@ I thought I had accessibility in mind but doing this assessment helped to identi
 The two quick wins I would recommend everyone to fix in their personal or professional projects are:
 
 - Contrasts, particularly relevant for visually impaired people;
-- Using the right HTML elements, that held people that rely on assistive technologies to read content but also helps any other person to jump between elements (e.g. I've seen a lot of code creating buttons that are not `button` elements).
+- Using the right HTML elements, that help people that rely on assistive technologies to read content but also helps any other person to jump between elements (e.g. I've seen a lot of code creating buttons that are not `button` elements).
 
 I also felt that clues which are interesting from a design perspective can be really confusing for someone that relies on a screen reader only and using icons are a great example of that.
 
@@ -251,10 +251,21 @@ I thought I had most things right and I ended up fixing a lot, let's make it par
 
 #### To read more
 
+##### Projects
+
 - [W3C's documentation on accessibility](https://www.w3.org/TR/using-aria)
 - [Mozilla's documentation on accessibility](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA)
 - [The A11Y Project](https://a11yproject.com)
 - [GOV.UK design system](https://design-system.service.gov.uk/accessibility/)
+
+##### Courses
+
+- [Web Accessibility (Udacity)](https://www.udacity.com/course/web-accessibility--ud891)
+- [Develop Accessible Web Apps with React (Egghead)](https://egghead.io/courses/develop-accessible-web-apps-with-react)
+
+##### Update: Blog posts
+
+- [Website Accessibility Made Easy](https://www.websiteplanet.com/blog/website-accessibility-made-easy-ultimate-guide/). A reader told me about this guide and it is a great read. It shows an interesting perspective that we are not only helping people with disabilities when fixing accessibility but also everyone else.
 
 #### To use when coding
 
