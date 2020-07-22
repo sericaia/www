@@ -1,4 +1,21 @@
 export default [
+  // 2020
+  {
+    title: 'Fixing accessibility on my website',
+    event: 'Ladies of Code Paris Meetup',
+    location: 'Remote',
+    date: ['2020-07-09'],
+    icons: [],
+    media: {
+      picture: null,
+      slides: 'https://slides.com/sericaia/accessibility-website',
+      links: 'https://github.com/sericaia/broken-aria-form-example',
+      video: 'https://www.youtube.com/watch?v=NnluF6paMmI',
+    },
+    description:
+      'Besides explaining how I fixed most accessibility issues in this website, I also talk about how to create accessible forms.',
+  },
+
   // 2019
 
   {
