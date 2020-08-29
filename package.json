@@ -14,7 +14,7 @@
     "gatsby-plugin-manifest": "^2.2.31",
     "gatsby-plugin-mdx": "^1.0.67",
     "gatsby-plugin-offline": "^3.0.33",
-    "gatsby-plugin-react-helmet": "^3.1.16",
+    "gatsby-plugin-react-helmet": "^3.3.10",
     "gatsby-plugin-react-svg": "^3.0.0",
     "gatsby-plugin-sharp": "^2.4.0",
     "gatsby-remark-copy-linked-files": "^2.1.36",
@@ -28,7 +28,7 @@
     "prop-types": "^15.7.2",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
-    "react-helmet": "^5.2.1"
+    "react-helmet": "^6.1.0"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.0.0",

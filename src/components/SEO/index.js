@@ -68,7 +68,9 @@ function SEO({ description, lang, meta, title }) {
           content: metaDescription,
         },
       ].concat(meta)}
-    />
+    >
+      <link rel="alternate" type="application/rss+xml" href="/rss.xml" />
+    </Helmet>
   )
 }
 
