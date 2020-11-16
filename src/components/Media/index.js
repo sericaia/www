@@ -31,7 +31,7 @@ const Media = ({ email, github, linkedin, twitter }) => {
 
   return (
     <>
-      {media.map(media => (
+      {media.map((media) => (
         <a
           style={{
             padding: '.5rem',

@@ -3,7 +3,7 @@ import ArticleSummary from '../ArticleSummary'
 
 const Articles = ({ articles }) => (
   <>
-    {articles.map(post => (
+    {articles.map((post) => (
       <ArticleSummary
         key={post.id}
         link={post.fields.pathname}

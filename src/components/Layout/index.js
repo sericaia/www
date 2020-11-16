@@ -42,7 +42,7 @@ const Layout = ({ pathname, setSEO = true, children }) => {
   `)
 
   const currentPage = data.site.siteMetadata.routing.find(
-    page => page.href === pathname
+    (page) => page.href === pathname
   )
 
   return (

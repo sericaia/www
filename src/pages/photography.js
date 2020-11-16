@@ -13,7 +13,7 @@ const PhotographyPage = ({ location, data }) => {
         life.
       </p>
 
-      {pictures.edges.map(picture => (
+      {pictures.edges.map((picture) => (
         <Img
           key={picture.node.childImageSharp.fluid.originalName}
           style={{

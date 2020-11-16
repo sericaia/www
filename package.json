@@ -35,6 +35,12 @@
     "@testing-library/react": "^11.0.4",
     "babel-jest": "^26.3.0",
     "babel-preset-gatsby": "^0.5.10",
+    "eslint": "^7.13.0",
+    "eslint-config-prettier": "^6.15.0",
+    "eslint-plugin-json": "^2.1.2",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-react": "^7.21.5",
+    "eslint-plugin-react-hooks": "^4.2.0",
     "husky": "^4.0.10",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^26.4.2",
@@ -56,6 +62,7 @@
     "build": "gatsby build",
     "develop": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
+    "lint": "eslint --ext js,json .",
     "start": "npm run develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
@@ -77,6 +84,7 @@
   "lint-staged": {
     "*.*": [
       "prettier --write",
+      "eslint",
       "git add"
     ]
   }

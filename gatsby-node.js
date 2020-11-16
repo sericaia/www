@@ -73,7 +73,7 @@ const createBlogposts = async (graphql, createPage, reporter) => {
 
   const posts = allBlogposts.data.allMdx.edges
 
-  posts.forEach(({ node, next, previous }, index) => {
+  posts.forEach(({ node, next, previous }) => {
     createPage({
       path: node.fields.pathname,
       component: path.resolve(`./src/components/BlogpostLayout/index.js`),

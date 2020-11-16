@@ -6,9 +6,9 @@ import Icons from '../components/Icons'
 import talks from '../../content/talks'
 
 const TalksPage = ({ location }) => {
-  const renderMediaSection = media => {
+  const renderMediaSection = (media) => {
     const keys = Object.keys(media)
-    return keys.map(key => {
+    return keys.map((key) => {
       if (!media[key] || key === 'picture') return null
 
       return (
