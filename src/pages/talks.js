@@ -3,7 +3,7 @@ import React from 'react'
 import Layout from '../components/Layout'
 import Dates from '../components/Dates'
 import Icons from '../components/Icons'
-import talks from '../../content/talks'
+import talks from '../../content/talks-metadata'
 
 const TalksPage = ({ location }) => {
   const renderMediaSection = (media) => {

@@ -1,7 +1,7 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import Img from 'gatsby-image'
 import Layout from '../components/Layout'
+import Picture from '../components/Picture'
 
 const PhotographyPage = ({ location, data }) => {
   const { pictures } = data
@@ -13,16 +13,14 @@ const PhotographyPage = ({ location, data }) => {
         life.
       </p>
 
-      {pictures.edges.map((picture) => (
-        <Img
-          key={picture.node.childImageSharp.fluid.originalName}
-          style={{
-            margin: '1rem',
-          }}
-          fluid={picture.node.childImageSharp.fluid}
-          alt={picture.node.childImageSharp.fluid.originalName}
-        />
-      ))}
+      <ul style={{ listStyle: 'none', marginLeft: 0 }}>
+        {pictures.edges.map((picture) => (
+          <Picture
+            key={picture.node.childImageSharp.fluid.originalName}
+            fluidImg={picture.node.childImageSharp.fluid}
+          />
+        ))}
+      </ul>
     </Layout>
   )
 }
