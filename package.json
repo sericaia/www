@@ -7,6 +7,7 @@
   "dependencies": {
     "@mdx-js/mdx": "^1.5.4",
     "@mdx-js/react": "^1.5.4",
+    "a11y-syntax-highlighting": "^0.1.0",
     "date-fns": "^2.9.0",
     "gatsby": "^2.24.65",
     "gatsby-image": "^2.2.39",
@@ -62,7 +63,7 @@
     "build": "gatsby build",
     "develop": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
-    "lint": "eslint --ext js,json .",
+    "lint": "eslint . --ext js,json",
     "start": "npm run develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
@@ -82,9 +83,13 @@
     }
   },
   "lint-staged": {
+    "*.js": [
+      "eslint --fix",
+      "prettier --write",
+      "git add"
+    ],
     "*.*": [
       "prettier --write",
-      "eslint",
       "git add"
     ]
   }

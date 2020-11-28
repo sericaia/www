@@ -112,6 +112,8 @@ module.exports = {
             resolve: `gatsby-remark-prismjs`,
             options: {
               showLineNumbers: true,
+              // turns js code examples in markdown files into jsx
+              aliases: { js: 'jsx' },
             },
           },
           {
