@@ -1,4 +1,20 @@
 export default [
+  // 2021
+  {
+    title: 'Unboxing Cryptography',
+    event: 'ReactJS Girls Meetup',
+    location: 'Remote',
+    date: ['2021-01-14'],
+    icons: [],
+    media: {
+      picture: null,
+      slides: 'https://slides.com/sericaia/unboxing-cryptography',
+      links: null,
+      video: 'https://youtu.be/-7SxrMAkRp0?t=1337',
+    },
+    description:
+      'I have been reading about Cryptography recently. This is a motivational talk that tries to give an overview of cryptography (from the basics to some of its use cases).',
+  },
   // 2020
   {
     title: 'Fixing accessibility on my website',
