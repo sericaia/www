@@ -35,7 +35,7 @@ We decided to use [request](https://www.npmjs.com/package/request) to do the HTT
 `Request` is callback-based and really easy to work with:
 
 ```javascript
-request(url, function(err, response, body) {
+request(url, function (err, response, body) {
   if (err || response.statusCode !== 200) {
     // handle error
   } else {
@@ -51,7 +51,7 @@ Let's start creating a Hapi server that will pick `port` and `host` from environ
 ```javascript
 // index.js
 const server = require('./server')
-server.start(function() {
+server.start(function () {
   console.log('Server running at:', server.info.uri)
 })
 ```
@@ -125,7 +125,7 @@ We decided to create the code generically as we could, and add a configuration f
 Configuration helped these handlers to share almost the same code:
 
 ```javascript
-exports.readGithubDetails = function(req, reply) {
+exports.readGithubDetails = function (req, reply) {
   const url = createUrl(apiData.github)
 
   request(
@@ -136,7 +136,7 @@ exports.readGithubDetails = function(req, reply) {
         'User-Agent': apiData.github.roomId,
       },
     },
-    function(err, response, body) {
+    function (err, response, body) {
       if (err || response.statusCode !== 200) {
         return reply(Boom.wrap(err, response.statusCode))
       } else {

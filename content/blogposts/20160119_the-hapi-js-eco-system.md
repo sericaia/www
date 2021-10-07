@@ -40,11 +40,11 @@ The second one reminds that business logic should be isolated from HTTP requests
 
 ```js
 // yldApi.js
-var register = function(plugin, options, next) {
+var register = function (plugin, options, next) {
   plugin.route({
     method: 'GET',
     path: '/api/website',
-    handler: function(request, reply) {
+    handler: function (request, reply) {
       reply('yld.io')
     },
   })
@@ -52,7 +52,7 @@ var register = function(plugin, options, next) {
   plugin.route({
     method: 'GET',
     path: '/api/blog',
-    handler: function(request, reply) {
+    handler: function (request, reply) {
       reply('blog.yld.io')
     },
   })
@@ -120,7 +120,7 @@ Joi.validate(yld, companySchema, => (err, value) { });
 plugin.route({
   method: 'GET',
   path: '/welcome/{name}',
-  handler: function(request, reply) {
+  handler: function (request, reply) {
     var welcomeMsg = 'Welcome to YLD! blog, ' + request.params.name + '!\n'
     welcomeMsg += 'Are you ' + request.query.mood + '?'
 
@@ -132,9 +132,7 @@ plugin.route({
         name: Joi.string().required(),
       },
       query: {
-        mood: Joi.string()
-          .valid(['happy', 'sad'])
-          .default('happy'),
+        mood: Joi.string().valid(['happy', 'sad']).default('happy'),
       },
     },
   },
@@ -152,8 +150,8 @@ A simple use case is user-password validation. In the example below, we have an 
 ```js
 var Boom = require('Boom')
 
-var validateUser = function(userId, password, callback) {
-  validate(userId, password, function(err, user) {
+var validateUser = function (userId, password, callback) {
+  validate(userId, password, function (err, user) {
     if (err) {
       return callback(Boom.unauthorized('invalid password'))
     }
@@ -175,16 +173,16 @@ var lab = (exports.lab = Lab.script())
 var contact = require('../../src/contact')
 
 lab.experiment('Contact Utils', () => {
-  lab.before(done => {
+  lab.before((done) => {
     // perform async stuff
     done()
   })
 
-  lab.beforeEach(done => {
+  lab.beforeEach((done) => {
     done()
   })
 
-  lab.test('add new contact', done => {
+  lab.test('add new contact', (done) => {
     contact.addContact({ id: 'contact1' }, (err, contact) => {
       Code.expect(err).to.be.null()
       Code.expect(contact.contact1.id).to.equal('contact1')
@@ -210,7 +208,7 @@ server.route({
   path: '/helloworld',
   config: {
     id: 'hello',
-    handler: function(request, reply) {
+    handler: function (request, reply) {
       return reply('Hello, YLD followers!')
     },
   },
@@ -223,8 +221,8 @@ Our client implementation could call the route `/helloworld` using
 var Nes = require('nes')
 var nesClient = new Nes.Client('ws://localhost:3000')
 
-nesClient.connect(function(err) {
-  nesClient.request('hello', function(err, payload) {
+nesClient.connect(function (err) {
+  nesClient.request('hello', function (err, payload) {
     // do something with payload
   })
 })

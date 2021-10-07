@@ -22,7 +22,7 @@ To get our feet wet, let's just have React render "Hello World".
 
 ```js
 var Hello = React.createClass({
-  render: function() {
+  render: function () {
     return <div>Hello {this.props.name}</div>
   },
 })
@@ -45,7 +45,7 @@ It was conceived to be used with transpilers and not as an independent language.
 ```js
 var Hello = React.createClass({
   displayName: 'Hello',
-  render: function() {
+  render: function () {
     return React.createElement('div', null, 'Hello ', this.props.name)
   },
 })
@@ -66,7 +66,7 @@ Let's make it more interesting and create some components:
 
 ```js
 var Books = React.createClass({
-  render: function() {
+  render: function () {
     return (
       <table>
         <thead>
@@ -84,7 +84,7 @@ var Books = React.createClass({
 })
 
 var Book = React.createClass({
-  render: function() {
+  render: function () {
     return (
       <tr>
         <td>{this.props.title}</td>
@@ -113,7 +113,7 @@ var data = {
 }
 
 var Book = React.createClass({
-  render: function() {
+  render: function () {
     return (
       <tr>
         <td>{this.props.data.title}</td>
@@ -134,7 +134,7 @@ Now we need to add a _read_ checkbox to each book that mutates its state. For th
 
 ```js
 var Books = React.createClass({
-  render: function() {
+  render: function () {
     return (
       // ...
       <tr>
@@ -151,10 +151,10 @@ var state = {
 }
 
 var Book = React.createClass({
-  handleChange: function(ev) {
+  handleChange: function (ev) {
     console.log('onChange: ', ev)
   },
-  render: function() {
+  render: function () {
     return (
       <tr>
         <td>{this.props.title}</td>
@@ -183,15 +183,15 @@ In order for each `Book` to have a state that we can mutate and see the change r
 
 ```js
 var Book = React.createClass({
-  getInitialState: function() {
+  getInitialState: function () {
     return {
       read: false,
     }
   },
-  handleChange: function(ev) {
+  handleChange: function (ev) {
     console.log('onChange: ', ev)
   },
-  render: function() {
+  render: function () {
     return (
       <tr>
         <td>{this.props.title}</td>
@@ -269,23 +269,23 @@ var BookForm = React.createClass({
   propTypes: {
     onBook: React.PropTypes.func.isRequired,
   },
-  getInitialState: function() {
+  getInitialState: function () {
     return {
       title: '',
       read: false,
     }
   },
-  changeTitle: function(ev) {
+  changeTitle: function (ev) {
     this.setState({
       title: ev.target.value,
     })
   },
-  changeRead: function() {
+  changeRead: function () {
     this.setState({
       read: !this.state.read,
     })
   },
-  addBook: function(ev) {
+  addBook: function (ev) {
     ev.preventDefault()
 
     this.props.onBook({
@@ -298,7 +298,7 @@ var BookForm = React.createClass({
       read: false,
     })
   },
-  render: function() {
+  render: function () {
     return (
       <form onSubmit={this.addBook}>
         <div>
@@ -344,20 +344,20 @@ var Books = React.createClass({
   propTypes: {
     books: React.PropTypes.array,
   },
-  getInitialState: function() {
+  getInitialState: function () {
     return {
       books: this.props.books || [],
     }
   },
-  onBook: function(book) {
+  onBook: function (book) {
     this.state.books.push(book)
 
     this.setState({
       books: this.state.books,
     })
   },
-  render: function() {
-    var books = this.state.books.map(function(book) {
+  render: function () {
+    var books = this.state.books.map(function (book) {
       return <Book title={book.title} read={book.read}></Book>
     })
 
@@ -393,18 +393,18 @@ var Book = React.createClass({
     title: React.PropTypes.string.isRequired,
     read: React.PropTypes.bool.isRequired,
   },
-  getInitialState: function() {
+  getInitialState: function () {
     return {
       title: this.props.title,
       read: this.props.read,
     }
   },
-  handleChange: function(ev) {
+  handleChange: function (ev) {
     this.setState({
       read: !this.state.read,
     })
   },
-  render: function() {
+  render: function () {
     return (
       <tr>
         <td>{this.props.title}</td>
@@ -470,7 +470,7 @@ var Books = require('./views/index.jsx')
 > section of [./index.js](https://github.com/yldio/react-example/blob/master/express/index.js#L22-L53)
 
 ```js
-app.use('/', function(req, res) {
+app.use('/', function (req, res) {
   var books = [
     {
       title: 'Professional Node.js',
@@ -534,7 +534,7 @@ We also need to listen for the `/bundle.js` request:
 > section of [./index.js](https://github.com/yldio/react-example/blob/master/express/index.js#L12-L20)
 
 ```js
-app.use('/bundle.js', function(req, res) {
+app.use('/bundle.js', function (req, res) {
   res.setHeader('content-type', 'application/javascript')
   browserify('./app.js', {
     debug: true,
@@ -564,7 +564,7 @@ To finish, we just need to listen for incoming connections:
 > section of [./index.js](https://github.com/yldio/react-example/blob/master/express/index.js#L55-L58)
 
 ```js
-var server = app.listen(3333, function() {
+var server = app.listen(3333, function () {
   var addr = server.address()
   console.log('Listening @ http://%s:%d', addr.address, addr.port)
 })
@@ -623,7 +623,7 @@ var Books = require('./views/index.jsx')
 server.route({
   method: 'GET',
   path: '/',
-  handler: function(request, reply) {
+  handler: function (request, reply) {
     var books = [
       {
         title: 'Professional Node.js',
@@ -674,7 +674,7 @@ We also need to listen for the `/bundle.js` request:
 server.route({
   method: 'GET',
   path: '/bundle.js',
-  handler: function(request, reply) {
+  handler: function (request, reply) {
     reply(
       null,
       browserify('./app.js')
@@ -685,7 +685,7 @@ server.route({
             {
               objectMode: false,
             },
-            function(chunk) {
+            function (chunk) {
               return chunk
             }
           )
@@ -713,7 +713,7 @@ And start the server:
 > section of [./index.js](https://github.com/yldio/react-example/blob/master/hapi/index.js#L69-L71)
 
 ```js
-server.start(function() {
+server.start(function () {
   console.info('Listening @', server.info.uri)
 })
 ```

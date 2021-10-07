@@ -17,7 +17,7 @@ Whaaat? how?
 const DataLoader = require('dataloader')
 
 const myLoader = new DataLoader(
-  keys =>
+  (keys) =>
     new Promise((resolve, reject) => {
       // ...
     })
@@ -165,14 +165,14 @@ const db = require('./db') // some db, could be using a ORM such as sequelize
 // otherwise dataloader throws an error
 const formatResult = (coaches, ids) => {
   const coachMap = {}
-  coaches.forEach(coach => {
+  coaches.forEach((coach) => {
     coachMap[coach.id] = coach
   })
 
-  return ids.map(id => coachMap[id])
+  return ids.map((id) => coachMap[id])
 }
 
-const batchCoaches = async ids => {
+const batchCoaches = async (ids) => {
   try {
     const coaches = await db.findCoachesByIds(ids)
     return formatResult(coaches, ids)

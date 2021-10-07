@@ -21,7 +21,10 @@ const TalksPage = ({ location }) => {
 
   return (
     <Layout pathname={location.pathname}>
-      <p>I've spoke to crowds but meetups are the ones I'm more afraid of.</p>
+      <p>
+        I&apos;ve spoke to crowds but meetups are the ones I&apos;m more afraid
+        of.
+      </p>
       {talks.map((talk, idx) => {
         return (
           <article key={`${idx}${talk.title}`}>

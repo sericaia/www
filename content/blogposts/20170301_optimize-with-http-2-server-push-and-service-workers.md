@@ -87,22 +87,22 @@ _(Image: Cached resources - taking a look into Developer tools > Application > C
 We mentioned that Service Workers allow the interception of fetch events, and an example of it can be found in the following code:
 
 ```js
-this.addEventListener('fetch', function(event) {
+this.addEventListener('fetch', function (event) {
   var response
   event.respondWith(
     caches
       .match(event.request)
-      .catch(function() {
+      .catch(function () {
         return fetch(event.request)
       })
-      .then(function(r) {
+      .then(function (r) {
         response = r
-        caches.open(cacheName).then(function(cache) {
+        caches.open(cacheName).then(function (cache) {
           cache.put(event.request, response)
         })
         return response.clone()
       })
-      .catch(function() {
+      .catch(function () {
         return caches.match('picture.png')
       })
   )
