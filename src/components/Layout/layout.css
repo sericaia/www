@@ -633,7 +633,7 @@ pre tt:after {
 
 .gatsby-highlight pre[class*='language-'].line-numbers {
   padding: 0 0 0 2.8em;
-  overflow: initial;
+  overflow-y: hidden;
 }
 
 /*
