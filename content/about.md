@@ -8,3 +8,5 @@ I already gave minimal contributions in some relevant **open-source projects**, 
 I also like **teaching** and I already created React.js/ES6/Node.js/GraphQL **training materials**, gave some courses in public events (meetups) and training in companies events (both on-site and remote). I also participated as a **mentor** on few CoderDojo Lisbon events.
 
 My main interest areas are: web protocols, web security and accessibility. Btw, I volunteer 1hour/week to be with a blind 70yr old amazing hacker!
+
+Please note that any opinions you find in my personal website are my own and do not represent my employer.
