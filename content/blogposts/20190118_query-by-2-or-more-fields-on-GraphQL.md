@@ -131,7 +131,7 @@ employee: async (root, { where: { email, slackId } }, { dataSources }) => {
 // ...
 ```
 
-We ended up using input types and making our schema clean and mean. In order to make it even prettier we followed some [open-crud](https://github.com/opencrud/opencrud) specification ideas, which is used by interesting projects like [Prisma](https://www.prisma.io/) or [GraphCMS](https://graphcms.com).
+We ended up using input types and making our schema clean and mean. In order to make it even prettier we followed some [open-crud](https://github.com/opencrud/opencrud) specification ideas, which is used by interesting projects like [Prisma](https://www.prisma.io/) or [Hygraph](https://hygraph.com/).
 
 Enjoy input types!
 
