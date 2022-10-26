@@ -8,20 +8,20 @@ icons: []
 
 We pull code from our peers, push our code into branches, merge our pull requests (PR) into other branches, etc. but sometimes we have to revert them either because of a bug or because the functionality is no longer needed.
 
-`git revert {COMMIT_HASH}` undoes a commit identifying by its hash. We can also append multiple hashes and all of them will be reverted.
+`git revert {COMMIT_HASH}` undoes a commit identified by its hash. We can also append multiple hashes and all of them will be reverted.
 
-Assuming that we have three commits: X, Y and Z, it is also possible to revert all code between commits X and Z using `git revert {COMMIT_HASH_X}..{COMMIT_HASH_Z}`, which will revert Y and Z.
+Assuming that we have three commits: X, Y and Z, it is also possible to revert all code between commits X and Z using `git revert {COMMIT_HASH_X}..{COMMIT_HASH_Z}`, which will revert Y and Z but keep X.
 
 Note that you still have to commit your changes after revert.
 
 ## "Squash and merge" functionality
 
-There are several different online services (Github, Gitlab, Bitbucket, etc) we could use that support Git version control system. These often provide interesting features on top of Git, for example webhooks, actions, envionments manangement, secrets management, and many others.
+There are several different online services (GitHub, GitLab, Bitbucket, etc) we could use that support Git version control system. These often provide interesting features on top of Git, for example webhooks, actions, environments management, secrets management, and many others.
 
-Using "Squash and merge" is often a discussion on every company I've worked in. The "Squash and merge" button allows to join all code from the commits in the Pull Request into one and merge it after into the desired branch.
-Some people argue it provides cleaner history, others argue that we should have all commits to also make it easy to revert if necessary. While it is out of the scope of this article to discuss its pros and cons, it is important to understand all details on what's possible to do.
+Using "Squash and merge" has often been a discussion at every company I've worked. The "Squash and merge" button allows you to join all code from the commits in the Pull Request into a single commit and merge it after into the desired branch.
+Some argue it provides cleaner history, others argue that we should have all commits to also make it easy to revert if necessary. While it is out of the scope of this article to discuss its pros and cons, it'i's important to understand all details on what is possible to do.
 
-Imagine the following scenario where we have two commits, `a` and `b` which add two files respectively, `a.md` and `b.md`:
+Imagine the following scenario where we have two commits, `a` and `b`, which add two files respectively, `a.md` and `b.md`:
 
 ```bash
 commit d54d04edb31ed3e7b6df3b7ba4f6d63870e2d18b (HEAD -> main)
@@ -48,7 +48,7 @@ a.md b.md                                       # confirms we have the two files
  create mode 100644 c.md  
 ```
 
-At this stage we have tree commits, one per feature. If we run `git log` we get the following:
+At this stage we have three commits, one per feature. If we run `git log` we get the following:
 
 ```bash
 commit 7d2e3e91763ee403c411bb537baede36b4985484 (HEAD -> main)
@@ -103,7 +103,7 @@ Successfully rebased and updated refs/heads/main.
 a.md b.md c.md                                    # we can confirm our 3 files are here
 
 ````
-However, running `git log` will show two commits into one and give us the following:
+However, running `git log` will show two commits within one and give us the following:
 
 ```bash
 commit 1704d06c797bf2d39ce300fa2d271be6fc855357 (HEAD -> main)
@@ -121,7 +121,7 @@ Date:   Mon Oct 24 21:49:52 2022 +0100
     feat: adding a
 ```
 
-Now imagine we have a problem in commit `b` and we want to remove it. We still can if we have the hash of commit `b`!
+Now imagine we have a problem in commit `b` and we would like to remove it. This is still possible if we have the hash of commit `b`!
 
 ```bash                                       
  > git revert d54d04edb31ed3e7b6df3b7ba4f6d63870e2d18b 
@@ -161,9 +161,9 @@ Date:   Mon Oct 24 21:49:52 2022 +0100
 
 ### Tip: using fixups!
 
-While using rebase to squash the PR it reminded me of another interesting feature that Git provides that not everyone is aware aobut.
+While using rebase to squash the PR it reminded me of another interesting feature that Git provides that not everyone is aware of.
 
-Fixups allow to add changes on a commit on a pull request you've been working. It could also be useful if you're solving a comment from one of your peers and you don't want to add a commit message such as "fix: addressing the comments in PR". It prevents the need of adding a commit message.
+Fixups allow to add changes on a commit on a pull request you've been working. It could also be useful if you're addressing a comment from one of your peers and you don't want to add a commit message such as "fix: addressing the comments in PR". It prevents needing to add a commit message.
 
 Let's say we want to change file `c.md` and apply the fixup, we can do the following:
 
@@ -175,7 +175,7 @@ Let's say we want to change file `c.md` and apply the fixup, we can do the follo
  1 file changed, 1 insertion(+)
 ```
 
-If we do a `git log` we observe that a new commit was added:
+If we run `git log` we observe that a new commit has been added:
 
 ```bash
 commit 4302a8d221381b27ff57bb0e6a063050c48f1260 (HEAD -> main)
@@ -185,11 +185,11 @@ Date:   Mon Oct 24 22:03:45 2022 +0100
     fixup! feat: adding b
 ```
 
-In the end of our work and after applying fixups to different commits we can squash them into the final commits to have a cleaner history (and incorporate the fixups into the commits). A way to do it is using autosquash:
+Once we’re done, and have applied fixups to various commits, we can squash them into the final commit to have a cleaner history (with the fixups still incorporated). A way to do it is using autosquash:
 
 `git rebase -i --autosquash`
 
-It will prompt you with the following interactive mode, which moved the fixup commit near the commit where the code will be added. In this case `4302a8d` will be added to `1704d06`.
+It will prompt you with the following interactive mode, with the fixup commit moved near to the relevant commit to which the code will be added. In this case `4302a8d` will be added to `1704d06`.
 
 ```bash
 pick 23ce4cf feat: adding a
@@ -199,7 +199,7 @@ pick 7e21db1 Revert "feat: adding b"
 // ...
 ```
 
-That's it! After closing the interactive mode, your rebase is applied and commits with fixups got squashed. When you look into the history now, you will get a history without the fixup commit:
+That's it! After closing the interactive mode, your rebase will be applied and commits with fixups squashed. When you look at the history now, you will see the fixup commit is omitted:
 
 ```bash
 commit 79ea1518795ca05dd661c664341db2bf2d85350d (HEAD -> main)
@@ -225,6 +225,6 @@ Date:   Mon Oct 24 21:49:52 2022 +0100
     feat: adding a
 ```
 
-An important note is that the hashes of the commits changed, and that's also why Git is such a powerful tool. You can still go back in time if necessary and bring back the old commits. Explore [`git reflog` command](https://git-scm.com/docs/git-reflog), as it might give you an hint!
+An important thing to note is that the hashes of the commits change, and that's also why Git is such a powerful tool. You can still go back in time if necessary and bring back the old commits. Explore [`git reflog` command](https://git-scm.com/docs/git-reflog), as it might give you a hint!
 
 Note: any opinions expressed here are my own and do not represent my employer.
